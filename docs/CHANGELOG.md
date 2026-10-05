@@ -55,3 +55,12 @@
 - Classes de variante das seções viraram `obra-v-*` e `imp-v-*` para não colidir com os blocos internos.
 - Fichas da vitrine agora levam para `/jardins/`, `/arbore/`, `/vale/` e `/essenza/`.
 - Favicon com o símbolo da Nova Harmonia (`src/app/icon.svg`).
+
+## 2026-10-05 (Vinhedos igual à LP no ar)
+
+- `/vinhedos` agora reproduz a LP do WordPress (condominioharmoni.com.br) seção por seção: mesmos textos, fotos, ícones, cores, fontes (Lato, Roboto nos botões, Poppins no título do stand) e ordem. Só o header e o rodapé são os do projeto.
+- Nova seção `no-ar` no contrato (`tipos.ts`): página inteira própria entre header e rodapé. Componentes em `src/empreendimentos/vinhedos/secoes/` (`PaginaNoAr`, `CarrosselNoAr`), tipos em `vinhedos/tipos.ts`, CSS em `src/estilos/vinhedos-no-ar.css`.
+- Carrossel com o comportamento do Elementor: 1 slide (2 no tablet), autoplay de 5 s, pausa no hover, para quando a pessoa mexe, setas e bolinhas.
+- `FormLead` aceita `placeholders` (a página do Vinhedos usa os da LP no ar). O envio continua sem mostrar sucesso sem endpoint.
+- Imagens novas, baixadas da LP no ar: `vinhedos/hero/fundo.webp`, `vinhedos/conceito/familia-desktop.webp` e `familia-celular.webp`, `vinhedos/chamada/experiencia.webp`, `vinhedos/perspectivas/lava-jato-interno.webp`, `vinhedos/logo-nova-harmonia.png` e os 20 ícones em `vinhedos/icones/`.
+- A seção `Destaques` e as variantes que só o Vinhedos usava (hero cinema, carrossel cinema, diferenciais em abas, mapa com zoom) ficaram sem uso.

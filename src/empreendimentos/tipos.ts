@@ -1,6 +1,7 @@
 // Contrato de dados de uma LP. Cada empreendimento preenche o seu dados.ts;
 // os componentes de src/secoes/lp/ só leem daqui e não guardam texto.
 import type { NomeIcone } from "./icones";
+import type { PaginaNoAr } from "./vinhedos/tipos";
 
 export type Arquivo = { src: string; largura: number; altura: number };
 
@@ -19,7 +20,12 @@ export type Item = { titulo: string; icone: NomeIcone; texto?: string };
 
 export type Fundo = "branco" | "creme" | "areia" | "escuro" | "noite";
 
-export type Formulario = { titulo?: string; botao: string };
+export type Formulario = {
+  titulo?: string;
+  botao: string;
+  /** Troca os placeholders padrão (a página do Vinhedos usa os da LP no ar). */
+  placeholders?: { nome?: string; telefone?: string; email?: string };
+};
 
 // ---------- seções ----------
 
@@ -153,6 +159,9 @@ export type SecaoGrupo = {
 
 export type SecaoMissao = { tipo: "missao" };
 
+/** Página inteira própria entre o header e o rodapé do projeto (Vinhedos: cópia da LP no ar). */
+export type SecaoNoAr = { tipo: "no-ar"; pagina: PaginaNoAr };
+
 export type SecaoContato = {
   tipo: "contato";
   /** foto: foto escurecida + cartão · centro: logo e cartão centralizados ·
@@ -177,7 +186,8 @@ export type Secao =
   | SecaoObra
   | SecaoGrupo
   | SecaoMissao
-  | SecaoContato;
+  | SecaoContato
+  | SecaoNoAr;
 
 // ---------- página ----------
 

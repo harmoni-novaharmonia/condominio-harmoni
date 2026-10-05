@@ -3,6 +3,7 @@ import { Ic } from "@/components/lp/Ic";
 import { RodapeLP } from "@/components/lp/RodapeLP";
 import { textosHeader } from "@/empreendimentos/comum";
 import type { LP, Secao } from "@/empreendimentos/tipos";
+import { PaginaNoAr } from "@/empreendimentos/vinhedos/secoes/PaginaNoAr";
 import { Chamada } from "./Chamada";
 import { Conceito } from "./Conceito";
 import { Contato } from "./Contato";
@@ -42,6 +43,8 @@ function Bloco({ s, lp }: { s: Secao; lp: LP }) {
       return <Missao />;
     case "contato":
       return <Contato s={s} lp={lp} />;
+    case "no-ar":
+      return <PaginaNoAr p={s.pagina} lp={lp} />;
   }
 }
 

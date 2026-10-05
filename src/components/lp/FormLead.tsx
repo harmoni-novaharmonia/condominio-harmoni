@@ -60,16 +60,16 @@ export function FormLead({ lp, formulario, cartao, tom = "escuro", className }: 
       {formulario.titulo && <p className="form-titulo">{formulario.titulo}</p>}
       <label className="campo">
         <span>{t.campos.nome.rotulo}</span>
-        <input name="nome" type="text" autoComplete="name" required minLength={3} placeholder={t.campos.nome.placeholder} />
+        <input name="nome" type="text" autoComplete="name" required minLength={3} placeholder={formulario.placeholders?.nome ?? t.campos.nome.placeholder} />
       </label>
       <div className="form-par">
         <label className="campo">
           <span>{t.campos.telefone.rotulo}</span>
-          <input name="telefone" type="tel" autoComplete="tel" inputMode="tel" required minLength={10} placeholder={t.campos.telefone.placeholder} />
+          <input name="telefone" type="tel" autoComplete="tel" inputMode="tel" required minLength={10} placeholder={formulario.placeholders?.telefone ?? t.campos.telefone.placeholder} />
         </label>
         <label className="campo">
           <span>{t.campos.email.rotulo}</span>
-          <input name="email" type="email" autoComplete="email" required placeholder={t.campos.email.placeholder} />
+          <input name="email" type="email" autoComplete="email" required placeholder={formulario.placeholders?.email ?? t.campos.email.placeholder} />
         </label>
       </div>
       <label className="aceite">

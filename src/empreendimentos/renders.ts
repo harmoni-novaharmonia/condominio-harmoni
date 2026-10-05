@@ -23,7 +23,8 @@ const base = {
   brinquedoteca: r("brinquedoteca.webp", 1536, 863, "Brinquedoteca"),
   minimercado: r("minimercado.webp", 1536, 864, "Minimercado do condomínio"),
   academia: r("academia.webp", 1536, 863, "Academia"),
-  lavaJato: r("lava-jato.webp", 1536, 864, "Espaço car care"),
+  lavaJato: r("lava-jato.webp", 1536, 864, "Espaço car care, área externa"),
+  lavaJatoInterno: r("lava-jato-interno.webp", 1536, 864, "Espaço car care"),
   masterplan: {
     src: "/img/vinhedos/implantacao/masterplan.webp",
     largura: 1536,

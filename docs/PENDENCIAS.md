@@ -71,3 +71,11 @@
 - Vinhedos: endereço do stand "Av. Senador Salgado Filho, 7700, Viamão/RS" veio da LP no ar. Confirmar.
 - Pontos dos mapas (Aeroporto Salgado Filho, Av. Flores da Cunha, Freeway BR-290, RS-118, ULBRA, Park Shopping Canoas) vieram da copy de cada LP. Confirmar distâncias e ordem da rota do Essenza.
 - Endereço do empreendimento: `[PREENCHER]` em Jardins, Arbore, Vale e Essenza.
+
+## Vinhedos igual à LP no ar (2026-10-05)
+
+- O hero repete a LP no ar: "VIVA COM E / EM HARMONIA" (texto cortado no original). Confirmar a frase.
+- Os 9 ícones de infraestrutura vieram como SVG com PNG embutido (até 140 KB cada, 748 KB no total). Pedir os vetores ou converter para WebP antes do deploy.
+- O mapa do stand é um iframe do Google Maps, como no ar. Ele carrega cookies do Google: avaliar junto com o banner de cookies e a política de privacidade.
+- A LP no ar tem um banner de cookies e o popup do RD Station; nenhum dos dois foi portado.
+- Decidir se as seções que ficaram sem uso (Destaques e as variantes do Vinhedos) saem do código.
