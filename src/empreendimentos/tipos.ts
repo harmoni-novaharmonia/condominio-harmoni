@@ -1,6 +1,8 @@
 // Contrato de dados de uma LP. Cada empreendimento preenche o seu dados.ts;
 // os componentes de src/secoes/lp/ só leem daqui e não guardam texto.
 import type { NomeIcone } from "./icones";
+import type { SecaoEssenza } from "./essenza/tipos";
+import type { SecaoVale } from "./vale/tipos";
 import type { PaginaNoAr } from "./vinhedos/tipos";
 
 export type Arquivo = { src: string; largura: number; altura: number };
@@ -159,6 +161,9 @@ export type SecaoGrupo = {
 
 export type SecaoMissao = { tipo: "missao" };
 
+/** Cartões dos outros Harmonis no fim da página (para a LP não terminar sem saída). */
+export type SecaoOutros = { tipo: "outros" };
+
 /** Página inteira própria entre o header e o rodapé do projeto (Vinhedos: cópia da LP no ar). */
 export type SecaoNoAr = { tipo: "no-ar"; pagina: PaginaNoAr };
 
@@ -187,7 +192,11 @@ export type Secao =
   | SecaoGrupo
   | SecaoMissao
   | SecaoContato
-  | SecaoNoAr;
+  | SecaoNoAr
+  | SecaoOutros
+  // Seções exclusivas (pasta secoes/ de cada empreendimento).
+  | SecaoEssenza
+  | SecaoVale;
 
 // ---------- página ----------
 
@@ -215,6 +224,8 @@ export type LP = {
     /** POST do lead. Vazio enquanto o endpoint não existir. */
     endpoint?: string;
   };
+  /** Barra fixa no celular com WhatsApp e o CTA do header (Essenza e Vale). */
+  barraCelular?: boolean;
   secoes: Secao[];
   legal: {
     /** Registro do empreendimento (matrícula, cartório, prefeitura). */

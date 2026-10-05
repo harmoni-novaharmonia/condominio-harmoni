@@ -8,6 +8,9 @@
 @import "../estilos/rodape.css";
 @import "../estilos/lp.css";
 @import "../estilos/vinhedos-no-ar.css";
+@import "../estilos/lp-componentes.css";
+@import "../estilos/essenza.css";
+@import "../estilos/vale.css";
 
 body {
   margin: 0;

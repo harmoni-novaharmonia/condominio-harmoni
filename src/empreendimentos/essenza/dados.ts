@@ -1,11 +1,17 @@
 // Harmoni Essenza, Cachoeirinha/RS (cidade do logo e da copy do book).
-// Copy do cliente ("Copy book Harmoni Essenza.docx"); estrutura sobre a base do Jardins.
-import { corteInfraestrutura, itensModeloHarmoni, legendaModeloImplantacao, legendasPerspectivas as L, obraModelo, registroPendente } from "../comum";
+// Copy do cliente ("Copy book Harmoni Essenza.docx"). Layout da revisão aprovada
+// em 2026-10-05: painel branco sobre foto no hero e no contato, um movimento por
+// seção (seções exclusivas em ./secoes). O que é proposta está marcado.
+import { corteInfraestrutura, grupo, itensModeloHarmoni, legendaModeloImplantacao, legendasPerspectivas as L, obraModelo, registroPendente } from "../comum";
 import { estiloDeVida, provisoria } from "../renders";
-import type { LP } from "../tipos";
+import type { Imagem, LP } from "../tipos";
 
 const nome = "Harmoni Essenza";
 const cidade = "Cachoeirinha/RS";
+const lancamento = { rotulo: "Quero condição de lançamento", alvo: "contato" };
+const fotoGrupo = (arquivo: string): Imagem => grupo.fotos.find((f) => f.src.endsWith(arquivo)) ?? grupo.fotos[0];
+// Categorias dos 14 itens do modelo (proposta).
+const itensDe = (...icones: string[]) => itensModeloHarmoni.filter((x) => icones.includes(x.icone));
 
 export const essenza: LP = {
   slug: "essenza",
@@ -29,6 +35,7 @@ export const essenza: LP = {
     telefones: ["(51) 99719-6426", "(51) 9901-8575"],
     whatsapp: "5551997196426",
   },
+  barraCelular: true,
   secoes: [
     {
       tipo: "hero",
@@ -38,41 +45,43 @@ export const essenza: LP = {
       formulario: { botao: "Quero condição de lançamento" },
     },
     {
-      tipo: "conceito",
-      variante: "lado",
+      tipo: "essenza",
+      secao: "metade",
       sobretitulo: nome,
       titulo: { antes: "Conheça o padrão Nova Harmonia ", destaque: "e se encante!" },
       paragrafos: [
         "No Harmoni Essenza, você adquire muito mais que um lar, adquire um estilo de vida que cerca sua família de lazer, conforto e segurança.",
         "A Nova Harmonia tem trazido desenvolvimento para diversos estados brasileiros. Com vários empreendimentos de sucesso já lançados no Rio Grande do Sul, o Harmoni Essenza é um exemplo reluzente do padrão que a Nova Harmonia oferece.",
       ],
-      imagens: [estiloDeVida.meninaCachorro],
+      imagem: estiloDeVida.familiaJardim,
+      // Os três essenciais saem da própria copy ("lazer, conforto e segurança").
+      essenciais: [
+        { titulo: "Lazer", icone: "piscina" },
+        { titulo: "Conforto", icone: "chave" },
+        { titulo: "Segurança", icone: "portaria" },
+      ],
       cta: { rotulo: "Quero saber mais!", alvo: "contato" },
     },
     {
-      tipo: "localizacao",
-      cabecalho: "centro",
-      fundo: "areia",
+      tipo: "essenza",
+      secao: "trajeto",
       sobretitulo: "Localização",
       titulo: { antes: "Uma localização que te conecta ", destaque: "ao que mais importa!" },
       texto:
         "O Harmoni Essenza está estrategicamente localizado em uma região que se destaca pela comodidade, com fácil acesso pela RS-118, a poucos minutos da ULBRA e do Park Shopping Canoas. Esteja a apenas 20 minutos da capital em um condomínio fechado, que oferece mais segurança e qualidade de vida para sua família enquanto mantém você perto de tudo o que precisa!",
-      mapa: {
-        variante: "rota",
-        endereco: "[PREENCHER: endereço do empreendimento] · Cachoeirinha/RS",
-        // A ordem das paradas é ilustrativa; os lugares e os 20 minutos são da copy do cliente.
-        pontos: [
-          { titulo: "Harmoni Essenza", texto: "Seu ponto de partida", icone: "lote", x: "6%" },
-          { titulo: "RS-118", texto: "Fácil acesso", icone: "estrada", x: "30%" },
-          { titulo: "ULBRA", texto: "A poucos minutos", icone: "estudo", x: "52%" },
-          { titulo: "Park Shopping Canoas", texto: "A poucos minutos", icone: "sacola", x: "74%" },
-          { titulo: "Porto Alegre", texto: "A apenas 20 minutos", icone: "relogio", x: "94%" },
-        ],
-      },
+      endereco: "[PREENCHER: endereço do empreendimento] · Cachoeirinha/RS",
+      // A ordem das paradas e o desenho são ilustrativos; os lugares e os 20 minutos são da copy.
+      pontos: [
+        { titulo: "Harmoni Essenza", texto: "Seu ponto de partida", icone: "lote" },
+        { titulo: "RS-118", texto: "Fácil acesso", icone: "estrada" },
+        { titulo: "ULBRA", texto: "A poucos minutos", icone: "estudo" },
+        { titulo: "Park Shopping Canoas", texto: "A poucos minutos", icone: "sacola" },
+        { titulo: "Porto Alegre", texto: "A apenas 20 minutos", icone: "relogio" },
+      ],
     },
     {
-      tipo: "perspectivas",
-      carrossel: "indice",
+      tipo: "essenza",
+      secao: "sanfona",
       sobretitulo: "Perspectivas",
       // proposta
       titulo: { antes: "Lazer, conforto e segurança ", destaque: "em cada detalhe" },
@@ -87,24 +96,17 @@ export const essenza: LP = {
       ],
     },
     {
-      tipo: "diferenciais",
-      variante: "grade-escura",
-      sobretitulo: "Padrão Nova Harmonia",
-      titulo: { antes: "Padrão e qualidade construtiva que só ", destaque: "a Nova Harmonia tem." },
-      itens: itensModeloHarmoni,
-    },
-    {
-      tipo: "chamada",
-      variante: "foto",
+      tipo: "essenza",
+      secao: "abertura",
       titulo: { antes: "A experiência Harmoni ", destaque: "começa aqui!" },
+      // "160m²" veio do modelo: confirmar a metragem (docs/PENDENCIAS.md).
       texto: "Lotes residenciais a partir de 160m² em um condomínio para quem sonha em viver bem.",
-      cta: { rotulo: "Quero condição de lançamento", alvo: "contato" },
+      cta: lancamento,
       imagem: provisoria("piscina"),
     },
     {
-      tipo: "implantacao",
-      variante: "lateral",
-      invertido: true,
+      tipo: "essenza",
+      secao: "ampla",
       sobretitulo: "Masterplan Harmoni",
       titulo: { destaque: "Implantação" },
       planta: provisoria("masterplan"),
@@ -112,20 +114,48 @@ export const essenza: LP = {
       cta: { rotulo: "Quero escolher meu lote", alvo: "contato" },
     },
     {
-      tipo: "obra",
-      variante: "faixa",
+      tipo: "essenza",
+      secao: "roteiro",
+      sobretitulo: "Padrão Nova Harmonia",
+      titulo: { antes: "Padrão e qualidade construtiva que só ", destaque: "a Nova Harmonia tem." },
+      // Infraestrutura (água, elétrica, LED) fica no corte da rua logo abaixo.
+      grupos: [
+        { titulo: "Segurança", imagem: provisoria("portico"), itens: itensDe("portaria", "chave") },
+        { titulo: "Lazer", imagem: provisoria("piscina"), itens: itensDe("quadra", "academia", "piscina", "playground", "salao", "gourmet", "petplace") },
+        { titulo: "Serviços", imagem: provisoria("minimercado"), itens: itensDe("mercado", "carro") },
+      ],
+      cta: { rotulo: "Quero saber mais!", alvo: "contato" },
+    },
+    {
+      tipo: "essenza",
+      secao: "corte",
       sobretitulo: "Como construímos",
       titulo: { antes: "Infraestrutura a altura do padrão ", destaque: "Nova Harmonia", depois: " de qualidade" },
       imagem: corteInfraestrutura,
       itens: obraModelo,
     },
-    { tipo: "grupo", variante: "centro", fundo: "creme" },
     {
-      tipo: "contato",
-      variante: "creme",
+      tipo: "essenza",
+      secao: "setores",
+      // Foto do grupo e o setor que ela mostra; setor sem foto vira cartão de texto.
+      cartoes: [
+        { setor: "Bairros planejados", imagem: fotoGrupo("paisagem.webp") },
+        { setor: "Construção civil" },
+        { setor: "Shopping centers", imagem: fotoGrupo("entrada.webp") },
+        { setor: "Agronegócio" },
+        { setor: "Rede Novo Atacarejo", imagem: fotoGrupo("atacarejo.webp") },
+        { setor: "Faculdades" },
+        { setor: "Hotéis", imagem: fotoGrupo("hotel.webp") },
+      ],
+    },
+    {
+      tipo: "essenza",
+      secao: "contato",
       titulo: { antes: "Seja um dos primeiros compradores e tenha ", destaque: "condições exclusivas!" },
+      imagem: estiloDeVida.familiaArLivre,
       formulario: { botao: "Quero condição de lançamento" },
     },
+    { tipo: "outros" },
   ],
   legal: { registro: registroPendente(nome, cidade) },
 };

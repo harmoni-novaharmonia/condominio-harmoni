@@ -208,3 +208,75 @@ export const tracado = {
 
 export const registroPendente = (nome: string, cidade: string) =>
   `[PREENCHER: registro do ${nome}, com matrícula, cartório de registro de imóveis e aprovação da prefeitura de ${cidade}.]`;
+
+// ---------- Revisão de Essenza e Vale (2026-10-05) ----------
+// Textos dos componentes novos (formulário em duas etapas, tela cheia, corte, planta etc.).
+
+export const textosEtapas = {
+  etapa: (n: number, total: number) => `Etapa ${n} de ${total}`,
+  campos: {
+    nome: { rotulo: "Nome completo", placeholder: "Seu nome completo" },
+    telefone: { rotulo: "Telefone / WhatsApp", placeholder: "(00) 00000-0000" },
+    email: { rotulo: "Email", placeholder: "voce@email.com" },
+  },
+  continuar: "Continuar",
+  voltar: "Voltar",
+  erroNome: "Escreva seu nome completo.",
+  erroTelefone: "Confira o telefone com DDD.",
+  erroEmail: "Confira o email.",
+  erroAceite: "Marque o aceite para continuar.",
+};
+
+export const textosInteracao = {
+  ampliar: "Ampliar",
+  telaCheia: "Ver em tela cheia",
+  fechar: "Fechar",
+  arraste: "Arraste",
+  arrasteRotulo: "Perspectivas, arraste para o lado",
+  copiar: "Copiar",
+  copiado: "Copiado",
+  selecionado: "Selecionado",
+  prefereConversar: "Prefere conversar agora?",
+  chamarWhatsapp: "Chamar no WhatsApp",
+  mapaForaEscala: "Mapa ilustrativo, fora de escala.",
+  dicaCorte: "Toque nos números da imagem ou na lista.",
+  dicaPlanta: "Arraste para mover · use + e −",
+  plantaInteira: "Ver planta inteira",
+  itens: (n: number) => `${n} ${n > 1 ? "itens" : "item"}`,
+  norte: "N",
+};
+
+// Números publicados em novaharmonia.com.br (docs/CONTEUDO-FONTE.md).
+export const numerosGrupo = {
+  rotulo: "lotes",
+  fonte: "Números publicados em novaharmonia.com.br.",
+  itens: [
+    { nome: "Parque Harmonia", cidade: "Viamão/RS", lotes: 1369 },
+    { nome: "Villa Imperial", cidade: "Teresina/PI", lotes: 1895 },
+    { nome: "Reserva Harmonia Caruaru", cidade: "Caruaru/PE", lotes: 1181 },
+    { nome: "The One – Edição Maranhão", cidade: "Raposa/MA", lotes: 341 },
+  ],
+};
+
+// Onde cada camada aparece no corte da rua (% da imagem de 1620x1080).
+export const camadasCorte: Partial<Record<Item["icone"], { x: number; y: number }>> = {
+  "iluminacao-led": { x: 41.6, y: 13.4 },
+  "rede-eletrica": { x: 36.6, y: 7.2 },
+  pavimentacao: { x: 49.4, y: 58 },
+  "meio-fio-com-sarjeta": { x: 23.2, y: 66.4 },
+  "rede-de-agua": { x: 5.8, y: 71 },
+  "rede-de-esgoto": { x: 14.2, y: 73.8 },
+  "rede-de-drenagem": { x: 50.3, y: 87.5 },
+};
+
+export const textosOutros = {
+  sobretitulo: "Nova Harmonia no Rio Grande do Sul",
+  titulo: { antes: "Conheça os outros ", destaque: "Harmonis" },
+  ver: "Ver a página",
+};
+
+// Missão com o trecho final em destaque e o selo do institucional (docs/CONTEUDO-FONTE.md).
+export const missaoDestaque = {
+  selo: "Presente nas 5 regiões do país",
+  titulo: { antes: "Uma grande história com a nobre missão de ", destaque: "urbanizar com harmonia" },
+};

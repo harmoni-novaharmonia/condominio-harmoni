@@ -79,3 +79,13 @@
 - O mapa do stand é um iframe do Google Maps, como no ar. Ele carrega cookies do Google: avaliar junto com o banner de cookies e a política de privacidade.
 - A LP no ar tem um banner de cookies e o popup do RD Station; nenhum dos dois foi portado.
 - Decidir se as seções que ficaram sem uso (Destaques e as variantes do Vinhedos) saem do código.
+
+## Essenza e Vale no layout aprovado (2026-10-05)
+
+- Formulário: segue sem endpoint (CRM + RD Station). Hoje termina no WhatsApp com a mensagem pronta.
+- Renders, planta e fotos ainda são do Vinhedos ("Imagem provisória"); as fotos de família se repetem entre LPs.
+- Essenza: confirmar se a infraestrutura pode sair da lista de diferenciais (está no corte da rua). Desenho e ordem do trajeto são ilustrativos.
+- Vale: categorias dos 14 itens e a foto de cada um são proposta (quadra e playground usam a da piscina). Posições do mapa ilustrativas; texto e endereço da localização `[PREENCHER]`.
+- Vale: Grupo e Missão viraram uma seção só; a chamada "Escolha agora onde será seu lar" virou o título da implantação. Confirmar com o cliente.
+- Jardins e Arbore ainda estão na versão anterior; próximos a refazer no mesmo padrão.
+- `package-lock.json` aparece alterado (campos `libc` removidos por outra versão do npm). Não foi commitado.

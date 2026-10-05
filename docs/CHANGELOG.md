@@ -64,3 +64,14 @@
 - `FormLead` aceita `placeholders` (a página do Vinhedos usa os da LP no ar). O envio continua sem mostrar sucesso sem endpoint.
 - Imagens novas, baixadas da LP no ar: `vinhedos/hero/fundo.webp`, `vinhedos/conceito/familia-desktop.webp` e `familia-celular.webp`, `vinhedos/chamada/experiencia.webp`, `vinhedos/perspectivas/lava-jato-interno.webp`, `vinhedos/logo-nova-harmonia.png` e os 20 ícones em `vinhedos/icones/`.
 - A seção `Destaques` e as variantes que só o Vinhedos usava (hero cinema, carrossel cinema, diferenciais em abas, mapa com zoom) ficaram sem uso.
+
+## 2026-10-05 (Essenza e Vale no layout aprovado)
+
+- Essenza e Vale refeitos seção por seção conforme a revisão aprovada no artifact "Harmoni LPs Revisadas". Header e rodapé continuam os do projeto; Vinhedos, Jardins e Arbore não mudam.
+- Seções exclusivas em `src/empreendimentos/essenza/secoes/` e `src/empreendimentos/vale/secoes/`, tipos em `essenza/tipos.ts` e `vale/tipos.ts`. No contrato (`tipos.ts`) entram como `{ tipo: "essenza" | "vale", secao: ... }`, mais a seção comum `outros`.
+- Essenza: hero mantido (painel branco); conceito em duas metades; trajeto desenhado pela rolagem; perspectivas em sanfona com tela cheia; foto que abre até a tela cheia; implantação em largura total; diferenciais por grupo com foto fixa; corte da rua com a lista na altura da imagem; grupo com faixa de setores; contato com o painel pela direita.
+- Vale: hero com a janela em forma de casa (desenho do logo) e curvas de nível; frase com fotos dentro da linha; mapa noturno com ligações; galeria de arrastar com paralaxe; "Escolha agora onde será seu lar" virou o título da implantação; diferenciais em lista com foto que segue o mouse; corte com painel sobre o céu; grupo e missão numa seção só; contato com a janela-casa.
+- Peças novas em `src/components/lp/`: `FormEtapas` (cadastro em duas etapas, mesma regra de só mostrar sucesso com 2xx), `CorteRua`, `PlantaZoom`, `Luz` (tela cheia), `Numeros`, `Fones`, `BarraCelular`, `IcTinta`, `SetaRedonda`, `Cabecalho`; seção `Outros` em `src/secoes/lp/`; hooks `useAoRolar` e `useEspera`.
+- CSS novo em `src/estilos/lp-componentes.css`, `essenza.css` e `vale.css`, tudo com escopo `.ez`/`.vl`/tema: nenhum seletor novo casa com elementos de Vinhedos, Jardins ou Arbore (verificado no navegador).
+- `LP.barraCelular`: barra fixa no celular com WhatsApp e o CTA do header (Essenza e Vale).
+- Textos novos em `comum.ts` (`textosEtapas`, `textosInteracao`, `numerosGrupo`, `camadasCorte`, `textosOutros`, `missaoDestaque`); cartões dos outros Harmonis em `src/empreendimentos/outros.ts`.

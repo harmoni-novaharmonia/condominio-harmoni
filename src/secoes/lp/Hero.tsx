@@ -1,3 +1,4 @@
+import { FormEtapas } from "@/components/lp/FormEtapas";
 import { FormLead } from "@/components/lp/FormLead";
 import { Img } from "@/components/lp/Img";
 import { PalavrasRotativas } from "@/components/lp/PalavrasRotativas";
@@ -88,7 +89,7 @@ export function Hero({ s, lp }: { s: SecaoHero; lp: LP }) {
         </>
       );
 
-    // Essenza: foto cheia e painel branco que desliza da esquerda.
+    // Essenza: foto cheia e painel branco que desliza da esquerda; cadastro em duas etapas.
     case "painel":
       return (
         <section id="inicio" className="hero hero-painel-branco">
@@ -98,7 +99,7 @@ export function Hero({ s, lp }: { s: SecaoHero; lp: LP }) {
           <div className="hero-painel anim-painel">
             <TituloHero s={s} className="anim-1" />
             {s.texto && <p className="txt anim-2">{s.texto}</p>}
-            <FormLead lp={lp} formulario={s.formulario} className="anim-3" />
+            <FormEtapas lp={lp} formulario={s.formulario} className="anim-3" />
           </div>
         </section>
       );
