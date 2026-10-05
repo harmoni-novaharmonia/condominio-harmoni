@@ -1,0 +1,27 @@
+# dependências e build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# ambiente
+.env
+.env.*
+!.env.example
+
+# arquivos de trabalho locais (nunca vão pro GitHub)
+CLAUDE.md
+AGENTS.md
+.claude/
+.cursor/
+.cursorrules
+.windsurfrules
+.copilot/
+.github/copilot-instructions.md
+*.local.md
+_interno/
+.DS_Store
+Thumbs.db
+
+# gerados pelo Next
+next-env.d.ts

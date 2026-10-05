@@ -1,0 +1,13 @@
+/* Tailwind sem o preflight: o CSS da vitrine já traz o próprio reset (#hm) e
+   o reset global mudaria o visual aprovado. Só tema e utilitários entram. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "../estilos/vitrine.css";
+@import "../estilos/header.css";
+@import "../estilos/rodape.css";
+@import "../estilos/lp.css";
+
+body {
+  margin: 0;
+}

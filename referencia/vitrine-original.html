@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Condomínio Harmoni | Uma linha Nova Harmonia</title>
+<base target="_blank">
+</head>
+<body>
+  =====================================================================
+  VITRINE HARMONI — v5
+  Tudo fica dentro de #hm. Pode colar do <style> até o </script>
+  num widget HTML do Elementor (página com template "Elementor Canvas"
+  ou "Largura total", sem padding no container).
+  A fonte é importada dentro do <style>, então funciona mesmo sem <head>.
+  =====================================================================
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+
+html,body{overflow-x:clip}
+html{scrollbar-gutter:stable}
+html.hm-trava{overflow:hidden}
+
+/* ---------- tokens ---------- */
+#hm{
+  --pet:#233d48; --pet-2:#1b313a; --pet-3:#2e4f5d;
+  --creme:#f4ead9; --creme-2:#fbf6ec; --laranja:#eaa067; --laranja-2:#f0b384;
+  --azul:#84b4c8; --suave:#4a6470; --linha:#e3d5bc;
+  --margem:clamp(20px,5vw,80px);
+  --ease:cubic-bezier(.22,.8,.2,1);
+  --topo-wp:var(--wp-admin--admin-bar--height,0px);
+  width:100vw; margin-left:calc(50% - 50vw); position:relative;
+  background:var(--creme); color:var(--pet);
+  font-family:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:16px; line-height:1.65; font-weight:400; text-align:left;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- blindagem contra o tema ---------- */
+#hm *,#hm *::before,#hm *::after{box-sizing:border-box}
+#hm img{display:block;max-width:100%;height:auto;border:0;border-radius:0;box-shadow:none;margin:0}
+#hm h1,#hm h2,#hm h3,#hm h4,#hm p,#hm ul,#hm ol,#hm figure,#hm dl,#hm dd{margin:0;padding:0}
+#hm h1,#hm h2,#hm h3,#hm h4{font-family:'Lato',system-ui,sans-serif;color:inherit;text-transform:none;letter-spacing:-.01em;line-height:1.12}
+#hm ul,#hm ol{list-style:none}
+#hm a{color:inherit;text-decoration:none;box-shadow:none}
+#hm a:hover,#hm a:focus{color:inherit}
+#hm button{-webkit-appearance:none;appearance:none;background:none;border:0;border-radius:0;color:inherit;font:inherit;letter-spacing:inherit;text-transform:none;padding:0;margin:0;cursor:pointer;line-height:inherit;box-shadow:none;min-height:0}
+#hm button:hover,#hm button:focus{background:none;color:inherit}
+#hm :focus-visible{outline:2px solid var(--laranja);outline-offset:3px}
+#hm .ph{color:var(--suave);border-bottom:1px dashed currentColor;font-style:normal}
+#hm .escuro .ph{color:#b9cfd8}
+#hm .branco{filter:brightness(0) invert(1)}
+
+/* ---------- botões ---------- */
+#hm .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.02em;border:1.5px solid transparent;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s,transform .3s var(--ease);white-space:nowrap}
+#hm .btn:hover{transform:translateY(-2px)}
+#hm .btn-lar{background:var(--laranja);color:var(--pet)}
+#hm .btn-lar:hover,#hm .btn-lar:focus{background:var(--laranja-2);color:var(--pet)}
+#hm .btn-pet{background:var(--pet);color:var(--creme)}
+#hm .btn-pet:hover,#hm .btn-pet:focus{background:var(--pet-2);color:var(--creme)}
+#hm .btn-linha{border-color:rgba(244,234,217,.65);color:var(--creme);background:transparent}
+#hm .btn-linha:hover,#hm .btn-linha:focus{background:var(--creme);color:var(--pet)}
+#hm .btn-linha-esc{border-color:var(--pet);color:var(--pet);background:transparent}
+#hm .btn-linha-esc:hover,#hm .btn-linha-esc:focus{background:var(--pet);color:var(--creme)}
+#hm .circ{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(244,234,217,.55);color:var(--creme);transition:background .3s,color .3s}
+#hm .circ:hover,#hm .circ:focus{background:var(--creme);color:var(--pet)}
+#hm .circ-esc{border-color:var(--pet);color:var(--pet)}
+#hm .circ-esc:hover,#hm .circ-esc:focus{background:var(--pet);color:var(--creme)}
+
+/* ---------- títulos ---------- */
+#hm .t-secao{font-size:clamp(28px,2.7vw,42px);font-weight:300}
+#hm .t-secao,#hm .slide-txt h1{text-wrap:balance}
+#hm .t-secao strong{font-weight:700}
+#hm .sub{font-size:17px;color:var(--suave);max-width:46ch}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+#hm .topo{position:fixed;left:0;right:0;top:var(--topo-wp);z-index:60;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px max(var(--margem),env(safe-area-inset-right)) 20px max(var(--margem),env(safe-area-inset-left));transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s}
+#hm .topo .marca img{height:34px;width:auto;transition:filter .4s}
+#hm .topo nav{display:flex;align-items:center;gap:32px}
+#hm .topo nav a:not(.btn){color:var(--creme);font-size:15px;font-weight:400;position:relative;padding:6px 0}
+#hm .topo nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--laranja);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+#hm .topo nav a:not(.btn):hover::after{transform:scaleX(1)}
+#hm .topo .btn{min-height:44px;padding:0 20px;font-size:14px}
+#hm .topo.rolado{background:var(--creme-2);padding-block:12px;box-shadow:0 1px 0 var(--linha)}
+#hm .topo.rolado .marca img{filter:none}
+#hm .topo.rolado nav a:not(.btn){color:var(--pet)}
+#hm .menu-btn{display:none;width:46px;height:46px;place-items:center;color:var(--creme)}
+#hm .topo.rolado .menu-btn{color:var(--pet)}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+#hm .hero{position:relative;height:100vh;height:100svh;min-height:600px;max-height:980px;background:var(--pet-2);color:var(--creme);overflow:hidden}
+#hm .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.1s var(--ease),visibility 0s 1.1s}
+#hm .slide.on{opacity:1;visibility:visible;transition:opacity 1.1s var(--ease)}
+#hm .slide > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+#hm .slide.on > img{animation:hm-zoom 9s var(--ease) forwards}
+@keyframes hm-zoom{to{transform:scale(1)}}
+#hm .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,49,58,.82) 0%,rgba(27,49,58,.5) 38%,rgba(27,49,58,0) 70%),linear-gradient(0deg,rgba(27,49,58,.75) 0%,rgba(27,49,58,0) 45%)}
+#hm .slide-txt{position:absolute;z-index:2;left:var(--margem);bottom:clamp(110px,15vh,150px);width:min(520px,calc(100% - 2*var(--margem)));display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+#hm .slide-txt > *{opacity:0;transform:translateY(22px)}
+#hm .slide.on .slide-txt > *{animation:hm-sobe .9s var(--ease) forwards}
+#hm .slide.on .slide-txt > *:nth-child(2){animation-delay:.1s}
+#hm .slide.on .slide-txt > *:nth-child(3){animation-delay:.2s}
+#hm .slide.on .slide-txt > *:nth-child(4){animation-delay:.3s}
+@keyframes hm-sobe{to{opacity:1;transform:none}}
+#hm .slide-txt .logo{width:clamp(190px,18vw,270px);height:auto}
+#hm .slide-txt .logo-txt{font-size:26px;font-weight:700;letter-spacing:.02em}
+#hm .slide-txt h1{font-size:clamp(30px,3.3vw,50px);font-weight:300;max-width:16ch}
+#hm .meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:15px}
+#hm .selo{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;background:var(--laranja);color:var(--pet);font-size:12px;font-weight:700;letter-spacing:.03em}
+#hm .selo-cl{background:var(--creme-2);color:var(--pet)}
+#hm .acoes{display:flex;flex-wrap:wrap;gap:12px}
+
+#hm .h-indice{position:absolute;z-index:3;right:var(--margem);bottom:clamp(110px,15vh,150px);width:220px;display:flex;flex-direction:column;gap:2px}
+#hm .h-indice button{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:10px 0;color:rgba(244,234,217,.55);font-size:16px;font-weight:400;text-align:left;transition:color .3s}
+#hm .h-indice button:hover,#hm .h-indice button[aria-current="true"]{color:var(--creme)}
+#hm .h-indice button[aria-current="true"]{font-weight:700}
+#hm .barra{display:block;width:100%;height:2px;background:rgba(244,234,217,.22);overflow:hidden}
+#hm .barra i{display:block;height:100%;background:var(--laranja);transform:scaleX(0);transform-origin:left}
+#hm .h-indice button[aria-current="true"] .barra i{animation:hm-prog var(--tempo,7s) linear forwards}
+#hm .hero.pausa .barra i{animation-play-state:paused !important}
+@keyframes hm-prog{to{transform:scaleX(1)}}
+#hm .h-base{position:absolute;z-index:3;left:var(--margem);right:var(--margem);bottom:34px;display:flex;align-items:center;justify-content:space-between}
+#hm .h-setas{display:flex;gap:10px}
+#hm .h-pontos{display:none;gap:2px}
+#hm .h-pontos button{position:relative;width:28px;height:28px;border-radius:999px;background:none}
+#hm .h-pontos button::before{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:rgba(244,234,217,.4);transform:translate(-50%,-50%);transition:width .3s,background .3s,border-radius .3s}
+#hm .h-pontos button[aria-current="true"]::before{width:26px;border-radius:6px;background:var(--laranja)}
+#hm .h-rolar{font-size:13px;color:#d6dfe2;display:flex;align-items:center;gap:10px}
+#hm .h-rolar span{width:1.5px;height:30px;background:rgba(244,234,217,.3);position:relative;overflow:hidden}
+#hm .h-rolar span::after{content:"";position:absolute;left:0;right:0;height:40%;background:var(--laranja);animation:hm-rola 2s ease-in-out infinite}
+@keyframes hm-rola{from{top:-40%}to{top:100%}}
+
+/* ---------- faixa de empreendimentos ---------- */
+#hm .faixa{background:var(--creme-2);border-bottom:1px solid var(--linha);overflow:hidden;height:96px;display:flex;align-items:center}
+#hm .faixa-trilho{display:flex;width:max-content;animation:hm-corre 60s linear infinite}
+#hm .faixa:hover .faixa-trilho,#hm .faixa:focus-within .faixa-trilho{animation-play-state:paused}
+#hm .faixa-grupo{display:flex;align-items:center}
+#hm .faixa-nome{display:flex;align-items:baseline;gap:12px;padding:0 48px;border-right:1px solid #d8c9ad;white-space:nowrap}
+#hm .faixa-nome strong{font-size:26px;font-weight:700;color:var(--pet);transition:color .3s}
+#hm .faixa-nome span{font-size:15px;font-weight:300;color:var(--suave)}
+#hm .faixa-nome:hover strong,#hm .faixa-nome:focus-visible strong{color:#c9803f}
+@keyframes hm-corre{to{transform:translateX(-50%)}}
+
+/* =========================================================
+   MANIFESTO (panorâmica interativa)
+   ========================================================= */
+#hm .manif{position:relative;overflow:hidden;padding:clamp(80px,9vw,120px) var(--margem);display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)}
+#hm .tracado{position:absolute;pointer-events:none;opacity:.1;height:auto;will-change:transform}
+#hm .manif .tracado{width:min(700px,60vw);right:-12%;top:-4%;opacity:.07}
+#hm .manif-topo{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;align-items:end;position:relative}
+#hm .manif-topo h2{grid-column:span 7;font-size:clamp(30px,3.2vw,46px)}
+#hm .manif-topo p{grid-column:9 / span 4;font-size:16px;color:var(--suave)}
+#hm .pano{position:relative;height:clamp(320px,36vw,520px);border-radius:24px;overflow:hidden;background:var(--pet-3)}
+#hm .pano img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .8s var(--ease),transform 1.4s var(--ease)}
+#hm .pano img.on{opacity:1;transform:none}
+#hm .pano::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,49,58,.65) 0%,rgba(27,49,58,0) 45%);pointer-events:none}
+#hm .pano-frase{position:absolute;z-index:2;left:clamp(20px,3vw,40px);right:20px;bottom:clamp(20px,2.6vw,36px);font-size:clamp(20px,1.9vw,26px);font-weight:300;color:var(--creme);transition:opacity .35s}
+#hm .pilares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 -36px;position:relative}
+#hm .pilar{display:flex;align-items:flex-start;gap:18px;padding:8px 36px;text-align:left;opacity:.6;transition:opacity .3s}
+#hm .pilar + .pilar{border-left:1px solid var(--linha)}
+#hm .pilar:hover,#hm .pilar.on{opacity:1}
+#hm .pilar .ico{flex-shrink:0;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:var(--laranja);box-shadow:inset 0 0 0 1px var(--linha);transition:background .35s,color .35s,transform .35s var(--ease),box-shadow .35s}
+#hm .pilar .ico svg{grid-area:1 / 1}
+#hm .pilar .ico .cheio{opacity:0}
+#hm .pilar.on .ico{background:var(--laranja);color:var(--pet);box-shadow:none;transform:scale(1.06)}
+#hm .pilar.on .ico .fino{opacity:0}
+#hm .pilar.on .ico .cheio{opacity:1}
+#hm .pilar strong{display:block;font-size:17px;font-weight:700;color:var(--pet)}
+#hm .pilar small{display:block;font-size:14px;line-height:1.6;color:var(--suave);margin-top:4px}
+#hm .pilar i{display:block;height:2px;width:0;margin-top:10px;background:var(--laranja);transition:width .4s var(--ease)}
+#hm .pilar.on i{width:64px}
+#hm .pilar-desc{display:none}
+#hm .faixa.pausa .faixa-trilho{animation-play-state:paused}
+
+/* =========================================================
+   VITRINE (lista editorial)
+   ========================================================= */
+#hm .vitrine{padding:0 var(--margem) clamp(80px,9vw,130px)}
+#hm .v-topo{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+#hm .lista{border-bottom:1px solid var(--linha)}
+#hm .linha{width:100%;display:flex;align-items:center;gap:clamp(20px,2.4vw,36px);padding:18px 0;border-top:1px solid var(--linha);border-radius:0;text-align:left;transition:background .4s var(--ease),padding .45s var(--ease),border-radius .4s}
+#hm .linha:hover,#hm .linha:focus-visible{background:var(--creme-2);padding-left:20px;padding-right:20px;border-radius:16px}
+#hm .linha .thumb{width:160px;height:96px;flex-shrink:0;border-radius:12px;overflow:hidden;background:#e6d9c2;transition:width .45s var(--ease),height .45s var(--ease)}
+#hm .linha:hover .thumb,#hm .linha:focus-visible .thumb{width:220px;height:124px}
+#hm .linha .thumb img{width:100%;height:100%;object-fit:cover}
+#hm .linha .marca-l{width:clamp(150px,16vw,240px);flex-shrink:0;display:flex;align-items:center}
+#hm .linha .marca-l img{width:120px;height:auto}
+#hm .linha .marca-l .logo-txt{font-size:20px;font-weight:700;line-height:1.2}
+#hm .linha .info-l{display:flex;align-items:center;gap:clamp(16px,2vw,32px)}
+#hm .linha .cid{width:190px;flex-shrink:0;font-size:15px;color:var(--suave)}
+#hm .linha .selo-l{flex-shrink:0;padding:4px 12px;border-radius:999px;border:1px solid #bfae90;color:var(--suave);font-size:12px;font-weight:700;white-space:nowrap}
+#hm .linha .selo-l.lanc{background:var(--laranja);border-color:var(--laranja);color:var(--pet)}
+#hm .linha .ver{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;white-space:nowrap}
+#hm .linha .seta{width:38px;height:38px;border-radius:50%;background:var(--pet);color:var(--creme);display:grid;place-items:center;transition:background .3s,color .3s,transform .4s var(--ease)}
+#hm .linha:hover .seta,#hm .linha:focus-visible .seta{background:var(--laranja);color:var(--pet);transform:rotate(-45deg)}
+#hm .proximo{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+#hm .proximo p{font-size:16px;color:var(--suave)}
+#hm .dados{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;width:100%;padding-top:18px;border-top:1px solid var(--pet-3)}
+#hm .dados dt{font-size:12px;color:var(--azul);letter-spacing:.04em}
+#hm .dados dd{font-size:16px;font-weight:700}
+
+/* =========================================================
+   LAZER (visualizador com abas)
+   ========================================================= */
+#hm .lazer{background:var(--pet);color:var(--creme);padding:clamp(80px,9vw,130px) var(--margem);position:relative;overflow:hidden}
+#hm .lazer .tracado{width:1000px;left:-18%;top:-25%;opacity:.06}
+#hm .lazer .sub{color:#d6dfe2}
+#hm .lz{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px);align-items:center;position:relative}
+#hm .lz-lista{grid-column:1 / span 4;display:flex;flex-direction:column;gap:28px}
+#hm .lz-abas{display:flex;flex-direction:column;border-top:1px solid var(--pet-3)}
+#hm .lz-abas button{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--pet-3);font-size:17px;font-weight:300;color:rgba(244,234,217,.62);text-align:left;transition:color .3s,padding .35s var(--ease)}
+#hm .lz-abas button:hover{color:var(--creme);padding-left:8px}
+#hm .lz-abas button[aria-selected="true"]{color:var(--creme);font-weight:700;padding-left:8px}
+#hm .lz-abas button svg{opacity:0;transition:opacity .3s,transform .35s var(--ease);color:var(--laranja);transform:translateX(-6px)}
+#hm .lz-abas button[aria-selected="true"] svg{opacity:1;transform:none}
+#hm .lz-palco{grid-column:5 / span 8;position:relative}
+#hm .lz-imgs{position:relative;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:var(--pet-3)}
+#hm .lz-imgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .8s var(--ease),transform 1.4s var(--ease)}
+#hm .lz-imgs img.on{opacity:1;transform:none}
+#hm .lz-leg{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}
+#hm .lz-leg p{font-size:15px;color:#d6dfe2}
+#hm .lz-leg strong{color:var(--creme);font-weight:700}
+#hm .lz-nota{font-size:13px;color:var(--azul)}
+
+/* =========================================================
+   LOCALIZAÇÃO
+   ========================================================= */
+#hm .local{padding:clamp(80px,9vw,130px) var(--margem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px);align-items:center}
+#hm .local-mapa{grid-column:1 / span 7;border-radius:24px;overflow:hidden;background:var(--creme-2);border:1px solid var(--linha)}
+#hm .local-mapa img{width:100%;height:auto}
+#hm .local-txt{grid-column:9 / span 4;display:flex;flex-direction:column;gap:20px}
+#hm .cidades{margin-top:8px}
+#hm .cidades button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--linha);text-align:left;transition:padding .35s var(--ease)}
+#hm .cidades li:last-child button{border-bottom:1px solid var(--linha)}
+#hm .cidades button:hover{padding-left:10px}
+#hm .cidades strong{display:block;font-size:17px;font-weight:700}
+#hm .cidades span{font-size:14px;color:var(--suave)}
+#hm .cidades svg{flex-shrink:0;color:var(--pet);transition:transform .35s var(--ease)}
+#hm .cidades button:hover svg{transform:translateX(4px)}
+
+/* ---------- Nova Harmonia ---------- */
+#hm .nh{margin:0 var(--margem);border-radius:28px;background:var(--azul);padding:clamp(36px,5vw,72px);position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+#hm .nh .tracado{width:640px;right:-6%;top:-40%;opacity:.16;filter:brightness(0)}
+#hm .nh > div{display:flex;flex-direction:column;gap:12px;position:relative;max-width:560px}
+#hm .nh p{color:#1d3540;font-size:16px}
+#hm .nh .btn{position:relative}
+
+/* =========================================================
+   CONTATO
+   ========================================================= */
+#hm .contato{padding:clamp(80px,9vw,130px) var(--margem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px);align-items:start}
+#hm .c-txt{grid-column:1 / span 5;display:flex;flex-direction:column;gap:18px}
+#hm .c-txt .direto{display:flex;flex-direction:column;gap:4px;font-size:15px;margin-top:6px}
+#hm .form{grid-column:7 / span 6;background:var(--creme-2);border:1px solid var(--linha);border-radius:24px;padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#hm .campo{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
+#hm .campo.todo{grid-column:1 / -1}
+#hm .campo input,#hm .campo select{width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid #c9b99c;background:#fff;font-family:inherit;font-size:16px;font-weight:400;color:var(--pet);box-shadow:none;margin:0;transition:border-color .3s,box-shadow .3s}
+#hm .campo input:focus,#hm .campo select:focus{outline:none;border-color:var(--pet);box-shadow:0 0 0 3px rgba(132,180,200,.45)}
+#hm .aceite{grid-column:1 / -1;display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--suave);line-height:1.5;font-weight:400}
+#hm .aceite input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--pet);flex-shrink:0}
+#hm .form .btn{grid-column:1 / -1;min-height:54px;font-size:16px}
+#hm .retorno{grid-column:1 / -1;font-size:14px;min-height:1.5em}
+
+/* ---------- rodapé ---------- */
+#hm .rodape{background:var(--pet-2);color:#cdd8dc;padding:clamp(60px,7vw,96px) var(--margem) 36px;position:relative;overflow:hidden}
+#hm .rodape .tracado{width:1100px;left:48%;bottom:-45%;opacity:.05;filter:brightness(0) invert(1)}
+#hm .r-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;position:relative}
+#hm .r-marca img{width:150px;height:auto}
+#hm .r-marca p{margin-top:18px;font-size:17px;font-weight:300;color:var(--laranja)}
+#hm .rodape h3{font-size:14px;font-weight:700;color:var(--creme);margin-bottom:12px;letter-spacing:.02em}
+#hm .rodape ul{display:flex;flex-direction:column;gap:8px;font-size:15px}
+#hm .rodape a:hover,#hm .rodape button:hover{color:var(--creme)}
+#hm .r-legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--pet-3);font-size:12px;line-height:1.6;color:#9fb3bb;display:flex;flex-direction:column;gap:8px;position:relative}
+
+
+/* =========================================================
+   MODAL (ficha do empreendimento)
+   ========================================================= */
+#hm dialog.ficha{padding:0;border:0;border-radius:24px;width:min(960px,calc(100vw - 32px));max-height:calc(100vh - 32px);max-height:calc(100svh - 32px);background:var(--creme-2);color:var(--pet);overflow:auto;box-shadow:0 40px 80px -30px rgba(0,0,0,.5)}
+#hm dialog.ficha::backdrop{background:rgba(27,49,58,.72);backdrop-filter:blur(3px)}
+#hm dialog.ficha[open]{animation:hm-abre .45s var(--ease)}
+@keyframes hm-abre{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+#hm .f-grade{display:grid;grid-template-columns:1.15fr 1fr}
+#hm .f-foto{position:relative;min-height:420px}
+#hm .f-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hm .f-info{padding:36px 34px 32px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+#hm .f-info .logo{width:190px;height:auto}
+#hm .f-info .logo-txt{font-size:24px;font-weight:700}
+#hm .f-info .dados{border-top-color:var(--linha)}
+#hm .f-info .dados dt{color:var(--suave)}
+#hm .f-info > p{font-size:15px;color:var(--suave)}
+#hm .f-info .acoes{margin-top:auto;padding-top:6px}
+#hm .fechar{position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;background:var(--creme-2);color:var(--pet);display:grid;place-items:center;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+#hm .fechar:hover,#hm .fechar:focus{background:var(--pet);color:var(--creme)}
+
+/* ---------- revelar ---------- */
+#hm .rv{opacity:.001;transform:translateY(34px);transition:opacity .9s var(--ease),transform 1.1s var(--ease)}
+#hm .rv.ok{opacity:1;transform:none}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width:1100px){
+  #hm .h-indice{display:none}
+  #hm .h-pontos{display:flex;margin-right:auto;margin-left:20px}
+  #hm .h-rolar{display:none}
+  #hm .manif-topo{display:block}
+  #hm .manif-topo h2,#hm .manif-topo p{grid-column:1 / -1}
+  #hm .manif-topo p{margin-top:18px}
+  #hm .lz-lista,#hm .lz-palco{grid-column:1 / -1}
+  #hm .lz-lista{margin-bottom:28px}
+  #hm .lz-abas{flex-direction:row;overflow-x:auto;gap:8px;border:0;scrollbar-width:none;padding-bottom:4px}
+  #hm .lz-abas::-webkit-scrollbar{display:none}
+  #hm .lz-abas button{flex-shrink:0;border:1px solid var(--pet-3);border-radius:999px;padding:10px 16px;font-size:14px}
+  #hm .lz-abas button:hover,#hm .lz-abas button[aria-selected="true"]{padding-left:16px}
+  #hm .lz-abas button[aria-selected="true"]{background:var(--creme);color:var(--pet);border-color:var(--creme)}
+  #hm .lz-abas button svg{display:none}
+  #hm .local-mapa,#hm .local-txt{grid-column:1 / -1}
+  #hm .local-txt{margin-top:40px}
+  #hm .c-txt,#hm .form{grid-column:1 / -1}
+  #hm .c-txt{margin-bottom:32px}
+  #hm .r-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  #hm .topo nav{position:fixed;inset:0;background:var(--pet);flex-direction:column;justify-content:center;gap:26px;transform:translateY(-100%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+  #hm .topo nav a:not(.btn){color:var(--creme) !important;font-size:26px;font-weight:300}
+  #hm .topo.aberto nav{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s 0s}
+  #hm .menu-btn{display:grid;position:relative;z-index:2}
+  #hm .topo.aberto .menu-btn{color:var(--creme)}
+  #hm .form{grid-template-columns:minmax(0,1fr)}
+  #hm .campo input,#hm .campo select{min-width:0}
+  #hm .manif{gap:28px}
+  #hm .pano{height:clamp(240px,62vw,320px)}
+  #hm .pilares{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:-8px 0 0}
+  #hm .pilar{flex-direction:column;align-items:center;gap:8px;padding:12px 4px;text-align:center;border-radius:14px;opacity:.7}
+  #hm .pilar + .pilar{border-left:0}
+  #hm .pilar.on{background:var(--creme-2);opacity:1}
+  #hm .pilar .ico{width:48px;height:48px}
+  #hm .pilar strong{font-size:13px;line-height:1.3}
+  #hm .pilar small,#hm .pilar i{display:none}
+  #hm .pilar-desc{display:block;min-height:3.2em;margin-top:-12px;text-align:center;font-size:15px;color:var(--suave)}
+  #hm .faixa{height:76px}
+  #hm .faixa-nome{padding:0 28px}
+  #hm .faixa-nome strong{font-size:20px}
+  #hm .faixa-nome span{font-size:13px}
+  #hm .linha{display:grid;grid-template-columns:88px minmax(0,1fr) auto;grid-template-areas:"t m v" "t i v";gap:6px 16px;padding:16px 0}
+  #hm .linha:hover,#hm .linha:focus-visible{padding-left:12px;padding-right:12px}
+  #hm .linha .thumb,#hm .linha:hover .thumb,#hm .linha:focus-visible .thumb{grid-area:t;width:88px;height:66px}
+  #hm .linha .marca-l{grid-area:m;width:auto}
+  #hm .linha .marca-l img{width:92px}
+  #hm .linha .info-l{grid-area:i;flex-wrap:wrap;gap:6px 10px}
+  #hm .linha .cid{width:auto;font-size:13px}
+  #hm .linha .ver{grid-area:v;margin:0}
+  #hm .linha .ver .txt{display:none}
+  #hm .f-grade{grid-template-columns:1fr}
+  #hm .f-foto{min-height:0;aspect-ratio:16/10}
+  #hm .slide::after{background:linear-gradient(0deg,rgba(27,49,58,.9) 0%,rgba(27,49,58,.5) 55%,rgba(27,49,58,.2) 100%)}
+}
+@media (max-width:560px){
+  #hm .r-grade{grid-template-columns:1fr}
+  #hm .slide-txt .acoes .btn{flex:1 1 100%}
+}
+@media (max-width:400px){
+  #hm .btn{white-space:normal;text-align:center;padding:10px 22px}
+}
+
+/* ---------- ajustes de proporção / responsivo (fix) ---------- */
+@media (min-width:821px) and (max-width:920px){
+  #hm .linha{gap:16px}
+  #hm .linha .thumb,#hm .linha:hover .thumb,#hm .linha:focus-visible .thumb{width:120px;height:76px}
+  #hm .linha .marca-l{width:130px}
+  #hm .linha .marca-l img{width:100px}
+  #hm .linha .cid{width:150px;font-size:14px}
+}
+@media (max-width:820px){
+  #hm .hero{min-height:560px}
+  #hm .slide-txt{gap:14px;bottom:clamp(92px,14vh,120px)}
+  #hm .slide-txt h1{font-size:clamp(24px,6.4vw,30px)}
+  #hm .slide-txt .logo{width:clamp(150px,44vw,210px)}
+  #hm .meta{font-size:14px;gap:8px}
+  #hm .acoes .btn{min-height:46px;padding:0 20px;font-size:14px}
+  #hm .h-base{bottom:24px}
+  #hm .circ{width:42px;height:42px}
+}
+@media (max-width:560px){
+  #hm .hero{min-height:540px}
+  #hm .slide-txt{gap:12px;bottom:clamp(84px,13vh,110px)}
+  #hm .slide-txt .logo{width:150px}
+  #hm .selo{font-size:11px;min-height:26px}
+  #hm .h-base{bottom:18px}
+  #hm .faixa-nome span{display:none}
+  #hm .faixa-nome strong{font-size:18px}
+  #hm .v-topo{margin-bottom:24px}
+}
+@media (max-width:400px){
+  #hm .faixa-nome{padding:0 20px}
+  #hm .faixa-nome strong{font-size:16px}
+}
+@media (max-height:560px){
+  #hm .hero{min-height:440px}
+  #hm .slide-txt{bottom:80px;gap:10px}
+  #hm .slide-txt .logo{display:none}
+  #hm .slide-txt h1{font-size:clamp(20px,4vw,26px);max-width:22ch}
+  #hm .slide-txt .meta{display:none}
+  #hm .acoes .btn{min-height:42px;padding:0 16px;font-size:13px}
+}
+
+/* ---------- fix v6: sobreposições mobile + popup ---------- */
+@media (hover:none){
+  #hm .linha:hover,#hm .linha:focus-visible{background:none;padding-left:0;padding-right:0;border-radius:0}
+  #hm .linha:hover .thumb,#hm .linha:focus-visible .thumb{width:88px;height:66px}
+  #hm .linha:hover .seta,#hm .linha:focus-visible .seta{background:var(--pet);color:var(--creme);transform:none}
+  #hm .btn:hover,#hm .circ:hover{transform:none}
+  #hm .cidades button:hover{padding-left:0}
+  #hm .lz-abas button:hover{padding-left:0}
+}
+#hm .h-base{left:max(var(--margem),env(safe-area-inset-left));right:max(var(--margem),env(safe-area-inset-right))}
+#hm .slide-txt{left:max(var(--margem),env(safe-area-inset-left));width:min(520px,calc(100% - var(--margem) - max(var(--margem),env(safe-area-inset-left)) - 20px))}
+#hm dialog.ficha{overscroll-behavior:contain}
+#hm .fechar{background:rgba(251,246,236,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+@media (max-width:820px){
+  #hm .h-base{bottom:calc(18px + env(safe-area-inset-bottom))}
+  #hm .acoes .btn:active{transform:scale(.97)}
+  #hm dialog.ficha{position:fixed;inset:auto 0 0 0;margin:0;width:100%;max-width:none;max-height:92svh;border-radius:22px 22px 0 0;padding-top:12px;animation:hm-sobe-m .4s var(--ease)}
+  @keyframes hm-sobe-m{from{transform:translateY(100%)}to{transform:none}}
+  #hm dialog.ficha::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:44px;height:5px;border-radius:99px;background:rgba(35,61,72,.25);z-index:5}
+  #hm .f-grade{grid-template-columns:1fr}
+  #hm .f-foto{min-height:0;aspect-ratio:16/9}
+  #hm .f-info{padding:24px 20px 20px;gap:14px}
+  #hm .f-info > p{font-size:14px}
+  #hm .f-info .dados dd{font-size:14px}
+  #hm .f-info .acoes{position:sticky;bottom:-20px;width:100%;margin-top:8px;padding:16px 0 8px;background:linear-gradient(180deg,rgba(251,246,236,0),var(--creme-2) 35%)}
+  #hm .f-info .acoes .btn{flex:1;min-height:48px;padding:0 12px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  #hm *,#hm *::before,#hm *::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  #hm .rv{opacity:1;transform:none}
+}
+</style>
+
+<div id="hm">
+
+<!-- ================= HEADER ================= -->
+<header class="topo" id="hm-topo">
+  <a class="marca" href="#hm-inicio" aria-label="Condomínio Harmoni, voltar ao início">
+    <img decoding="async" class="branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/harmoni-logo-editavel.svg" alt="Harmoni">
+  </a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="hm-menu" aria-label="Abrir menu">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+  </button>
+  <nav id="hm-menu" aria-label="Principal">
+    <a href="#hm-empreendimentos">Empreendimentos</a>
+    <a href="#hm-lazer">Lazer</a>
+    <a href="#hm-local">Onde estamos</a>
+    <a class="btn btn-lar" href="#hm-contato">Falar com consultor</a>
+  </nav>
+</header>
+
+<!-- ================= HERO (slider) ================= -->
+<section class="hero" id="hm-inicio" aria-roledescription="carrossel" aria-label="Empreendimentos em destaque">
+  <div class="slide on" aria-label="1 de 5">
+    <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PORTICO_View01.webp" alt="">
+    <div class="slide-txt">
+      <img decoding="async" class="logo branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-JARDINS-01.svg" alt="Harmoni Jardins">
+      <h1>Natureza integrada ao seu dia a dia.</h1>
+      <div class="meta"><span class="selo">Lançamento em breve</span><span>Cachoeirinha, RS</span></div>
+      <div class="acoes"><button class="btn btn-lar" type="button" data-abre="jardins">Conhecer o Jardins</button><a class="btn btn-linha" href="#hm-contato" data-interesse="Harmoni Jardins">Quero ser avisado</a></div>
+    </div>
+  </div>
+  <div class="slide" aria-label="2 de 5">
+    <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PISCINA-INFANTIL_View07.webp" alt="">
+    <div class="slide-txt">
+      <img decoding="async" class="logo branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-ARBORE-01.svg" alt="Harmoni Árbore">
+      <h1>Sombra, verde e tempo para a família.</h1>
+      <div class="meta"><span class="selo">[STATUS]</span><span>Cachoeirinha, RS</span></div>
+      <div class="acoes"><button class="btn btn-lar" type="button" data-abre="arbore">Conhecer o Árbore</button><a class="btn btn-linha" href="#hm-contato" data-interesse="Harmoni Árbore">Falar com consultor</a></div>
+    </div>
+  </div>
+  <div class="slide" aria-label="3 de 5">
+    <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-SALAO-DE-FESTAS-EXTERNA_View05.webp" alt="">
+    <div class="slide-txt">
+      <img decoding="async" class="logo branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-VALE-01.svg" alt="Harmoni Vale">
+      <h1>Espaço para viver com calma.</h1>
+      <div class="meta"><span class="selo">[STATUS]</span><span>Gravataí, RS</span></div>
+      <div class="acoes"><button class="btn btn-lar" type="button" data-abre="vale">Conhecer o Vale</button><a class="btn btn-linha" href="#hm-contato" data-interesse="Harmoni Vale">Falar com consultor</a></div>
+    </div>
+  </div>
+  <div class="slide" aria-label="4 de 5">
+    <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View14.webp" alt="">
+    <div class="slide-txt">
+      <img decoding="async" class="logo branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-ESSENZA-01.svg" alt="Harmoni Essenza">
+      <h1>O essencial, feito com cuidado.</h1>
+      <div class="meta"><span class="selo">[STATUS]</span><span class="ph">[CIDADE, UF]</span></div>
+      <div class="acoes"><button class="btn btn-lar" type="button" data-abre="essenza">Conhecer o Essenza</button><a class="btn btn-linha" href="#hm-contato" data-interesse="Harmoni Essenza">Falar com consultor</a></div>
+    </div>
+  </div>
+  <div class="slide" aria-label="5 de 5">
+    <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View13.webp" alt="">
+    <div class="slide-txt">
+      <span class="logo-txt">Harmoni Hortênsias</span><!-- trocar pelo SVG quando existir -->
+      <h1>Casa com jardim, vizinhança tranquila.</h1>
+      <div class="meta"><span class="selo">[STATUS]</span><span class="ph">[CIDADE, UF]</span></div>
+      <div class="acoes"><button class="btn btn-lar" type="button" data-abre="hortensias">Conhecer o Hortênsias</button><a class="btn btn-linha" href="#hm-contato" data-interesse="Harmoni Hortênsias">Falar com consultor</a></div>
+    </div>
+  </div>
+
+  <div class="h-indice" aria-label="Escolher empreendimento">
+    <button type="button" aria-current="true">Jardins<span class="barra"><i></i></span></button>
+    <button type="button">Árbore<span class="barra"><i></i></span></button>
+    <button type="button">Vale<span class="barra"><i></i></span></button>
+    <button type="button">Essenza<span class="barra"><i></i></span></button>
+    <button type="button">Hortênsias<span class="barra"><i></i></span></button>
+  </div>
+  <div class="h-base">
+    <div class="h-setas">
+      <button class="circ" type="button" data-dir="-1" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="circ" type="button" data-dir="1" aria-label="Próximo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="h-pontos" aria-hidden="true"><button type="button" tabindex="-1" aria-current="true"></button><button type="button" tabindex="-1"></button><button type="button" tabindex="-1"></button><button type="button" tabindex="-1"></button><button type="button" tabindex="-1"></button></div>
+    <a class="h-rolar" href="#hm-manifesto">Role para conhecer <span></span></a>
+  </div>
+</section>
+
+<!-- ================= FAIXA (empreendimentos) ================= -->
+<!-- Grupo duplicado para o loop contínuo. Pausa no hover. Cada nome abre a ficha. -->
+<div class="faixa" aria-label="Empreendimentos Harmoni">
+  <div class="faixa-trilho">
+    <div class="faixa-grupo"><button class="faixa-nome" type="button" data-abre="jardins"><strong>Harmoni Jardins</strong><span>Cachoeirinha, RS</span></button><button class="faixa-nome" type="button" data-abre="arbore"><strong>Harmoni Árbore</strong><span>Cachoeirinha, RS</span></button><button class="faixa-nome" type="button" data-abre="vale"><strong>Harmoni Vale</strong><span>Gravataí, RS</span></button><button class="faixa-nome" type="button" data-abre="essenza"><strong>Harmoni Essenza</strong><span>[CIDADE]</span></button><button class="faixa-nome" type="button" data-abre="hortensias"><strong>Harmoni Hortênsias</strong><span>[CIDADE]</span></button></div>
+    <div class="faixa-grupo" aria-hidden="true"><button class="faixa-nome" type="button" data-abre="jardins" tabindex="-1"><strong>Harmoni Jardins</strong><span>Cachoeirinha, RS</span></button><button class="faixa-nome" type="button" data-abre="arbore" tabindex="-1"><strong>Harmoni Árbore</strong><span>Cachoeirinha, RS</span></button><button class="faixa-nome" type="button" data-abre="vale" tabindex="-1"><strong>Harmoni Vale</strong><span>Gravataí, RS</span></button><button class="faixa-nome" type="button" data-abre="essenza" tabindex="-1"><strong>Harmoni Essenza</strong><span>[CIDADE]</span></button><button class="faixa-nome" type="button" data-abre="hortensias" tabindex="-1"><strong>Harmoni Hortênsias</strong><span>[CIDADE]</span></button></div>
+  </div>
+</div>
+
+<!-- ================= MANIFESTO (panorâmica interativa) ================= -->
+<!-- Hover/foco/toque em cada pilar troca a foto e a frase. Ícones: Phosphor (light/fill). -->
+<section class="manif" id="hm-manifesto">
+  <img decoding="async" class="tracado" data-px="0.1" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/tracadosolido-1.svg" alt="">
+  <div class="manif-topo rv">
+    <h2 class="t-secao">Uma linha de condomínios <strong>pensada para morar bem.</strong></h2>
+    <p>Cada Harmoni nasce com a mesma assinatura: um refúgio para quem valoriza bem-estar, conforto e natureza integrada a espaços planejados. Muda a cidade, fica o cuidado.</p>
+  </div>
+  <div class="pano rv">
+      <img decoding="async" class="on" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View14.webp" alt="Espaço gourmet" loading="lazy">
+      <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PISCINA-INFANTIL_View07.webp" alt="Piscina e jardim" loading="lazy">
+      <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PORTICO_View01.webp" alt="Pórtico de entrada" loading="lazy">
+    <p class="pano-frase" id="hm-pano-frase" aria-live="polite">Casa cheia, do jeito que vocês gostam.</p>
+  </div>
+  <div class="pilares">
+    <button class="pilar on" type="button" data-pilar="0" data-frase="Casa cheia, do jeito que vocês gostam." aria-pressed="true">
+      <span class="ico" aria-hidden="true"><svg class="fino" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M214,90.48V72a38,38,0,0,0-38-38H80A38,38,0,0,0,42,72V90.48a38,38,0,0,0,0,75.05V200a14,14,0,0,0,14,14H200a14,14,0,0,0,14-14V165.53a38,38,0,0,0,0-75ZM80,46h96a26,26,0,0,1,26,26V90.48A38.05,38.05,0,0,0,170,128v2H86v-2A38.05,38.05,0,0,0,54,90.48V72A26,26,0,0,1,80,46ZM208.35,154H208a6,6,0,0,0-6,6v40a2,2,0,0,1-2,2H56a2,2,0,0,1-2-2V160h0a6,6,0,0,0-6-6h-.35A26,26,0,1,1,74,128v40a6,6,0,0,0,12,0V142h84v26a6,6,0,0,0,12,0V128a26,26,0,1,1,26.35,26Z"/></svg><svg class="cheio" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M240,132a28,28,0,0,1-24,27.71V200a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V159.71A28,28,0,1,1,72,132v36a8,8,0,0,0,16,0V144h80v24a8,8,0,0,0,16,0V132a28,28,0,0,1,56,0ZM44,88a44.06,44.06,0,0,1,43.81,40h80.38A44.06,44.06,0,0,1,212,88a4,4,0,0,0,4-4V72a40,40,0,0,0-40-40H80A40,40,0,0,0,40,72V84A4,4,0,0,0,44,88Z"/></svg></span>
+      <span><strong>Aconchego</strong><small>Casa, família e tranquilidade no centro do projeto.</small><i></i></span>
+    </button>
+    <button class="pilar" type="button" data-pilar="1" data-frase="O verde começa na porta de casa." aria-pressed="false">
+      <span class="ico" aria-hidden="true"><svg class="fino" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M245.63,48A6,6,0,0,0,240,42.37c-51-3-91.88,12.42-109.35,41.26-11.63,19.21-11.38,42.68.53,65a69.42,69.42,0,0,0-15.48,30.59L95.9,159.41c8.15-16.1,8.1-32.95-.32-46.85C82.77,91.41,53,80.07,15.9,82.27a6,6,0,0,0-5.63,5.64C8.09,125,19.41,154.77,40.56,167.58A43.75,43.75,0,0,0,63.44,174a53.17,53.17,0,0,0,24-6L114,194.48V224a6,6,0,0,0,12,0V194.51A57.55,57.55,0,0,1,139.76,157c11.21,5.93,22.72,8.91,33.82,8.91a58.9,58.9,0,0,0,30.79-8.57C233.21,139.89,248.63,99,245.63,48ZM46.78,157.31C30.47,147.44,21.39,124,22,94c30-.65,53.41,8.44,63.28,24.75,5.68,9.37,6.16,20.38,1.54,31.59L60.24,123.75a6,6,0,0,0-8.49,8.49l26.62,26.61C67.16,163.47,56.15,163,46.78,157.31Zm151.38-10.22c-14.74,8.92-32.14,9.18-49.67.9l55.76-55.75a6,6,0,0,0-8.49-8.49L140,139.51c-8.28-17.53-8-34.93.9-49.66,14.52-24,49.06-37.18,93-35.75C235.33,98,222.14,132.56,198.16,147.09Z"/></svg><svg class="cheio" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M205.41,159.07a60.9,60.9,0,0,1-31.83,8.86,71.71,71.71,0,0,1-27.36-5.66A55.55,55.55,0,0,0,136,194.51V224a8,8,0,0,1-8.53,8,8.18,8.18,0,0,1-7.47-8.25V211.31L81.38,172.69A52.5,52.5,0,0,1,63.44,176a45.82,45.82,0,0,1-23.92-6.67C17.73,156.09,6,125.62,8.27,87.79a8,8,0,0,1,7.52-7.52c37.83-2.23,68.3,9.46,81.5,31.25A46,46,0,0,1,103.74,140a4,4,0,0,1-6.89,2.43l-19.2-20.1a8,8,0,0,0-11.31,11.31l53.88,55.25c.06-.78.13-1.56.21-2.33a68.56,68.56,0,0,1,18.64-39.46l50.59-53.46a8,8,0,0,0-11.31-11.32l-49,51.82a4,4,0,0,1-6.78-1.74c-4.74-17.48-2.65-34.88,6.4-49.82,17.86-29.48,59.42-45.26,111.18-42.22a8,8,0,0,1,7.52,7.52C250.67,99.65,234.89,141.21,205.41,159.07Z"/></svg></span>
+      <span><strong>Natureza integrada</strong><small>Espaços planejados que convivem com o verde.</small><i></i></span>
+    </button>
+    <button class="pilar" type="button" data-pilar="2" data-frase="Muda a cidade, fica o cuidado." aria-pressed="false">
+      <span class="ico" aria-hidden="true"><svg class="fino" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M224.42,104.2c-3.9-4.07-7.93-8.27-9.55-12.18-1.5-3.63-1.58-9-1.67-14.68-.14-9.38-.3-20-7.42-27.12S188,42.94,178.66,42.8c-5.68-.09-11-.17-14.68-1.67-3.91-1.62-8.11-5.65-12.18-9.55C145.16,25.22,137.64,18,128,18s-17.16,7.22-23.8,13.58c-4.07,3.9-8.27,7.93-12.18,9.55-3.63,1.5-9,1.58-14.68,1.67-9.38.14-20,.3-27.12,7.42S42.94,68,42.8,77.34c-.09,5.68-.17,11-1.67,14.68-1.62,3.91-5.65,8.11-9.55,12.18C25.22,110.84,18,118.36,18,128s7.22,17.16,13.58,23.8c3.9,4.07,7.93,8.27,9.55,12.18,1.5,3.63,1.58,9,1.67,14.68.14,9.38.3,20,7.42,27.12S68,213.06,77.34,213.2c5.68.09,11,.17,14.68,1.67,3.91,1.62,8.11,5.65,12.18,9.55C110.84,230.78,118.36,238,128,238s17.16-7.22,23.8-13.58c4.07-3.9,8.27-7.93,12.18-9.55,3.63-1.5,9-1.58,14.68-1.67,9.38-.14,20-.3,27.12-7.42s7.28-17.74,7.42-27.12c.09-5.68.17-11,1.67-14.68,1.62-3.91,5.65-8.11,9.55-12.18C230.78,145.16,238,137.64,238,128S230.78,110.84,224.42,104.2Zm-8.66,39.3c-4.67,4.86-9.5,9.9-12,15.9-2.38,5.74-2.48,12.52-2.58,19.08-.11,7.44-.23,15.14-3.9,18.82s-11.38,3.79-18.82,3.9c-6.56.1-13.34.2-19.08,2.58-6,2.48-11,7.31-15.91,12-5.25,5-10.68,10.24-15.49,10.24s-10.24-5.21-15.5-10.24c-4.86-4.67-9.9-9.5-15.9-12-5.74-2.38-12.52-2.48-19.08-2.58-7.44-.11-15.14-.23-18.82-3.9s-3.79-11.38-3.9-18.82c-.1-6.56-.2-13.34-2.58-19.08-2.48-6-7.31-11-12-15.91C35.21,138.24,30,132.81,30,128s5.21-10.24,10.24-15.5c4.67-4.86,9.5-9.9,12-15.9,2.38-5.74,2.48-12.52,2.58-19.08.11-7.44.23-15.14,3.9-18.82s11.38-3.79,18.82-3.9c6.56-.1,13.34-.2,19.08-2.58,6-2.48,11-7.31,15.91-12C117.76,35.21,123.19,30,128,30s10.24,5.21,15.5,10.24c4.86,4.67,9.9,9.5,15.9,12,5.74,2.38,12.52,2.48,19.08,2.58,7.44.11,15.14.23,18.82,3.9s3.79,11.38,3.9,18.82c.1,6.56.2,13.34,2.58,19.08,2.48,6,7.31,11,12,15.91,5,5.25,10.24,10.68,10.24,15.49S220.79,138.24,215.76,143.5ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg><svg class="cheio" width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+      <span><strong>Assinatura Nova Harmonia</strong><small>O mesmo padrão de qualidade em toda a linha.</small><i></i></span>
+    </button>
+  </div>
+  <p class="pilar-desc" id="hm-pilar-desc" aria-live="polite">Casa, família e tranquilidade no centro do projeto.</p>
+</section>
+
+<!-- ================= VITRINE (lista) ================= -->
+<!-- Cada linha abre a ficha (modal). Dados do modal ficam no objeto HARMONIS no script. -->
+<section class="vitrine" id="hm-empreendimentos">
+  <div class="v-topo rv">
+    <h2 class="t-secao">Escolha o seu <strong>Harmoni</strong></h2>
+    <p class="sub">Clique em um empreendimento para ver a ficha completa.</p>
+  </div>
+  <ul class="lista rv">
+    <li><button class="linha" type="button" data-abre="jardins">
+      <span class="thumb"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PORTICO_View01.webp" alt="" loading="lazy"></span>
+      <span class="marca-l"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-JARDINS-03.svg" alt="Harmoni Jardins"></span>
+      <span class="info-l"><span class="cid">Cachoeirinha, RS</span><span class="selo-l lanc">Lançamento em breve</span></span>
+      <span class="ver"><span class="txt">Ver ficha</span><span class="seta" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button></li>
+    <li><button class="linha" type="button" data-abre="arbore">
+      <span class="thumb"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PISCINA-INFANTIL_View07.webp" alt="" loading="lazy"></span>
+      <span class="marca-l"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-ARBORE-03.svg" alt="Harmoni Árbore"></span>
+      <span class="info-l"><span class="cid">Cachoeirinha, RS</span><span class="selo-l">[STATUS]</span></span>
+      <span class="ver"><span class="txt">Ver ficha</span><span class="seta" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button></li>
+    <li><button class="linha" type="button" data-abre="vale">
+      <span class="thumb"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-SALAO-DE-FESTAS-EXTERNA_View05.webp" alt="" loading="lazy"></span>
+      <span class="marca-l"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-VALE-03.svg" alt="Harmoni Vale"></span>
+      <span class="info-l"><span class="cid">Gravataí, RS</span><span class="selo-l">[STATUS]</span></span>
+      <span class="ver"><span class="txt">Ver ficha</span><span class="seta" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button></li>
+    <li><button class="linha" type="button" data-abre="essenza">
+      <span class="thumb"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View14.webp" alt="" loading="lazy"></span>
+      <span class="marca-l"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/HARMONI-ESSENZA-03.svg" alt="Harmoni Essenza"></span>
+      <span class="info-l"><span class="cid">[CIDADE, UF]</span><span class="selo-l">[STATUS]</span></span>
+      <span class="ver"><span class="txt">Ver ficha</span><span class="seta" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button></li>
+    <li><button class="linha" type="button" data-abre="hortensias">
+      <span class="thumb"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View13.webp" alt="" loading="lazy"></span>
+      <span class="marca-l"><span class="logo-txt">Harmoni Hortênsias</span><!-- trocar pelo SVG quando existir --></span>
+      <span class="info-l"><span class="cid">[CIDADE, UF]</span><span class="selo-l">[STATUS]</span></span>
+      <span class="ver"><span class="txt">Ver ficha</span><span class="seta" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button></li>
+  </ul>
+  <div class="proximo">
+    <p>O próximo Harmoni já está a caminho.</p>
+    <a class="btn btn-pet" href="#hm-contato" data-interesse="">Quero ser avisado</a>
+  </div>
+</section>
+
+<!-- ================= LAZER ================= -->
+<section class="lazer" id="hm-lazer">
+  <img decoding="async" class="tracado" data-px="-0.06" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/tracadosolido-1.svg" alt="">
+  <div class="lz">
+    <div class="lz-lista">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 class="t-secao">Lazer a poucos <strong>passos de casa</strong></h2>
+        <p class="sub">Espaços para receber, brincar, treinar e resolver o dia a dia sem sair do condomínio.</p>
+      </div>
+      <div class="lz-abas" role="tablist" aria-label="Áreas de lazer">
+        <button type="button" role="tab" aria-selected="true">Espaço gourmet<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Piscina infantil<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Salão de festas<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Academia<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Brinquedoteca<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Minimercado<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" role="tab" aria-selected="false">Lava-jato<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <p class="lz-nota">Itens de lazer variam por empreendimento.</p>
+    </div>
+    <div class="lz-palco">
+      <div class="lz-imgs">
+        <img decoding="async" class="on" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-GOURMET_View14.webp" alt="Espaço gourmet">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-PISCINA-INFANTIL_View07.webp" alt="Piscina infantil" loading="lazy">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-SALAO-DE-FESTAS_View09.webp" alt="Salão de festas" loading="lazy">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-ACADEMIA_View12.webp" alt="Academia" loading="lazy">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-BRINQUEDOTECA_View16.webp" alt="Brinquedoteca" loading="lazy">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-MINIMERCADO_View12.webp" alt="Minimercado" loading="lazy">
+        <img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/HARMONI-01-LAVA-JATO-EXTERNA_View07.webp" alt="Lava-jato" loading="lazy">
+      </div>
+      <div class="lz-leg">
+        <p><strong id="hm-lz-nome">Espaço gourmet</strong> <span id="hm-lz-num">1 de 7</span></p>
+        <div class="h-setas">
+          <button class="circ" type="button" data-lz="-1" aria-label="Área anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="circ" type="button" data-lz="1" aria-label="Próxima área"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCALIZAÇÃO ================= -->
+<section class="local" id="hm-local">
+  <div class="local-mapa rv"><img decoding="async" src="https://condominioharmoni.com.br/wp-content/uploads/2026/02/LOCALIZACAO-HARMONI-1.webp" alt="Mapa de localização"></div>
+  <div class="local-txt rv">
+    <h2 class="t-secao">Onde <strong>estamos</strong></h2>
+    <p class="sub">Escolha a cidade e veja o Harmoni mais perto de você.</p>
+    <ul class="cidades">
+      <li><button type="button" data-abre="jardins"><span><strong>Harmoni Jardins</strong><span>Cachoeirinha, RS</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" data-abre="arbore"><span><strong>Harmoni Árbore</strong><span>Cachoeirinha, RS</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" data-abre="vale"><span><strong>Harmoni Vale</strong><span>Gravataí, RS</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" data-abre="essenza"><span><strong>Harmoni Essenza</strong><span>[CIDADE, UF]</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" data-abre="hortensias"><span><strong>Harmoni Hortênsias</strong><span>[CIDADE, UF]</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= NOVA HARMONIA ================= -->
+<section class="nh">
+  <img decoding="async" class="tracado" data-px="0.08" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/tracadosolido-1.svg" alt="">
+  <div>
+    <h2 class="t-secao">Uma linha da <strong>Nova Harmonia</strong></h2>
+    <p>Urbanizamos com harmonia: bairros planejados e condomínios fechados em diferentes estados do país.</p>
+  </div>
+  <a class="btn btn-pet" href="https://novaharmonia.com.br/" target="_blank" rel="noopener">Conhecer a Nova Harmonia</a>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<!-- Envio real: route server-side -> RD Station. Select alimenta cf_empreendimento / idempreendimento. -->
+<section class="contato" id="hm-contato">
+  <div class="c-txt rv">
+    <h2 class="t-secao">Qual Harmoni <strong>combina com você?</strong></h2>
+    <p class="sub">Deixe seu contato e escolha o empreendimento. Um consultor da região responde pelo WhatsApp.</p>
+    <div class="direto"><span>Telefone: <span class="ph">[TELEFONE OFICIAL]</span></span><span>WhatsApp: <span class="ph">[WHATSAPP]</span></span></div>
+  </div>
+  <form class="form rv" id="hm-form" novalidate>
+    <label class="campo todo">Nome<input type="text" name="name" autocomplete="name" placeholder="Seu nome completo" required></label>
+    <label class="campo">E-mail<input type="email" name="email" autocomplete="email" placeholder="voce@email.com" required></label>
+    <label class="campo">WhatsApp<input type="tel" name="mobile_phone" autocomplete="tel" placeholder="(00) 00000-0000" required></label>
+    <label class="campo todo">Empreendimento de interesse
+      <select name="cf_empreendimento" id="hm-select">
+        <option value="">Ainda não sei, quero conhecer a linha</option>
+        <option value="Harmoni Jardins">Harmoni Jardins, Cachoeirinha</option>
+        <option value="Harmoni Árbore">Harmoni Árbore, Cachoeirinha</option>
+        <option value="Harmoni Vale">Harmoni Vale, Gravataí</option>
+        <option value="Harmoni Essenza">Harmoni Essenza</option>
+        <option value="Harmoni Hortênsias">Harmoni Hortênsias</option>
+      </select>
+    </label>
+    <input type="hidden" name="cf_utm_source"><input type="hidden" name="cf_utm_medium"><input type="hidden" name="cf_utm_campaign"><input type="hidden" name="cf_utm_content"><input type="hidden" name="cf_utm_term">
+    <label class="aceite"><input type="checkbox" name="lgpd" required>Aceito receber comunicações da Nova Harmonia e concordo com a Política de Privacidade.</label>
+    <button class="btn btn-lar" type="submit">Quero receber informações</button>
+    <p class="retorno" id="hm-retorno" role="status"></p>
+  </form>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="rodape">
+  <img decoding="async" class="tracado" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/tracadosolido-1.svg" alt="">
+  <div class="r-grade">
+    <div class="r-marca">
+      <img decoding="async" class="branco" src="https://condominioharmoni.com.br/wp-content/uploads/2026/09/LOGO.svg" alt="Nova Harmonia Bairros Planejados">
+      <p>Qualidade é viver em harmonia.</p>
+    </div>
+    <div><h3>Empreendimentos</h3><ul><li><button type="button" data-abre="jardins">Harmoni Jardins</button></li><li><button type="button" data-abre="arbore">Harmoni Árbore</button></li><li><button type="button" data-abre="vale">Harmoni Vale</button></li><li><button type="button" data-abre="essenza">Harmoni Essenza</button></li><li><button type="button" data-abre="hortensias">Harmoni Hortênsias</button></li></ul></div>
+    <div><h3>Contato</h3><ul><li>[TELEFONE OFICIAL]</li><li>[WHATSAPP]</li><li>[E-MAIL]</li><li>[ENDEREÇO DO STAND]</li></ul></div>
+    <div><h3>Nova Harmonia</h3><ul><li><a href="https://novaharmonia.com.br/" target="_blank" rel="noopener">Site institucional</a></li><li><a href="#">Política de Privacidade</a></li></ul></div>
+  </div>
+  <div class="r-legal">
+    <p>[TEXTO LEGAL, um bloco por empreendimento: matrícula, cartório e aprovação na prefeitura de cada Harmoni.]</p>
+    <p>Imagens meramente ilustrativas. © Nova Harmonia Bairros Planejados.</p>
+  </div>
+</footer>
+
+
+<!-- ================= MODAL: ficha do empreendimento ================= -->
+<dialog class="ficha" id="hm-ficha" aria-labelledby="hm-f-nome">
+  <button class="fechar" type="button" aria-label="Fechar ficha"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="f-grade">
+    <div class="f-foto"><img decoding="async" id="hm-f-img" src="" alt=""></div>
+    <div class="f-info">
+      <span class="selo" id="hm-f-status"></span>
+      <div id="hm-f-logo"></div>
+      <h3 id="hm-f-nome" style="font-size:24px;font-weight:300"></h3>
+      <p id="hm-f-texto"></p>
+      <dl class="dados">
+        <div><dt>Localização</dt><dd id="hm-f-cidade"></dd></div>
+        <div><dt>Lotes</dt><dd><span class="ph">[Nº]</span></dd></div>
+        <div><dt>Metragem</dt><dd><span class="ph">[M²]</span></dd></div>
+        <div><dt>A partir de</dt><dd><span class="ph">[PREÇO]</span></dd></div>
+      </dl>
+      <div class="acoes">
+        <button class="btn btn-lar" type="button" id="hm-f-cta">Quero saber mais</button>
+        <a class="btn btn-linha-esc" id="hm-f-site" href="#">Site do empreendimento</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+</div><!-- /#hm -->
+
+<script>
+(function(){
+  var raiz = document.getElementById('hm');
+  if (!raiz) return;
+  var $ = function(s, el){ return (el || raiz).querySelector(s); };
+  var $$ = function(s, el){ return Array.prototype.slice.call((el || raiz).querySelectorAll(s)); };
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var U = 'https://condominioharmoni.com.br/wp-content/uploads/';
+
+  /* ---------- dados dos empreendimentos (fonte única) ---------- */
+  var HARMONIS = {
+    jardins:    { nome:'Harmoni Jardins',    cidade:'Cachoeirinha, RS', status:'Lançamento em breve', logo:U+'2026/09/HARMONI-JARDINS-03.svg', img:U+'2026/02/HARMONI-01-PORTICO_View01.webp', texto:'Beleza, equilíbrio e exclusividade. Natureza integrada a espaços planejados.', site:'#' },
+    arbore:     { nome:'Harmoni Árbore',     cidade:'Cachoeirinha, RS', status:'[STATUS]', logo:U+'2026/09/HARMONI-ARBORE-03.svg', img:U+'2026/02/HARMONI-01-PISCINA-INFANTIL_View07.webp', texto:'[DESCRIÇÃO CURTA DO HARMONI ÁRBORE]', site:'#' },
+    vale:       { nome:'Harmoni Vale',       cidade:'Gravataí, RS', status:'[STATUS]', logo:U+'2026/09/HARMONI-VALE-03.svg', img:U+'2026/02/HARMONI-01-SALAO-DE-FESTAS-EXTERNA_View05.webp', texto:'[DESCRIÇÃO CURTA DO HARMONI VALE]', site:'#' },
+    essenza:    { nome:'Harmoni Essenza',    cidade:'[CIDADE, UF]', status:'[STATUS]', logo:U+'2026/09/HARMONI-ESSENZA-03.svg', img:U+'2026/02/HARMONI-01-GOURMET_View14.webp', texto:'[DESCRIÇÃO CURTA DO HARMONI ESSENZA]', site:'#' },
+    hortensias: { nome:'Harmoni Hortênsias', cidade:'[CIDADE, UF]', status:'[STATUS]', logo:'', img:U+'2026/02/HARMONI-01-GOURMET_View13.webp', texto:'[DESCRIÇÃO CURTA DO HARMONI HORTÊNSIAS]', site:'#' }
+  };
+
+  /* ---------- header ---------- */
+  var topo = $('#hm-topo'), menuBtn = $('.menu-btn', topo);
+  function checaTopo(){ topo.classList.toggle('rolado', window.scrollY > 40); }
+  checaTopo();
+  function fechaMenu(){ topo.classList.remove('aberto'); document.documentElement.classList.remove('hm-trava'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.setAttribute('aria-label','Abrir menu'); }
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && topo.classList.contains('aberto')) fechaMenu(); });
+  window.addEventListener('resize', function(){ if (window.innerWidth > 820 && topo.classList.contains('aberto')) fechaMenu(); });
+  menuBtn.addEventListener('click', function(){
+    var ab = topo.classList.toggle('aberto');
+    document.documentElement.classList.toggle('hm-trava', ab);
+    menuBtn.setAttribute('aria-expanded', ab); menuBtn.setAttribute('aria-label', ab ? 'Fechar menu' : 'Abrir menu');
+  });
+
+  /* ---------- rolagem suave para âncoras internas ---------- */
+  function rolaPara(id){
+    var alvo = document.getElementById(id); if (!alvo) return;
+    var y = alvo.getBoundingClientRect().top + window.scrollY - 70;
+    window.scrollTo({ top: y, behavior: reduz ? 'auto' : 'smooth' });
+  }
+  $$('a[href^="#hm-"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault(); fechaMenu();
+      if (a.hasAttribute('data-interesse')) marcaInteresse(a.getAttribute('data-interesse'));
+      rolaPara(a.getAttribute('href').slice(1));
+    });
+  });
+
+  /* ---------- hero ---------- */
+  var hero = $('#hm-inicio'), slides = $$('.slide', hero), idx = $$('.h-indice button', hero), pts = $$('.h-pontos button', hero);
+  var TEMPO = 7000, atual = 0, timer = null, parado = false;
+  hero.style.setProperty('--tempo', TEMPO + 'ms');
+  function vai(i){
+    slides[atual].classList.remove('on'); idx[atual].removeAttribute('aria-current'); pts[atual].removeAttribute('aria-current');
+    atual = (i + slides.length) % slides.length;
+    slides[atual].classList.add('on'); idx[atual].setAttribute('aria-current','true'); pts[atual].setAttribute('aria-current','true');
+    var b = $('.barra i', idx[atual]); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = '';
+    agenda();
+  }
+  function agenda(){ clearTimeout(timer); if (!parado && !reduz) timer = setTimeout(function(){ vai(atual + 1); }, TEMPO); }
+  function pausa(v){ parado = v; hero.classList.toggle('pausa', v); if (v) clearTimeout(timer); else agenda(); }
+  idx.forEach(function(b, i){ b.addEventListener('click', function(){ vai(i); }); });
+  pts.forEach(function(b, i){ b.addEventListener('click', function(){ vai(i); }); });
+  $$('[data-dir]', hero).forEach(function(b){ b.addEventListener('click', function(){ vai(atual + Number(b.dataset.dir)); }); });
+  hero.addEventListener('mouseenter', function(){ pausa(true); });
+  hero.addEventListener('mouseleave', function(){ pausa(false); });
+  var x0 = null;
+  hero.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  hero.addEventListener('touchend', function(e){ if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) vai(atual + (dx < 0 ? 1 : -1)); x0 = null; });
+  document.addEventListener('visibilitychange', function(){ pausa(document.hidden); });
+  agenda();
+
+  /* ---------- manifesto: pilares interativos ---------- */
+  var pilares = $$('.pilar'), panoImgs = $$('.pano img'), frase = $('#hm-pano-frase');
+  function ativaPilar(i){
+    pilares.forEach(function(b, k){ b.classList.toggle('on', k === i); b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+    panoImgs.forEach(function(im, k){ im.classList.toggle('on', k === i); });
+    frase.textContent = pilares[i].dataset.frase;
+    $('#hm-pilar-desc').textContent = $('small', pilares[i]).textContent;
+  }
+  pilares.forEach(function(b, i){
+    ['mouseenter','focus','click'].forEach(function(ev){ b.addEventListener(ev, function(){ ativaPilar(i); }); });
+  });
+
+  /* ---------- faixa: pausa enquanto o dedo está nela (celular) ---------- */
+  var faixa = $('.faixa'), tFaixa = null;
+  faixa.addEventListener('touchstart', function(){ clearTimeout(tFaixa); faixa.classList.add('pausa'); }, {passive:true});
+  faixa.addEventListener('touchend', function(){ tFaixa = setTimeout(function(){ faixa.classList.remove('pausa'); }, 2500); }, {passive:true});
+
+  /* ---------- lazer ---------- */
+  var abas = $$('.lz-abas button'), imgs = $$('.lz-imgs img'), lzAtual = 0;
+  function lz(i){
+    lzAtual = (i + imgs.length) % imgs.length;
+    abas.forEach(function(a, k){ a.setAttribute('aria-selected', k === lzAtual ? 'true' : 'false'); });
+    imgs.forEach(function(im, k){ im.classList.toggle('on', k === lzAtual); });
+    $('#hm-lz-nome').textContent = abas[lzAtual].textContent;
+    $('#hm-lz-num').textContent = (lzAtual + 1) + ' de ' + imgs.length;
+    abas[lzAtual].scrollIntoView({ block:'nearest', inline:'nearest', behavior: reduz ? 'auto' : 'smooth' });
+  }
+  abas.forEach(function(a, i){ a.addEventListener('click', function(){ lz(i); }); });
+  $$('[data-lz]').forEach(function(b){ b.addEventListener('click', function(){ lz(lzAtual + Number(b.dataset.lz)); }); });
+
+  /* ---------- modal ---------- */
+  var ficha = $('#hm-ficha'), fichaAtual = null, ultimoFoco = null;
+  function abre(id){
+    var h = HARMONIS[id]; if (!h) return;
+    fichaAtual = h;
+    $('#hm-f-img').src = h.img; $('#hm-f-img').alt = h.nome;
+    $('#hm-f-status').textContent = h.status;
+    $('#hm-f-nome').textContent = h.nome;
+    $('#hm-f-texto').textContent = h.texto;
+    $('#hm-f-cidade').textContent = h.cidade;
+    $('#hm-f-site').href = h.site;
+    var lg = $('#hm-f-logo'); lg.innerHTML = '';
+    if (h.logo){ var im = document.createElement('img'); im.className = 'logo'; im.src = h.logo; im.alt = ''; lg.appendChild(im); $('#hm-f-nome').style.display = 'none'; }
+    else { $('#hm-f-nome').style.display = ''; }
+    ultimoFoco = document.activeElement;
+    if (typeof ficha.showModal === 'function') ficha.showModal(); else ficha.setAttribute('open','');
+    document.documentElement.classList.add('hm-trava');
+    $('#hm-f-img').decoding = 'async';
+    setTimeout(function(){ var f = $('.fechar', ficha); if (f) f.focus({preventScroll:true}); }, 80);
+    pausa(true);
+  }
+  function fecha(){ if (ficha.open) ficha.close(); }
+  $$('[data-abre]').forEach(function(b){ b.addEventListener('click', function(){ abre(b.dataset.abre); }); });
+  $('.fechar', ficha).addEventListener('click', fecha);
+  ficha.addEventListener('click', function(e){ if (e.target === ficha) fecha(); });
+  ficha.addEventListener('close', function(){
+    pausa(false);
+    document.documentElement.classList.remove('hm-trava');
+    if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus({preventScroll:true});
+  });
+  $('#hm-f-cta').addEventListener('click', function(){
+    var nome = fichaAtual ? fichaAtual.nome : '';
+    fecha(); marcaInteresse(nome); rolaPara('hm-contato');
+    setTimeout(function(){ var n = $('#hm-form input[name="name"]'); if (n) n.focus({preventScroll:true}); }, reduz ? 0 : 700);
+  });
+
+  /* ---------- form ---------- */
+  function marcaInteresse(nome){ var s = $('#hm-select'); if (s && nome !== null) s.value = nome; }
+  var chaves = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], q = new URLSearchParams(location.search);
+  chaves.forEach(function(k){
+    var v = null; try { v = sessionStorage.getItem(k); } catch(e){}
+    if (!v && q.get(k)){ v = q.get(k); try { sessionStorage.setItem(k, v); } catch(e){} }
+    var c = $('[name="cf_' + k + '"]'); if (c && v) c.value = v;
+  });
+  var form = $('#hm-form'), ret = $('#hm-retorno');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.checkValidity()){ ret.textContent = 'Preencha nome, e-mail, WhatsApp e marque o aceite para continuar.'; return; }
+    ret.textContent = 'Recebemos seu contato. Um consultor fala com você em breve.'; form.reset();
+  });
+
+  /* ---------- revelar ao rolar ---------- */
+  var rv = $$('.rv');
+  if ('IntersectionObserver' in window && !reduz){
+    var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('ok'); io.unobserve(x.target); } }); }, {threshold:.12});
+    rv.forEach(function(el){ io.observe(el); });
+  } else rv.forEach(function(el){ el.classList.add('ok'); });
+
+  /* ---------- parallax do traçado ---------- */
+  var px = $$('[data-px]'), pedido = false;
+  function atualiza(){
+    px.forEach(function(el){
+      var r = el.parentElement.getBoundingClientRect();
+      var d = (r.top + r.height / 2 - window.innerHeight / 2) * Number(el.dataset.px);
+      el.style.transform = 'translate3d(0,' + d.toFixed(1) + 'px,0)';
+    });
+    pedido = false;
+  }
+  window.addEventListener('scroll', function(){ checaTopo(); if (!reduz && !pedido){ pedido = true; requestAnimationFrame(atualiza); } }, {passive:true});
+  if (!reduz) atualiza();
+})();
+</script>
+
+</body>
+</html>
