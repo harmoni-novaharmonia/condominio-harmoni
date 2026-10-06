@@ -109,3 +109,8 @@
 - Branch `revisao-lps` (Vinhedos, Vale, Essenza, Jardins e Arbore no layout aprovado) junto ao `main`.
 - Lato agora é carregado dentro da página do Vinhedos (`PaginaNoAr.tsx`), junto com Roboto e Poppins: o layout deixou de carregar o Lato quando a vitrine passou a usar só Jost.
 - Cartões "Conheça os outros Harmonis" (`empreendimentos/outros.ts`) leem a frase da vitrine nova; o Vinhedos mantém o subtítulo da LP no ar.
+
+## 2026-10-06 (hero do Vale)
+
+- Hero do Vale sem a janela em forma de casa: os três ambientes viram fundo, quase apagados sob o azul da noite (16% de opacidade, só a luminosidade da foto), com as curvas de nível por cima. O contorno da casa continua na seção de contato.
+- Vinhedos segue como réplica da LP no ar (decidido).

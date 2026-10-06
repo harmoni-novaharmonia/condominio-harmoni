@@ -6,14 +6,12 @@ import { Img } from "@/components/lp/Img";
 import { Titulo } from "@/components/lp/Titulo";
 import type { LP } from "@/empreendimentos/tipos";
 import type { ValeCasa } from "../tipos";
-import { ContornoCasa } from "./ContornoCasa";
 import { curvasNivel } from "./curvas";
 
-const dois = (n: number) => String(n).padStart(2, "0");
 const NIVEL = curvasNivel([[770, 300, 16, 20], [120, 600, 9, 24]], 11);
 
-// Hero do Vale: curvas de nível ao fundo, título e cadastro em linha à esquerda e
-// a janela em forma de casa (o desenho do logo) com três ambientes se alternando.
+// Hero do Vale: os três ambientes se alternam como fundo, quase apagados sob o azul
+// da noite, com as curvas de nível por cima; título e cadastro em linha à esquerda.
 export function Casa({ s, lp }: { s: ValeCasa; lp: LP }) {
   const [i, setI] = useState(0);
   const n = s.imagens.length;
@@ -26,6 +24,13 @@ export function Casa({ s, lp }: { s: ValeCasa; lp: LP }) {
 
   return (
     <section id="inicio" className="hero vl vl-hero">
+      <div className="vl-fundo">
+        {s.imagens.map((x, k) => (
+          <figure key={x.nome} className={`foto ${k === i ? "on" : ""}`} aria-hidden="true">
+            <Img imagem={{ ...x.imagem, alt: "" }} prioridade={k === 0} sizes="100vw" />
+          </figure>
+        ))}
+      </div>
       <svg className="vl-nivel" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         {NIVEL.map((d, k) => (
           <path key={k} d={d} />
@@ -41,20 +46,6 @@ export function Casa({ s, lp }: { s: ValeCasa; lp: LP }) {
           <div className="vl-hero-form anim-3">
             <FormEtapas lp={lp} formulario={s.formulario} tom="acento" />
           </div>
-        </div>
-        <div className="vl-janela">
-          <ContornoCasa />
-          <div className="vl-janela-fotos">
-            {s.imagens.map((x, k) => (
-              <figure key={x.nome} className={`foto ${k === i ? "on" : ""}`} aria-hidden={k !== i || undefined}>
-                <Img imagem={x.imagem} prioridade={k === 0} sizes="(min-width: 900px) 40vw, 92vw" />
-              </figure>
-            ))}
-          </div>
-          <p className="vl-janela-leg" aria-live="polite">
-            <b>{dois(i + 1)}</b>
-            <span>{s.imagens[i]?.nome}</span>
-          </p>
         </div>
       </div>
     </section>

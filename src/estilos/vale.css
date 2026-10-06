@@ -7,7 +7,7 @@
 .lp :is(.vl-declaracao, .vl-local, .vl-impl, .vl-obra, .vl-contato) .d em { color: var(--ouro-texto); }
 @keyframes vl-kb { from { transform: scale(1.02); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
 
-/* ---------- hero: janela em forma de casa ---------- */
+/* ---------- hero: ambientes ao fundo, sob o azul ---------- */
 .lp .vl-hero { padding: 150px 0 clamp(80px, 8vw, 120px); background: var(--noite); color: var(--creme); }
 .lp .vl-hero::before { content: ""; position: absolute; top: 12%; right: 4%; width: 760px; max-width: 90vw; height: 760px; background: radial-gradient(closest-side, rgba(202, 158, 83, 0.16), transparent); pointer-events: none; }
 .lp .vl-nivel { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--acento); stroke-opacity: 0.13; stroke-width: 1; pointer-events: none; }
@@ -34,22 +34,22 @@
   .lp .vl-hero-form .fe-etapa[data-etapa="1"] .fe-erro { grid-column: 1 / -1; order: 9; }
   .lp .vl-hero-form .fe-etapa[data-etapa="1"] .bt { min-height: 50px; }
 }
-.lp .vl-janela { position: relative; justify-self: end; height: min(620px, 70svh); max-width: 100%; aspect-ratio: 4 / 5; }
-.lp .vl-janela-fotos { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%); background: var(--petroleo-2); animation: vl-casa 1.6s 0.2s var(--ease) both; }
-@keyframes vl-casa { from { clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%); } }
-.lp .vl-janela-fotos .foto { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s; }
-.lp .vl-janela-fotos .foto.on { opacity: 1; }
-.lp .vl-janela-fotos .foto.on img { animation: vl-kb 9s ease-out both; }
-.lp .vl-janela-fotos .selo { top: auto; bottom: 14px; }
+/* Fundo: os ambientes quase apagados sob o azul da noite (luminosidade da foto, cor do fundo). */
+.lp .vl-fundo { position: absolute; inset: 0; pointer-events: none; }
+.lp .vl-fundo .foto { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.8s; }
+.lp .vl-fundo .foto.on { opacity: 1; }
+.lp .vl-fundo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.16; mix-blend-mode: luminosity; }
+.lp .vl-fundo .foto.on img { animation: vl-kb 12s ease-out both; }
+/* À esquerda do botão flutuante do WhatsApp, que ocupa o canto no desktop. */
+.lp .vl-fundo .selo { top: auto; left: auto; right: 96px; bottom: 22px; }
+.lp .vl-fundo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--noite) 0%, rgba(19, 37, 48, 0.6) 45%, transparent 100%); }
+.lp .vl-hero::before { z-index: 1; }
+.lp .vl-hero .vl-nivel { z-index: 1; }
+.lp .vl-hero-grade { z-index: 2; }
 .lp .vl-contorno { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; translate: 18px 18px; fill: none; stroke: var(--acento); stroke-width: 0.3; stroke-dasharray: 1; stroke-dashoffset: 0; pointer-events: none; }
-.lp .vl-hero .vl-contorno path { animation: vl-traco 2.2s 0.6s var(--ease) both; }
-@keyframes vl-traco { from { stroke-dashoffset: 1; } }
-.lp .vl-janela-leg { position: absolute; left: 0; top: calc(100% + 32px); display: flex; align-items: baseline; gap: 12px; font-size: 14px; color: rgba(244, 235, 216, 0.78); }
-.lp .vl-janela-leg b { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--acento); }
 @media (max-width: 900px) {
   .lp .vl-hero { padding-top: 104px; }
   .lp .vl-hero-grade { grid-template-columns: 1fr; }
-  .lp .vl-janela { order: -1; justify-self: start; height: min(92vw, 420px); margin-bottom: 36px; }
   .lp .vl-contorno { translate: 12px 12px; }
 }
 
