@@ -1,123 +1,131 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import { SetaDireita, Whatsapp } from "@/components/Icones";
 import { TituloSecao } from "@/components/TituloSecao";
 import { useVitrine } from "@/components/VitrineContexto";
-import { harmonis } from "@/dados/empreendimentos";
-import { contato } from "@/dados/vitrine";
+import { cidades, pendente, porCidade } from "@/dados/empreendimentos";
+import { ancoras, contato as t } from "@/dados/vitrine";
+import { lpPorSlug } from "@/empreendimentos";
 
-const CHAVES_UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
-type Utms = Record<(typeof CHAVES_UTM)[number], string>;
-const UTMS_VAZIAS: Utms = {
-  utm_source: "",
-  utm_medium: "",
-  utm_campaign: "",
-  utm_content: "",
-  utm_term: "",
-};
+type Estado = "livre" | "enviando" | "ok" | "falha" | "incompleto";
 
+// Mesma regra das LPs: sucesso só com resposta 2xx do endpoint. Sem endpoint
+// (ou com erro) assume a falha e oferece o WhatsApp do Harmoni escolhido.
 export function Contato() {
   const { interesse, setInteresse } = useVitrine();
-  const [retorno, setRetorno] = useState("");
-  const [utms, setUtms] = useState<Utms>(UTMS_VAZIAS);
+  const [estado, setEstado] = useState<Estado>("livre");
+  const [nome, setNome] = useState("");
 
-  // A UTM da primeira visita vale para a sessão inteira, mesmo se o visitante
-  // navegar antes de preencher o formulário.
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search);
-    const lidas = { ...UTMS_VAZIAS };
-    CHAVES_UTM.forEach((k) => {
-      let v: string | null = null;
-      try {
-        v = sessionStorage.getItem(k);
-      } catch {}
-      if (!v && q.get(k)) {
-        v = q.get(k);
-        try {
-          sessionStorage.setItem(k, v as string);
-        } catch {}
-      }
-      if (v) lidas[k] = v;
-    });
-    setUtms(lidas);
-  }, []);
+  const lp = interesse ? lpPorSlug(interesse) : undefined;
+  const whatsapp = lp?.contato.whatsapp ?? t.whatsappPadrao;
+  const linkWhatsapp = `https://wa.me/${whatsapp}?text=${encodeURIComponent(t.mensagemWhatsapp(lp?.nome ?? t.linha, nome))}`;
 
-  const aoEnviar = (e: FormEvent<HTMLFormElement>) => {
+  async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     if (!form.checkValidity()) {
-      setRetorno(contato.erro);
+      setEstado("incompleto");
+      form.reportValidity();
       return;
     }
-    // Provisório: ainda não existe endpoint de lead. Antes de publicar, a
-    // mensagem de sucesso só pode aparecer depois da entrega confirmada.
-    setRetorno(contato.sucesso);
-    form.reset();
-    setInteresse("");
-  };
+    const dados = Object.fromEntries(new FormData(form));
+    setNome(String(dados.nome ?? "").split(" ")[0]);
+    if (!t.endpoint) {
+      setEstado("falha");
+      return;
+    }
+    setEstado("enviando");
+    try {
+      const r = await fetch(t.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...dados, origem: location.href }),
+      });
+      if (!r.ok) throw new Error(String(r.status));
+      setEstado("ok");
+      form.reset();
+      setInteresse("");
+    } catch {
+      setEstado("falha");
+    }
+  }
 
-  const c = contato.campos;
-
+  const f = t.foto;
   return (
-    <section className="contato" id="hm-contato">
-      <div className="c-txt rv">
-        <TituloSecao titulo={contato.titulo} />
-        <p className="sub">{contato.subtitulo}</p>
-        <div className="direto">
-          <span>
-            {contato.rotuloTelefone}
-            <span className="ph">{contato.telefone}</span>
-          </span>
-          <span>
-            {contato.rotuloWhatsapp}
-            <span className="ph">{contato.whatsapp}</span>
-          </span>
+    <section className="vt-contato" id={ancoras.contato}>
+      <div className="in">
+        <figure>
+          <img src={f.src} width={f.largura} height={f.altura} alt={f.alt} loading="lazy" />
+          <blockquote>{t.chamadaFoto}</blockquote>
+        </figure>
+        <div className="lado">
+          <p className="rot">{t.rotulo}</p>
+          <TituloSecao titulo={t.titulo} tamanho="m" />
+          <p className="lead">{t.texto}</p>
+
+          <form className="vt-form" noValidate onSubmit={enviar}>
+            <label className="campo">
+              <input name="nome" autoComplete="name" required minLength={3} placeholder=" " />
+              <span>{t.campos.nome}</span>
+            </label>
+            <div className="dupla">
+              <label className="campo">
+                <input name="telefone" type="tel" inputMode="tel" autoComplete="tel" required minLength={10} placeholder=" " />
+                <span>{t.campos.telefone}</span>
+              </label>
+              <label className="campo">
+                <input name="email" type="email" autoComplete="email" required placeholder=" " />
+                <span>{t.campos.email}</span>
+              </label>
+            </div>
+            <label className="campo sel">
+              <select name="empreendimento" value={interesse} onChange={(e) => setInteresse(e.target.value)}>
+                <option value="">{t.selectVazio}</option>
+                {cidades.map((c) => (
+                  <optgroup key={c} label={c}>
+                    {porCidade(c).map((h) => (
+                      <option key={h.slug} value={h.slug}>
+                        {h.nome}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+              <span>{t.campos.empreendimento}</span>
+            </label>
+            <label className="aceite">
+              <input type="checkbox" name="aceite" required />
+              <span>{t.aceite}</span>
+            </label>
+            <button className="btn btn-p" type="submit" disabled={estado === "enviando"}>
+              {estado === "enviando" ? t.enviando : t.enviar} <SetaDireita tamanho={16} espessura={1.4} />
+            </button>
+
+            <div className="retorno" role="status" aria-live="polite">
+              {estado === "incompleto" && <p className="msg erro">{t.erro}</p>}
+              {estado === "ok" && <p className="msg ok">{t.sucesso}</p>}
+              {estado === "falha" && (
+                <div className="msg aviso">
+                  <p>{t.falha}</p>
+                  <a className="btn btn-wpp" href={linkWhatsapp} target="_blank" rel="noopener noreferrer">
+                    <Whatsapp tamanho={18} /> {t.falhaCta}
+                  </a>
+                </div>
+              )}
+            </div>
+          </form>
+
+          <div className="canais">
+            {t.canais.map((c) => (
+              <span key={c.rotulo}>
+                <small>{c.rotulo}</small>
+                {pendente(c.valor) ? <em className="ph">{c.valor}</em> : c.valor}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-      <form className="form rv" id="hm-form" noValidate onSubmit={aoEnviar}>
-        <label className="campo todo">
-          {c.nome.rotulo}
-          <input type="text" name="name" autoComplete="name" placeholder={c.nome.placeholder} required />
-        </label>
-        <label className="campo">
-          {c.email.rotulo}
-          <input type="email" name="email" autoComplete="email" placeholder={c.email.placeholder} required />
-        </label>
-        <label className="campo">
-          {c.whatsapp.rotulo}
-          <input
-            type="tel"
-            name="mobile_phone"
-            autoComplete="tel"
-            placeholder={c.whatsapp.placeholder}
-            required
-          />
-        </label>
-        <label className="campo todo">
-          {c.empreendimento.rotulo}
-          <select name="cf_empreendimento" value={interesse} onChange={(e) => setInteresse(e.target.value)}>
-            <option value="">{contato.selectVazio}</option>
-            {harmonis.map((h) => (
-              <option key={h.slug} value={h.nome}>
-                {h.rotuloSelect}
-              </option>
-            ))}
-          </select>
-        </label>
-        {CHAVES_UTM.map((k) => (
-          <input key={k} type="hidden" name={`cf_${k}`} value={utms[k]} readOnly />
-        ))}
-        <label className="aceite">
-          <input type="checkbox" name="lgpd" required />
-          {contato.aceite}
-        </label>
-        <button className="btn btn-lar" type="submit">
-          {contato.enviar}
-        </button>
-        <p className="retorno" id="hm-retorno" role="status">
-          {retorno}
-        </p>
-      </form>
     </section>
   );
 }

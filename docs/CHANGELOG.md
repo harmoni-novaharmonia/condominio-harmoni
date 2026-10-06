@@ -55,3 +55,19 @@
 - Classes de variante das seções viraram `obra-v-*` e `imp-v-*` para não colidir com os blocos internos.
 - Fichas da vitrine agora levam para `/jardins/`, `/arbore/`, `/vale/` e `/essenza/`.
 - Favicon com o símbolo da Nova Harmonia (`src/app/icon.svg`).
+
+## 2026-10-06 (vitrine refeita)
+
+- Vitrine (`/`) refeita a partir do protótipo aprovado: hero em faixas (uma por Harmoni, alarga no hover e cada faixa é o link da LP), faixa de números, manifesto com as palavras acendendo na rolagem, panorâmica, coleção em edições, mapa, infraestrutura, quem constrói, perguntas, contato e rodapé.
+- Coleção em "edições": cada Harmoni ocupa a grade de 12 colunas de um jeito (tela cheia, sangra à esquerda, sangra à direita, contido no meio, vertical). Filtro por cidade compartilhado com o mapa.
+- Larguras como sistema: texto 680, casca 1200, ampla 1560 e cheia (`.g` e `.g12` em `src/estilos/vitrine.css`).
+- Vinhedos entrou na vitrine (antes não estava) e Hortênsias saiu da lista para o bloco "Em breve".
+- Mapa esquemático de Porto Alegre com anéis de 10 em 10 km; distâncias em linha reta calculadas pelas coordenadas das cidades.
+- "Quem constrói": lotes publicados no site da Nova Harmonia (Parque Harmonia, Villa Imperial, Reserva Harmonia Caruaru, The One) e galeria arrastável de fotos reais de obra.
+- Formulário da vitrine com a mesma regra das LPs: só mostra sucesso com resposta 2xx; sem endpoint oferece o WhatsApp do Harmoni escolhido com a mensagem pronta.
+- SEO: um único h1, title e description próprios, canonical, Open Graph e Twitter card, JSON-LD (Organization, WebSite, ItemList de GatedResidenceCommunity e FAQPage), `sitemap.xml` e `robots.txt` gerados no build. Links internos para as cinco LPs no hero, na coleção, no menu e no rodapé.
+- Fonte única Jost em todo o site (peso 200 adicionado para os títulos grandes). Lato saiu do projeto.
+- Ficha em modal removida: os Harmonis levam direto à LP.
+- Removidos: `Faixa`, `FichaModal`, `Hero`, `Lazer`, `ListaEmpreendimentos`, `Localizacao`, `NovaHarmonia`, `useParallax`, `dados/icones.ts`, `estilos/header.css` e `estilos/rodape.css`. `overflow-x: clip` e `scrollbar-gutter` foram para o `globals.css` (as LPs dependiam deles).
+- Novos hooks: `useRolagem` (parallax e palavras numa só volta de rAF), `useContadores` e `useReveal` com seletor.
+- Rodapé da vitrine sem a marca d'água do logo no final: termina na linha legal.

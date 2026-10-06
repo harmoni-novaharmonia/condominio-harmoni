@@ -1,131 +1,141 @@
-// Fonte única dos Harmonis da vitrine. Hero, faixa, lista, ficha, localização,
-// formulário e rodapé leem daqui. Texto entre colchetes é pendência do cliente
-// (ver docs/PENDENCIAS.md).
+// Fonte única dos Harmonis da vitrine (hero, coleção, mapa, formulário, rodapé).
+// Cidade e frase vêm das LPs (src/empreendimentos/<slug>/dados.ts); o que está
+// entre colchetes é pendência do cliente (docs/PENDENCIAS.md).
 
-export type Imagem = { src: string; largura: number; altura: number; alt: string };
 export type Arquivo = { src: string; largura: number; altura: number };
+export type Imagem = Arquivo & {
+  alt: string;
+  /** Render de outro empreendimento no lugar: aparece o selo "Imagem provisória". */
+  provisoria?: boolean;
+};
+
+/** Como a edição ocupa a grade de 12 colunas da coleção. */
+export type Forma = "cheia" | "esquerda" | "direita" | "meio" | "alto";
 
 export type Harmoni = {
   slug: string;
   nome: string;
-  /** Nome sem o prefixo "Harmoni", usado nos botões ("Conhecer o Jardins"). */
+  /** Nome sem o prefixo "Harmoni" ("Conhecer o Jardins"). */
   curto: string;
   cidade: string;
+  uf: string;
   status: string;
-  /** Texto curto da ficha. */
-  texto: string;
-  /** Selo destacado na lista (só o lançamento). */
-  lancamento?: boolean;
-  /** Logo colorido (fundo claro). Ausente enquanto o SVG não existir. */
-  logo?: Arquivo;
-  /** Logo preto, tingido de branco por CSS no hero. */
-  logoHero?: Arquivo;
-  /** Logo laranja e creme, para fundo escuro (card do menu). */
-  logoDestaque?: Arquivo;
-  /** Trecho final da chamada que vai em peso maior no card do menu. */
-  chamadaNegrito?: string;
-  /** Foto provisória (render do Vinhedos), ver docs/IMAGENS.md. */
+  /** Metragem mínima do lote ("160m²") ou pendência. */
+  lote: string;
+  /** Frase da coleção e da faixa do hero. */
+  frase: string;
+  /** Observação de localização (só quando o cliente deu). */
+  nota?: string;
+  logo: {
+    /** Fundo claro. */
+    claro: Arquivo;
+    /** Fundo escuro. */
+    escuro: Arquivo;
+    /** Wordmark horizontal (logo geral Harmoni), mais baixo que os logos quadrados. */
+    horizontal?: boolean;
+  };
   foto: Imagem;
-  /** Frase do slide do hero. */
-  chamada: string;
-  /** Botão secundário do hero. */
-  chamadaSecundaria: string;
-  /** Rótulo no <select> do formulário. */
-  rotuloSelect: string;
-  site: string;
+  /** Três ambientes abaixo da edição principal. */
+  miniaturas?: Imagem[];
+  forma: Forma;
 };
 
 const P = "/img/vinhedos/perspectivas";
-const render = (arquivo: string, alt: string, altura = 864): Imagem => ({
+const render = (arquivo: string, alt: string, largura = 1536, altura = 864, provisoria = false): Imagem => ({
   src: `${P}/${arquivo}`,
-  largura: 1536,
+  largura,
   altura,
   alt,
+  provisoria,
 });
-const logo = (slug: string, n: "01" | "03"): Arquivo => ({
-  src: `/img/${slug}/logo/logo-${n}.svg`,
-  largura: 850,
-  altura: 850,
+const logos = (slug: string): Harmoni["logo"] => ({
+  claro: { src: `/img/${slug}/logo/logo-03-recorte.svg`, largura: 730, altura: 486 },
+  escuro: { src: `/img/${slug}/logo/logo-02-recorte.svg`, largura: 730, altura: 486 },
 });
 
 export const harmonis: Harmoni[] = [
   {
+    slug: "vinhedos",
+    nome: "Harmoni Vinhedos",
+    curto: "Vinhedos",
+    cidade: "Viamão",
+    uf: "RS",
+    // Título da LP no ar: "Lançamento Nova Harmonia".
+    status: "Lançamento",
+    lote: "160m²",
+    frase: "Pensado para quem quer mais espaço, mais liberdade e a harmonia entre privacidade e convivência.",
+    nota: "Vizinho dos condomínios Cantegril e Buena Vista e ao lado do bairro planejado Parque Harmonia.",
+    logo: {
+      claro: { src: "/harmoni-logos-gerais/harmoni-logo-petroleo.svg", largura: 1799, altura: 340 },
+      escuro: { src: "/harmoni-logos-gerais/harmoni-logo-creme.svg", largura: 1799, altura: 340 },
+      horizontal: true,
+    },
+    foto: render("portico-original.webp", "Pórtico de entrada do Harmoni Vinhedos", 1919, 1080),
+    miniaturas: [
+      render("gourmet-14.webp", "Espaço gourmet do Harmoni Vinhedos", 1920, 1079),
+      render("piscina-infantil.webp", "Piscina infantil do Harmoni Vinhedos", 1536, 863),
+      render("salao-de-festas-externo.webp", "Área externa do salão de festas do Harmoni Vinhedos"),
+    ],
+    forma: "cheia",
+  },
+  {
     slug: "jardins",
     nome: "Harmoni Jardins",
     curto: "Jardins",
-    cidade: "Cachoeirinha, RS",
+    cidade: "Cachoeirinha",
+    uf: "RS",
     status: "Lançamento em breve",
-    texto: "Beleza, equilíbrio e exclusividade. Natureza integrada a espaços planejados.",
-    lancamento: true,
-    logo: logo("jardins", "03"),
-    logoHero: logo("jardins", "01"),
-    logoDestaque: { src: "/img/jardins/logo/logo-02.svg", largura: 850, altura: 850 },
-    foto: render("portico.webp", "Harmoni Jardins"),
-    chamada: "Natureza integrada ao seu dia a dia.",
-    chamadaNegrito: "ao seu dia a dia.",
-    chamadaSecundaria: "Quero ser avisado",
-    rotuloSelect: "Harmoni Jardins, Cachoeirinha",
-    site: "/jardins/",
+    lote: "[PREENCHER]",
+    frase: "Um novo patamar de viver bem em Cachoeirinha.",
+    logo: logos("jardins"),
+    foto: render("gourmet-14.webp", "Harmoni Jardins, Cachoeirinha/RS", 1920, 1079, true),
+    forma: "esquerda",
   },
   {
     slug: "arbore",
     nome: "Harmoni Árbore",
     curto: "Árbore",
-    cidade: "Cachoeirinha, RS",
+    cidade: "Cachoeirinha",
+    uf: "RS",
     status: "[STATUS]",
-    texto: "[DESCRIÇÃO CURTA DO HARMONI ÁRBORE]",
-    logo: logo("arbore", "03"),
-    logoHero: logo("arbore", "01"),
-    foto: render("piscina-infantil.webp", "Harmoni Árbore", 863),
-    chamada: "Sombra, verde e tempo para a família.",
-    chamadaSecundaria: "Falar com consultor",
-    rotuloSelect: "Harmoni Árbore, Cachoeirinha",
-    site: "/arbore/",
+    lote: "[PREENCHER]",
+    frase: "Viva com grande estilo em Cachoeirinha.",
+    logo: logos("arbore"),
+    foto: render("piscina-infantil.webp", "Harmoni Árbore, Cachoeirinha/RS", 1536, 863, true),
+    forma: "direita",
   },
   {
     slug: "vale",
     nome: "Harmoni Vale",
     curto: "Vale",
-    cidade: "Gravataí, RS",
+    cidade: "Gravataí",
+    uf: "RS",
     status: "[STATUS]",
-    texto: "[DESCRIÇÃO CURTA DO HARMONI VALE]",
-    logo: logo("vale", "03"),
-    logoHero: logo("vale", "01"),
-    foto: render("salao-de-festas-externo.webp", "Harmoni Vale"),
-    chamada: "Espaço para viver com calma.",
-    chamadaSecundaria: "Falar com consultor",
-    rotuloSelect: "Harmoni Vale, Gravataí",
-    site: "/vale/",
+    lote: "[PREENCHER]",
+    frase: "Viver em Gravataí acaba de ficar muito melhor.",
+    logo: logos("vale"),
+    foto: render("salao-de-festas-externo.webp", "Harmoni Vale, Gravataí/RS", 1536, 864, true),
+    forma: "meio",
   },
   {
     slug: "essenza",
     nome: "Harmoni Essenza",
     curto: "Essenza",
-    cidade: "[CIDADE, UF]",
+    cidade: "Cachoeirinha",
+    uf: "RS",
     status: "[STATUS]",
-    texto: "[DESCRIÇÃO CURTA DO HARMONI ESSENZA]",
-    logo: logo("essenza", "03"),
-    logoHero: logo("essenza", "01"),
-    foto: { src: `${P}/gourmet-14.webp`, largura: 1920, altura: 1079, alt: "Harmoni Essenza" },
-    chamada: "O essencial, feito com cuidado.",
-    chamadaSecundaria: "Falar com consultor",
-    rotuloSelect: "Harmoni Essenza",
-    site: "/essenza/",
-  },
-  {
-    slug: "hortensias",
-    nome: "Harmoni Hortênsias",
-    curto: "Hortênsias",
-    cidade: "[CIDADE, UF]",
-    status: "[STATUS]",
-    texto: "[DESCRIÇÃO CURTA DO HARMONI HORTÊNSIAS]",
-    // Sem SVG ainda: os componentes usam o nome em texto quando logo é undefined.
-    foto: { src: `${P}/gourmet-13.webp`, largura: 1920, altura: 1079, alt: "Harmoni Hortênsias" },
-    chamada: "Casa com jardim, vizinhança tranquila.",
-    chamadaSecundaria: "Falar com consultor",
-    rotuloSelect: "Harmoni Hortênsias",
-    site: "#",
+    lote: "[PREENCHER]",
+    // A LP repete o título do Jardins; aqui fica a frase curta da vitrine original.
+    frase: "O essencial, feito com cuidado.",
+    logo: logos("essenza"),
+    foto: render("gourmet-13.webp", "Harmoni Essenza, Cachoeirinha/RS", 1920, 1079, true),
+    forma: "alto",
   },
 ];
 
-export const porSlug = (slug: string) => harmonis.find((h) => h.slug === slug);
+/** Cidades na ordem do mapa e do filtro. */
+export const cidades = Array.from(new Set(harmonis.map((h) => h.cidade)));
+
+export const porCidade = (cidade: string) => harmonis.filter((h) => h.cidade === cidade);
+
+export const pendente = (texto: string) => texto.startsWith("[");

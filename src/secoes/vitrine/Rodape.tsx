@@ -1,87 +1,73 @@
-"use client";
-
-import type { CSSProperties } from "react";
-import { Facebook, Instagram, Linkedin, SetaCima, SetaDireita, Whatsapp } from "@/components/Icones";
+import { SetaDireita } from "@/components/Icones";
 import { LinkAncora } from "@/components/LinkAncora";
-import { useVitrine } from "@/components/VitrineContexto";
 import { harmonis } from "@/dados/empreendimentos";
-import { rodape } from "@/dados/vitrine";
-
-const icones = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin, whatsapp: Whatsapp };
-const atraso = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
+import { rodape as t } from "@/dados/vitrine";
 
 export function Rodape() {
-  const { abreFicha } = useVitrine();
-
   return (
-    <footer className="rodape">
-      <div className="brilho" aria-hidden="true" />
-      <div className="filete rv" />
-
-      <div className="r-corpo">
-        <div className="r-colunas">
-          <div className="rv" style={atraso(0.05)}>
-            <h3>{rodape.titulo}</h3>
-            <p className="r-apoio">{rodape.apoio}</p>
-            <LinkAncora className="btn btn-lar" alvo={rodape.cta.alvo}>
-              {rodape.cta.rotulo}
-              <SetaDireita tamanho={16} espessura={2} />
-            </LinkAncora>
-          </div>
-
-          <div className="rv" style={atraso(0.15)}>
-            <h4>{rodape.colunas.empreendimentos}</h4>
-            <ul className="r-lista">
-              {harmonis.map((h) => (
-                <li key={h.slug}>
-                  <button type="button" onClick={() => abreFicha(h.slug)}>
-                    {h.nome}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rv" style={atraso(0.25)}>
-            <h4>{rodape.colunas.explore}</h4>
-            <ul className="r-lista">
-              {rodape.explore.map((l) => (
-                <li key={l.alvo}>
-                  <LinkAncora alvo={l.alvo}>{l.rotulo}</LinkAncora>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rv" style={atraso(0.35)}>
-            <h4>{rodape.colunas.redes}</h4>
-            <div className="r-redes">
-              {rodape.redes.map((r) => {
-                const Icone = icones[r.icone];
-                return (
-                  <a key={r.nome} href={r.href} aria-label={r.nome}>
-                    <Icone />
-                  </a>
-                );
-              })}
-            </div>
-            <LinkAncora className="r-topo" alvo={rodape.topo.alvo}>
-              {rodape.topo.rotulo}
-              <SetaCima />
-            </LinkAncora>
-          </div>
+    <footer className="vt-rp g">
+      <div className="cols">
+        <div>
+          <p className="chamada">{t.chamada}</p>
+          <LinkAncora className="btn btn-a" alvo={t.cta.alvo}>
+            {t.cta.rotulo} <SetaDireita tamanho={16} espessura={1.4} />
+          </LinkAncora>
         </div>
-
-        <div className="r-base">
-          <span className="legal">{rodape.legal}</span>
-          <span className="links">
-            {rodape.links.map((l) => (
-              <a key={l.rotulo} href={l.href} {...(l.externo ? { target: "_blank", rel: "noopener" } : {})}>
-                {l.rotulo}
-              </a>
+        <nav aria-label={t.colunas.harmonis}>
+          <p className="tit">{t.colunas.harmonis}</p>
+          <ul>
+            {harmonis.map((h) => (
+              <li key={h.slug}>
+                <a href={`/${h.slug}/`}>{h.nome}</a>
+              </li>
             ))}
-          </span>
+          </ul>
+        </nav>
+        <nav aria-label={t.colunas.explore}>
+          <p className="tit">{t.colunas.explore}</p>
+          <ul>
+            {t.explore.map((l) => (
+              <li key={l.alvo}>
+                <LinkAncora alvo={l.alvo}>{l.rotulo}</LinkAncora>
+              </li>
+            ))}
+            <li>
+              <a href={t.institucional.href} target="_blank" rel="noopener noreferrer">
+                {t.institucional.rotulo}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <p className="tit">{t.colunas.siga}</p>
+          <ul>
+            {t.redes.map((r) => (
+              <li key={r.nome}>
+                {r.href === "#" ? (
+                  <>
+                    {r.nome} <em className="ph">{t.urlPendente}</em>
+                  </>
+                ) : (
+                  <a href={r.href} target="_blank" rel="noopener noreferrer">
+                    {r.nome}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
+      <div className="legal">
+        <span>{t.legal}</span>
+        <span>
+          {t.privacidade.href === "#" ? (
+            <>
+              {t.privacidade.rotulo} <em className="ph">{t.privacidadePendente}</em>
+            </>
+          ) : (
+            <a href={t.privacidade.href}>{t.privacidade.rotulo}</a>
+          )}
+        </span>
       </div>
     </footer>
   );

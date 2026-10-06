@@ -122,3 +122,12 @@ Logos gerais do Harmoni (creme, editável, petróleo, geral) ficam em `public/ha
 - `nova-harmonia/tracado-petroleo.svg`, `-creme.svg` e `-laranja.svg`: o traçado do símbolo em três cores, usado como marca d'água nas seções.
 - `src/app/icon.svg`: favicon, feito do `nova-harmonia/icone.svg` com a caixa quadrada.
 - Renders do Vinhedos seguem como provisórios nas outras quatro LPs, sempre com o selo "Imagem provisória" na tela.
+
+## Adições de 06/10/2026 (vitrine)
+
+Convertidas para WebP (qualidade 0,8) e reduzidas para a maior largura em que aparecem. Originais na pasta Nova Harmonia.
+
+- `nova-harmonia/obras/`: fotos reais de obra. `parque-harmonia-viamao.webp` (A- Hoje/Site/VIAMÃO4), `caruaru-ponte.webp` e `caruaru-acesso.webp` (RESERVA CARUARU 3 e 2), `villa-imperial.webp` (CapaEmpreendimento), `morada-dos-passaros.webp` (Moradadospassaros4), `sao-mateus.webp` (JOV_2779), `ciclovia.webp` (WhatsApp de 18/06/2026, empreendimento a confirmar), `vista-aerea.webp` (quem-somos-imagem-escolhida), `stand.webp` (institucional/background-home).
+- `compartilhado/estilo-de-vida/familia-panorama.webp` (Rectangle 36) e `familia-jardim.webp` (material do Jardins): fotos de banco.
+- `compartilhado/textura-noite.webp`: textura do material do Essenza (Links/bg.webp), fundo da seção "Quem constrói".
+- Os vídeos de `A- Hoje/site2026` não foram usados: mostram um empreendimento do Nordeste com céu nublado.

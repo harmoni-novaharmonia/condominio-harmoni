@@ -2,39 +2,43 @@
 
 import { useRef } from "react";
 import { VitrineProvider, useVitrine } from "@/components/VitrineContexto";
-import { useParallax } from "@/hooks/useParallax";
+import { useContadores } from "@/hooks/useContadores";
 import { useReveal } from "@/hooks/useReveal";
+import { useRolagem } from "@/hooks/useRolagem";
+import { Colecao } from "./Colecao";
 import { Contato } from "./Contato";
-import { Faixa } from "./Faixa";
-import { FichaModal } from "./FichaModal";
+import { Fatos } from "./Fatos";
 import { Header } from "./Header";
-import { Hero } from "./Hero";
-import { Lazer } from "./Lazer";
-import { ListaEmpreendimentos } from "./ListaEmpreendimentos";
-import { Localizacao } from "./Localizacao";
+import { HeroFaixas } from "./HeroFaixas";
+import { Infraestrutura } from "./Infraestrutura";
 import { Manifesto } from "./Manifesto";
-import { NovaHarmonia } from "./NovaHarmonia";
+import { Onde } from "./Onde";
+import { Perguntas } from "./Perguntas";
+import { QuemConstroi } from "./QuemConstroi";
 import { Rodape } from "./Rodape";
 
 function Conteudo() {
   const { reduz } = useVitrine();
   const raiz = useRef<HTMLDivElement>(null);
-  useReveal(raiz, reduz);
-  useParallax(raiz, reduz);
+  useRolagem(raiz, reduz);
+  useContadores(raiz, reduz);
+  useReveal(raiz, reduz, ".vt-ed", "visto");
 
   return (
-    <div id="hm" ref={raiz}>
+    <div className="vt" ref={raiz}>
       <Header />
-      <Hero />
-      <Faixa />
-      <Manifesto />
-      <ListaEmpreendimentos />
-      <Lazer />
-      <Localizacao />
-      <NovaHarmonia />
-      <Contato />
+      <main>
+        <HeroFaixas />
+        <Fatos />
+        <Manifesto />
+        <Colecao />
+        <Onde />
+        <Infraestrutura />
+        <QuemConstroi />
+        <Perguntas />
+        <Contato />
+      </main>
       <Rodape />
-      <FichaModal />
     </div>
   );
 }

@@ -2,26 +2,29 @@
 
 import { useEffect, type RefObject } from "react";
 
-/** Revela os elementos .rv ao entrar na tela. Sem movimento: já aparecem prontos. */
-export function useReveal(raiz: RefObject<HTMLElement | null>, reduz: boolean) {
+/**
+ * Marca com `classe` os elementos `seletor` quando entram na tela.
+ * Sem movimento (ou sem IntersectionObserver), já marca todos de saída.
+ */
+export function useReveal(raiz: RefObject<HTMLElement | null>, reduz: boolean, seletor = ".rv", classe = "ok") {
   useEffect(() => {
-    const itens = Array.from(raiz.current?.querySelectorAll<HTMLElement>(".rv") ?? []);
+    const itens = Array.from(raiz.current?.querySelectorAll<HTMLElement>(seletor) ?? []);
     if (reduz || !("IntersectionObserver" in window)) {
-      itens.forEach((el) => el.classList.add("ok"));
+      itens.forEach((el) => el.classList.add(classe));
       return;
     }
     const io = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((x) => {
           if (x.isIntersecting) {
-            x.target.classList.add("ok");
+            x.target.classList.add(classe);
             io.unobserve(x.target);
           }
         });
       },
-      { threshold: 0.12 },
+      { rootMargin: "0px 0px -12% 0px" },
     );
     itens.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [raiz, reduz]);
+  }, [raiz, reduz, seletor, classe]);
 }

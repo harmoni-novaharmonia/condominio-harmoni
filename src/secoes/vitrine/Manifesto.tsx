@@ -1,73 +1,33 @@
-"use client";
-
-import { useState } from "react";
-import { TituloSecao } from "@/components/TituloSecao";
-import { manifesto, marcas } from "@/dados/vitrine";
+import { manifesto } from "@/dados/vitrine";
 
 export function Manifesto() {
-  const [ativo, setAtivo] = useState(0);
-  const pilar = manifesto.pilares[ativo];
-
+  const palavras = manifesto.texto.split(" ");
+  const p = manifesto.panorama;
   return (
-    <section className="manif" id="hm-manifesto">
-      <img
-        className="tracado"
-        data-px="0.1"
-        src={marcas.tracado.src}
-        width={marcas.tracado.largura}
-        height={marcas.tracado.altura}
-        alt=""
-      />
-      <div className="manif-topo rv">
-        <TituloSecao titulo={manifesto.titulo} />
-        <p>{manifesto.texto}</p>
+    <section className="vt-manif g">
+      <div className="txt">
+        <p className="rot">{manifesto.rotulo}</p>
+        <div>
+          {/* O texto inteiro fica no HTML; as palavras só acendem com a rolagem. */}
+          <p className="frase" data-palavras>
+            {palavras.map((w, i) => (
+              <span key={i} className="w">
+                {w}
+                {i < palavras.length - 1 ? " " : ""}
+              </span>
+            ))}
+          </p>
+          <p className="assin">
+            <i aria-hidden="true" />
+            {manifesto.assinatura}
+          </p>
+        </div>
       </div>
-      <div className="pano rv">
-        {manifesto.imagens.map((im, i) => (
-          <img
-            key={im.src}
-            className={i === ativo ? "on" : undefined}
-            src={im.src}
-            width={im.largura}
-            height={im.altura}
-            alt={im.alt}
-            loading="lazy"
-          />
-        ))}
-        <p className="pano-frase" id="hm-pano-frase" aria-live="polite">
-          {pilar.frase}
-        </p>
-      </div>
-      <div className="pilares">
-        {manifesto.pilares.map((p, i) => (
-          <button
-            key={p.titulo}
-            className={i === ativo ? "pilar on" : "pilar"}
-            type="button"
-            aria-pressed={i === ativo}
-            onMouseEnter={() => setAtivo(i)}
-            onFocus={() => setAtivo(i)}
-            onClick={() => setAtivo(i)}
-          >
-            <span className="ico" aria-hidden="true">
-              <svg className="fino" width="30" height="30" viewBox="0 0 256 256" fill="currentColor">
-                <path d={p.icone.fino} />
-              </svg>
-              <svg className="cheio" width="30" height="30" viewBox="0 0 256 256" fill="currentColor">
-                <path d={p.icone.cheio} />
-              </svg>
-            </span>
-            <span>
-              <strong>{p.titulo}</strong>
-              <small>{p.descricao}</small>
-              <i />
-            </span>
-          </button>
-        ))}
-      </div>
-      <p className="pilar-desc" id="hm-pilar-desc" aria-live="polite">
-        {pilar.descricao}
-      </p>
+      <figure className="panorama" data-par>
+        <img src={p.src} width={p.largura} height={p.altura} alt={p.alt} loading="lazy" />
+        <blockquote>{manifesto.citacao}</blockquote>
+        <figcaption>{manifesto.creditoPanorama}</figcaption>
+      </figure>
     </section>
   );
 }

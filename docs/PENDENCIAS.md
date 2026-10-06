@@ -71,3 +71,21 @@
 - Vinhedos: endereço do stand "Av. Senador Salgado Filho, 7700, Viamão/RS" veio da LP no ar. Confirmar.
 - Pontos dos mapas (Aeroporto Salgado Filho, Av. Flores da Cunha, Freeway BR-290, RS-118, ULBRA, Park Shopping Canoas) vieram da copy de cada LP. Confirmar distâncias e ordem da rota do Essenza.
 - Endereço do empreendimento: `[PREENCHER]` em Jardins, Arbore, Vale e Essenza.
+
+## Vitrine refeita (2026-10-06)
+
+### Confirmar com o cliente
+- Hero: "Uma linha de condomínios **horizontais** pensada para morar bem." A palavra "horizontais" foi acrescentada à frase da vitrine original por SEO.
+- Status do Vinhedos como "Lançamento" (vem do título da LP no ar) e do Jardins como "Lançamento em breve" (vitrine original). Árbore, Vale e Essenza: `[STATUS]`.
+- Lotes "a partir de" de Jardins, Árbore, Vale e Essenza: `[PREENCHER]`.
+- Números de lotes de "Quem constrói" (1.369, 1.895, 1.181 e 341) foram lidos em novaharmonia.com.br em 04/10/2026. Confirmar se seguem atuais.
+- Galeria de obras: empreendimento da foto da ciclovia e local do stand da foto do prédio.
+- Licença das fotos de banco (família panorâmica e família no jardim), que vieram do material do Jardins.
+- Hortênsias: cidade, logo e fotos (aparece só no bloco "Em breve").
+- Jardins e Essenza têm o mesmo título no hero das LPs; na vitrine o Essenza usa a frase curta da vitrine original.
+
+### Técnico
+- A vitrine não tem WhatsApp, telefone, e-mail nem stand próprios (`[WHATSAPP OFICIAL]`, `[ENDEREÇO]` na tela). Sem Harmoni escolhido, o formulário oferece o WhatsApp do Vinhedos.
+- Endpoint do lead da vitrine: `contato.endpoint` em `src/dados/vitrine.ts`, vazio.
+- Redirecionamento 301 da raiz atual (LP do Vinhedos no WordPress) para `/vinhedos/` e atualização dos anúncios antes de publicar.
+- `nova-harmonia/institucional/quem-somos.webp` (2,4 MB) e `background-home.webp` (1,6 MB) não são usados por nenhuma página. Ficaram por serem do cliente; apagar se não forem voltar.
