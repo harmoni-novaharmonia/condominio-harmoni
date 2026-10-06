@@ -1,0 +1,207 @@
+/* =========================================================
+   Harmoni Vale: seções exclusivas (src/empreendimentos/vale/secoes).
+   Revisão aprovada em 2026-10-05. Noite e dourado; motivos: janela em forma
+   de casa (o desenho do logo) e curvas de nível (é um vale).
+   ========================================================= */
+.lp[data-tema="vale"] { --casca: 1320px; --ouro-texto: #93702f; }
+.lp :is(.vl-declaracao, .vl-local, .vl-impl, .vl-obra, .vl-contato) .d em { color: var(--ouro-texto); }
+@keyframes vl-kb { from { transform: scale(1.02); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
+
+/* ---------- hero: janela em forma de casa ---------- */
+.lp .vl-hero { padding: 150px 0 clamp(80px, 8vw, 120px); background: var(--noite); color: var(--creme); }
+.lp .vl-hero::before { content: ""; position: absolute; top: 12%; right: 4%; width: 760px; max-width: 90vw; height: 760px; background: radial-gradient(closest-side, rgba(202, 158, 83, 0.16), transparent); pointer-events: none; }
+.lp .vl-nivel { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--acento); stroke-opacity: 0.13; stroke-width: 1; pointer-events: none; }
+.lp .vl-nivel path { vector-effect: non-scaling-stroke; }
+.lp .vl-hero-grade { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 48px clamp(40px, 6vw, 96px); align-items: center; }
+.lp .vl-hero .sobretitulo { color: var(--acento); }
+.lp .vl-hero h1 { max-width: 12ch; font-size: clamp(44px, 5.6vw, 84px); line-height: 1.02; }
+.lp .vl-hero h1 em { color: var(--acento); }
+.lp .vl-hero .txt { margin-top: 22px; color: rgba(244, 235, 216, 0.82); }
+.lp .vl-hero-form { max-width: 660px; margin-top: 36px; padding: 22px 24px; border: 1px solid rgba(244, 235, 216, 0.14); border-radius: 12px; background: rgba(244, 235, 216, 0.05); }
+.lp .vl-hero-form .form-etapas { color: var(--creme); }
+.lp .vl-hero-form .fe-passos { color: rgba(244, 235, 216, 0.55); }
+.lp .vl-hero-form .fe-passos i { background: rgba(244, 235, 216, 0.15); }
+.lp .vl-hero-form .fe-campo label { color: rgba(244, 235, 216, 0.82); }
+.lp .vl-hero-form .fe-campo input { border-color: rgba(244, 235, 216, 0.22); background: rgba(244, 235, 216, 0.06); color: var(--creme); }
+.lp .vl-hero-form .fe-campo input::placeholder { color: rgba(244, 235, 216, 0.45); }
+.lp .vl-hero-form .fe-campo input:focus { border-color: var(--acento); box-shadow: 0 0 0 3px rgba(202, 158, 83, 0.22); }
+.lp .vl-hero-form .fe-aceite { color: rgba(244, 235, 216, 0.72); }
+.lp .vl-hero-form .fe-aceite input { accent-color: var(--acento); }
+.lp .vl-hero-form .fe-erro { color: #f2b48a; }
+.lp .vl-hero-form .fe-voltar { color: var(--creme); }
+@media (min-width: 700px) {
+  .lp .vl-hero-form .fe-etapa[data-etapa="1"] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; align-items: end; }
+  .lp .vl-hero-form .fe-etapa[data-etapa="1"] .fe-erro { grid-column: 1 / -1; order: 9; }
+  .lp .vl-hero-form .fe-etapa[data-etapa="1"] .bt { min-height: 50px; }
+}
+.lp .vl-janela { position: relative; justify-self: end; height: min(620px, 70svh); max-width: 100%; aspect-ratio: 4 / 5; }
+.lp .vl-janela-fotos { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%); background: var(--petroleo-2); animation: vl-casa 1.6s 0.2s var(--ease) both; }
+@keyframes vl-casa { from { clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%); } }
+.lp .vl-janela-fotos .foto { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s; }
+.lp .vl-janela-fotos .foto.on { opacity: 1; }
+.lp .vl-janela-fotos .foto.on img { animation: vl-kb 9s ease-out both; }
+.lp .vl-janela-fotos .selo { top: auto; bottom: 14px; }
+.lp .vl-contorno { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; translate: 18px 18px; fill: none; stroke: var(--acento); stroke-width: 0.3; stroke-dasharray: 1; stroke-dashoffset: 0; pointer-events: none; }
+.lp .vl-hero .vl-contorno path { animation: vl-traco 2.2s 0.6s var(--ease) both; }
+@keyframes vl-traco { from { stroke-dashoffset: 1; } }
+.lp .vl-janela-leg { position: absolute; left: 0; top: calc(100% + 32px); display: flex; align-items: baseline; gap: 12px; font-size: 14px; color: rgba(244, 235, 216, 0.78); }
+.lp .vl-janela-leg b { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--acento); }
+@media (max-width: 900px) {
+  .lp .vl-hero { padding-top: 104px; }
+  .lp .vl-hero-grade { grid-template-columns: 1fr; }
+  .lp .vl-janela { order: -1; justify-self: start; height: min(92vw, 420px); margin-bottom: 36px; }
+  .lp .vl-contorno { translate: 12px 12px; }
+}
+
+/* ---------- conceito: frase com fotos dentro da linha ---------- */
+.lp .vl-declaracao { background: var(--creme-2); }
+.lp .vl-dec-titulo { font-size: clamp(42px, 7vw, 108px); line-height: 1.04; letter-spacing: -0.035em; }
+.lp .vl-pilula { display: inline-block; width: 2.3em; height: 0.8em; overflow: hidden; vertical-align: -0.02em; border-radius: 999px; transition: width 1.2s var(--ease) 0.25s; }
+.lp .vl-pilula img { width: 100%; height: 100%; object-fit: cover; }
+.lp .fechada .vl-pilula { width: 0; }
+.lp .vl-dec-pe { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 64px; align-items: end; margin-top: clamp(40px, 5vw, 72px); padding-top: 32px; border-top: 1px solid var(--linha); }
+@media (max-width: 760px) { .lp .vl-dec-pe { grid-template-columns: 1fr; } .lp .vl-pilula { width: 1.8em; } }
+
+/* ---------- localização: mapa noturno ---------- */
+.lp .vl-mapa { position: relative; height: clamp(420px, 44vw, 600px); overflow: hidden; border-radius: 16px; background: radial-gradient(120% 90% at 55% 50%, #1d3846, var(--noite)); color: var(--creme); }
+.lp .vl-mapa-base, .lp .vl-mapa-linhas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lp .vl-mapa-nivel { fill: none; stroke: var(--acento); stroke-opacity: 0.16; stroke-width: 1.2; }
+.lp .vl-rio { fill: none; stroke: rgba(126, 178, 196, 0.2); stroke-width: 22; stroke-linecap: round; }
+.lp .vl-mapa-linhas { overflow: visible; }
+.lp .vl-mapa-linhas path { fill: none; stroke: var(--acento); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0.6; transition: stroke-dashoffset 1.6s var(--ease) calc(var(--k) * 0.22s), opacity 0.35s, stroke-width 0.35s; }
+.lp .vl-mapa.espera .vl-mapa-linhas path { stroke-dashoffset: 1; }
+.lp .vl-mapa.foco .vl-mapa-linhas path { opacity: 0.14; }
+.lp .vl-mapa .vl-mapa-linhas path.on { opacity: 1; stroke-width: 2.6; }
+.lp .vl-casa { position: absolute; z-index: 3; translate: -50% -50%; }
+.lp .vl-casa svg { display: block; width: 52px; height: 52px; fill: var(--acento); filter: drop-shadow(0 0 18px rgba(202, 158, 83, 0.6)); }
+.lp .vl-casa b { position: absolute; left: 50%; top: 100%; translate: -50% 8px; padding: 6px 12px; border-radius: 6px; background: var(--creme); color: var(--noite); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.lp .vl-ponto { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; translate: -8px -50%; transition: opacity 0.35s; }
+.lp .vl-ponto.esq { flex-direction: row-reverse; translate: calc(-100% + 8px) -50%; }
+.lp .vl-ponto i { flex: none; width: 16px; height: 16px; border-radius: 50%; background: var(--acento); box-shadow: 0 0 0 6px rgba(202, 158, 83, 0.18); transition: box-shadow 0.35s; }
+.lp .vl-ponto.on i { box-shadow: 0 0 0 11px rgba(202, 158, 83, 0.3); }
+.lp .vl-ponto > span { padding: 5px 10px; border-radius: 6px; background: rgba(15, 32, 40, 0.72); font-size: 14px; white-space: nowrap; }
+.lp .vl-mapa.foco .vl-ponto:not(.on) { opacity: 0.35; }
+.lp .vl-mapa-nota { position: absolute; left: 18px; bottom: 14px; font-size: 12px; opacity: 0.6; }
+.lp .vl-pontos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.lp .vl-pontos button { display: flex; align-items: flex-start; gap: 14px; width: 100%; height: 100%; padding: 18px; border: 1px solid var(--linha); border-radius: 10px; background: #ffffff; text-align: left; transition: border-color 0.3s, background 0.3s; }
+.lp .vl-pontos button:hover, .lp .vl-pontos button[aria-pressed="true"] { border-color: var(--acento); background: var(--creme-2); }
+.lp .vl-pontos .ict { width: 30px; height: 30px; background: var(--ouro-texto); }
+.lp .vl-pontos small { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cinza-2); }
+.lp .vl-pontos strong { display: block; font-size: 17px; font-weight: 400; line-height: 1.3; }
+.lp .vl-pontos button > span:last-child > span { font-size: 14px; color: var(--cinza); }
+@media (max-width: 900px) {
+  .lp .vl-mapa { height: min(118vw, 520px); }
+  .lp .vl-pontos { grid-template-columns: 1fr 1fr; }
+  .lp .vl-ponto > span { padding: 4px 8px; font-size: 12px; }
+}
+@media (max-width: 460px) { .lp .vl-pontos { grid-template-columns: 1fr; } }
+
+/* ---------- perspectivas: galeria de arrastar ---------- */
+.lp .vl-gl-ctrl { display: flex; align-items: center; gap: 20px; }
+.lp .vl-trilho { display: flex; align-items: flex-end; gap: clamp(16px, 2vw, 28px); padding-inline: max(var(--margem), calc((100% - var(--casca)) / 2)); overflow-x: auto; overscroll-behavior-x: contain; scroll-padding-inline: max(var(--margem), calc((100% - var(--casca)) / 2)); scrollbar-width: none; cursor: grab; }
+.lp .vl-trilho::-webkit-scrollbar { display: none; }
+.lp .vl-trilho:focus-visible { outline-offset: -4px; }
+.lp .vl-trilho.arrastando { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+.lp .vl-carta { flex: none; margin: 0; overflow: visible; }
+.lp .vl-c0 { width: clamp(240px, 27vw, 400px); }
+.lp .vl-c1 { width: clamp(280px, 38vw, 580px); }
+.lp .vl-c2 { width: clamp(220px, 23vw, 340px); }
+.lp .vl-c0 .vl-quadro { aspect-ratio: 4 / 5; }
+.lp .vl-c1 .vl-quadro { aspect-ratio: 16 / 10; }
+.lp .vl-c2 .vl-quadro { aspect-ratio: 1; }
+.lp .vl-quadro { position: relative; display: block; width: 100%; max-width: 100%; overflow: hidden; border-radius: 10px; background: var(--petroleo-2); cursor: inherit; }
+.lp .vl-quadro img { position: absolute; top: 0; left: -9%; width: 118%; max-width: none; height: 100%; object-fit: cover; transform: translateX(calc(var(--px, 0) * -14%)); transition: filter 0.5s; user-select: none; -webkit-user-drag: none; }
+.lp .vl-quadro:hover img { filter: brightness(1.07); }
+.lp .vl-carta figcaption { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; margin-top: 16px; }
+.lp .vl-carta figcaption b { grid-row: span 2; padding-top: 7px; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--acento); }
+.lp .vl-carta figcaption strong { font-size: clamp(20px, 1.8vw, 26px); font-weight: 300; letter-spacing: -0.01em; }
+.lp .vl-carta figcaption span { font-size: 14px; color: rgba(244, 235, 216, 0.65); }
+.lp .vl-gl-prog { height: 2px; margin-top: 36px; overflow: hidden; background: rgba(244, 235, 216, 0.14); }
+.lp .vl-gl-prog i { display: block; height: 100%; background: var(--acento); transform: scaleX(0); transform-origin: 0 50%; }
+.lp .vl-galeria .vl-cursor { position: fixed; z-index: 80; top: 0; left: 0; display: grid; place-items: center; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: var(--acento); color: var(--noite); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; pointer-events: none; opacity: 0; scale: 0.4; transition: opacity 0.25s, scale 0.35s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .lp .vl-galeria.cursor-on .vl-cursor { opacity: 1; scale: 1; }
+  .lp .vl-galeria.cursor-on .vl-trilho { cursor: none; }
+}
+@media (max-width: 760px) {
+  .lp .vl-c0 { width: 70vw; }
+  .lp .vl-c1 { width: 84vw; }
+  .lp .vl-c2 { width: 62vw; }
+  .lp .vl-gl-ctrl .setas-r { display: none; }
+}
+
+/* ---------- implantação ---------- */
+.lp .vl-impl-cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 32px clamp(40px, 6vw, 96px); align-items: end; margin-bottom: clamp(32px, 4vw, 48px); }
+.lp .vl-impl-leg { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin-bottom: 24px; border-top: 1px solid var(--linha); }
+.lp .vl-impl-leg li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--linha); font-size: 15px; font-weight: 400; line-height: 1.3; }
+.lp .vl-impl-leg .ict { width: 26px; height: 26px; background: var(--ouro-texto); }
+.lp .vl-impl .planta-zoom { box-shadow: 0 0 0 1px var(--linha), 0 40px 80px -60px rgba(15, 32, 40, 0.6); }
+@media (max-width: 900px) { .lp .vl-impl-cab { grid-template-columns: 1fr; } }
+
+/* ---------- diferenciais: lista com foto que segue o mouse ---------- */
+.lp .vl-rv-resumo { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: rgba(244, 235, 216, 0.72); }
+.lp .vl-rv-resumo b { margin-right: 4px; font-size: 18px; font-weight: 500; color: var(--acento); font-variant-numeric: tabular-nums; }
+.lp .vl-rv-lista { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: repeat(7, auto); grid-auto-flow: column; column-gap: clamp(32px, 5vw, 72px); border-top: 1px solid rgba(244, 235, 216, 0.14); }
+.lp .vl-rv-lista li { display: flex; align-items: center; gap: 18px; padding: 18px 6px; border-bottom: 1px solid rgba(244, 235, 216, 0.14); transition: padding 0.5s var(--ease), color 0.3s; }
+.lp .vl-rv-lista li b { flex: none; width: 24px; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: rgba(244, 235, 216, 0.45); font-variant-numeric: tabular-nums; }
+.lp .vl-rv-lista li .ict { width: 30px; height: 30px; background: var(--acento); }
+.lp .vl-rv-lista li strong { font-size: clamp(19px, 1.7vw, 24px); font-weight: 300; }
+.lp .vl-rv-lista li em { margin-left: auto; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244, 235, 216, 0.45); }
+@media (hover: hover) and (pointer: fine) { .lp .vl-rv-lista li:hover { padding-left: 18px; color: var(--acento); } }
+.lp .vl-revela .vl-rv-foto { position: absolute; z-index: 4; top: 0; left: 0; width: 300px; height: 210px; overflow: hidden; border-radius: 10px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6); pointer-events: none; opacity: 0; scale: 0.85; transition: opacity 0.3s, scale 0.45s var(--ease); }
+.lp .vl-revela.revelando .vl-rv-foto { opacity: 1; scale: 1; }
+.lp .vl-rv-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s; }
+.lp .vl-rv-foto img.on { opacity: 1; }
+@media (hover: none), (pointer: coarse) { .lp .vl-revela .vl-rv-foto { display: none; } }
+.lp .vl-rv-cta { margin-top: 40px; }
+@media (max-width: 860px) { .lp .vl-rv-lista { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; } }
+
+/* ---------- corte da rua com painel sobre o céu ---------- */
+.lp .vl-obra .corte-rua { position: relative; }
+.lp .vl-obra .cr-lista { position: absolute; z-index: 4; top: 20px; right: 20px; display: grid; width: min(330px, 32%); padding: 8px; border-radius: 12px; background: rgba(15, 32, 40, 0.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--creme); }
+.lp .vl-obra .cr-lista li + li { border-top: 1px solid rgba(244, 235, 216, 0.12); }
+.lp .vl-obra .cr-lista button { display: flex; align-items: center; gap: 14px; width: 100%; padding: 13px 12px; border-radius: 8px; color: rgba(244, 235, 216, 0.78); font-size: 16px; font-weight: 300; text-align: left; transition: background 0.3s, color 0.3s; }
+.lp .vl-obra .cr-lista button:hover, .lp .vl-obra .cr-lista button[aria-current="true"] { background: rgba(244, 235, 216, 0.08); color: #ffffff; }
+.lp .vl-obra .cr-lista b { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(244, 235, 216, 0.14); font-size: 12px; font-weight: 600; transition: background 0.3s, color 0.3s; }
+.lp .vl-obra .cr-lista button[aria-current="true"] b { background: var(--acento); color: var(--noite); }
+@media (max-width: 900px) {
+  .lp .vl-obra .cr-lista { position: static; width: auto; margin-top: 12px; }
+  .lp .vl-obra .cr-lista button { padding: 12px; }
+}
+
+/* ---------- grupo e missão ---------- */
+.lp .vl-grupo-a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px clamp(40px, 6vw, 96px); align-items: start; }
+.lp .vl-grupo-a .pilha-txt { padding-top: 96px; }
+.lp .vl-logos { display: flex; align-items: center; gap: clamp(24px, 4vw, 48px); margin-bottom: 36px; }
+.lp .vl-logos img { width: auto; height: 60px; filter: brightness(0) invert(0.93) sepia(0.2); }
+.lp .vl-logos i { width: 1px; height: 52px; background: currentColor; opacity: 0.25; }
+.lp .vl-grupo .numeros { margin-top: clamp(48px, 6vw, 72px); border-block: 1px solid rgba(244, 235, 216, 0.14); }
+.lp .vl-grupo .numeros li { padding: 26px 24px; }
+.lp .vl-grupo .numeros li:first-child { padding-left: 0; }
+.lp .vl-grupo .numeros strong { color: var(--acento); }
+.lp .vl-grupo-b { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px clamp(40px, 6vw, 96px); align-items: center; margin-top: clamp(64px, 8vw, 112px); padding-top: clamp(48px, 6vw, 80px); border-top: 1px solid rgba(244, 235, 216, 0.14); }
+.lp .vl-brasil { position: relative; margin: 0; overflow: visible; }
+.lp .vl-brasil::before { content: ""; position: absolute; inset: 8%; background: radial-gradient(closest-side, rgba(202, 158, 83, 0.2), transparent); }
+.lp .vl-brasil img { position: relative; width: 100%; }
+.lp .vl-grupo-b h3 { margin-bottom: 20px; font-size: clamp(28px, 3vw, 42px); line-height: 1.12; }
+.lp .vl-grupo-b blockquote { margin: 28px 0 0; padding-left: 20px; border-left: 2px solid var(--acento); font-size: 20px; font-weight: 400; line-height: 1.45; }
+@media (max-width: 900px) {
+  .lp .vl-grupo-a, .lp .vl-grupo-b { grid-template-columns: 1fr; }
+  .lp .vl-grupo-a .pilha-txt { padding-top: 0; }
+  .lp .vl-grupo .numeros li { padding: 20px 0; }
+  .lp .vl-grupo .numeros li:nth-child(even) { padding-left: 20px; }
+}
+
+/* ---------- contato: janela em forma de casa ---------- */
+.lp .vl-ct-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 104px); align-items: stretch; }
+.lp .vl-ct-janela { position: relative; min-height: 560px; }
+.lp .vl-ct-janela .vl-contorno { translate: -16px 16px; }
+.lp .vl-ct-foto { position: absolute; inset: 0; margin: 0; clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%); }
+.lp .vl-ct-foto img { object-position: center 45%; }
+.lp .vl-ct-logo { width: auto; height: 84px; margin-bottom: 24px; }
+.lp .vl-ct-cartao { margin-top: 32px; padding: clamp(22px, 3vw, 34px); border-radius: 8px; background: #ffffff; box-shadow: 0 30px 70px -36px rgba(15, 32, 40, 0.6); }
+.lp .vl-ct-corpo > .bt-whatsapp { margin-top: 24px; }
+@media (max-width: 900px) {
+  .lp .vl-ct-grade { grid-template-columns: 1fr; }
+  .lp .vl-ct-janela { min-height: 0; max-width: 100%; margin-left: 16px; aspect-ratio: 5 / 4; }
+}

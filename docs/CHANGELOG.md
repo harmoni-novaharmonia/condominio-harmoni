@@ -56,6 +56,38 @@
 - Fichas da vitrine agora levam para `/jardins/`, `/arbore/`, `/vale/` e `/essenza/`.
 - Favicon com o símbolo da Nova Harmonia (`src/app/icon.svg`).
 
+## 2026-10-05 (Vinhedos igual à LP no ar)
+
+- `/vinhedos` agora reproduz a LP do WordPress (condominioharmoni.com.br) seção por seção: mesmos textos, fotos, ícones, cores, fontes (Lato, Roboto nos botões, Poppins no título do stand) e ordem. Só o header e o rodapé são os do projeto.
+- Nova seção `no-ar` no contrato (`tipos.ts`): página inteira própria entre header e rodapé. Componentes em `src/empreendimentos/vinhedos/secoes/` (`PaginaNoAr`, `CarrosselNoAr`), tipos em `vinhedos/tipos.ts`, CSS em `src/estilos/vinhedos-no-ar.css`.
+- Carrossel com o comportamento do Elementor: 1 slide (2 no tablet), autoplay de 5 s, pausa no hover, para quando a pessoa mexe, setas e bolinhas.
+- `FormLead` aceita `placeholders` (a página do Vinhedos usa os da LP no ar). O envio continua sem mostrar sucesso sem endpoint.
+- Imagens novas, baixadas da LP no ar: `vinhedos/hero/fundo.webp`, `vinhedos/conceito/familia-desktop.webp` e `familia-celular.webp`, `vinhedos/chamada/experiencia.webp`, `vinhedos/perspectivas/lava-jato-interno.webp`, `vinhedos/logo-nova-harmonia.png` e os 20 ícones em `vinhedos/icones/`.
+- A seção `Destaques` e as variantes que só o Vinhedos usava (hero cinema, carrossel cinema, diferenciais em abas, mapa com zoom) ficaram sem uso.
+
+## 2026-10-05 (Essenza e Vale no layout aprovado)
+
+- Essenza e Vale refeitos seção por seção conforme o protótipo aprovado na revisão das LPs. Header e rodapé continuam os do projeto; Vinhedos, Jardins e Arbore não mudam.
+- Seções exclusivas em `src/empreendimentos/essenza/secoes/` e `src/empreendimentos/vale/secoes/`, tipos em `essenza/tipos.ts` e `vale/tipos.ts`. No contrato (`tipos.ts`) entram como `{ tipo: "essenza" | "vale", secao: ... }`, mais a seção comum `outros`.
+- Essenza: hero mantido (painel branco); conceito em duas metades; trajeto desenhado pela rolagem; perspectivas em sanfona com tela cheia; foto que abre até a tela cheia; implantação em largura total; diferenciais por grupo com foto fixa; corte da rua com a lista na altura da imagem; grupo com faixa de setores; contato com o painel pela direita.
+- Vale: hero com a janela em forma de casa (desenho do logo) e curvas de nível; frase com fotos dentro da linha; mapa noturno com ligações; galeria de arrastar com paralaxe; "Escolha agora onde será seu lar" virou o título da implantação; diferenciais em lista com foto que segue o mouse; corte com painel sobre o céu; grupo e missão numa seção só; contato com a janela-casa.
+- Peças novas em `src/components/lp/`: `FormEtapas` (cadastro em duas etapas, mesma regra de só mostrar sucesso com 2xx), `CorteRua`, `PlantaZoom`, `Luz` (tela cheia), `Numeros`, `Fones`, `BarraCelular`, `IcTinta`, `SetaRedonda`, `Cabecalho`; seção `Outros` em `src/secoes/lp/`; hooks `useAoRolar` e `useEspera`.
+- CSS novo em `src/estilos/lp-componentes.css`, `essenza.css` e `vale.css`, tudo com escopo `.ez`/`.vl`/tema: nenhum seletor novo casa com elementos de Vinhedos, Jardins ou Arbore (verificado no navegador).
+- `LP.barraCelular`: barra fixa no celular com WhatsApp e o CTA do header (Essenza e Vale).
+- Textos novos em `comum.ts` (`textosEtapas`, `textosInteracao`, `numerosGrupo`, `camadasCorte`, `textosOutros`, `missaoDestaque`); cartões dos outros Harmonis em `src/empreendimentos/outros.ts`.
+
+## 2026-10-06 (Jardins e Arbore no layout aprovado)
+
+- Jardins e Arbore refeitos seção por seção conforme o protótipo aprovado na revisão das LPs, no mesmo padrão do Essenza e do Vale. Rotas `/jardins/` e `/arbore/` (as fichas da vitrine e os cartões "Conheça os outros Harmonis" já apontam para elas). Vinhedos, Vale, Essenza e a vitrine não mudam: mesmo HTML e mesmo estilo computado em todos os elementos, no desktop e no celular (comparado com o build anterior).
+- Seções exclusivas em `src/empreendimentos/jardins/secoes/` e `src/empreendimentos/arbore/secoes/`, tipos em `jardins/tipos.ts` e `arbore/tipos.ts`. No contrato entram como `{ tipo: "jardins" | "arbore", secao: ... }`.
+- Jardins (sálvia, linho e verde-mata; motivos: a folha e a semente): foto do hero que nasce como semente e abre em folha, com selo girando; conceito sobre o linho com a foto vertical da família (a da LP no ar do Vinhedos); mapa ilustrado que se afasta com a rolagem até Porto Alegre; perspectivas com palco em folha e miniaturas redondas (a foto nova abre em círculo, o anel mostra o tempo); implantação com lupa (no toque, tela cheia); diferenciais em canteiros com a foto que abre da semente; corte da rua dividido entre superfície e subsolo; grupo com colunas de fotos em paralaxe; contato com a folha espelhada.
+- Arbore (papel, nogueira e laranja; motivo: o ripado de madeira e o que cresce de baixo para cima): hero com a foto em ripas até a borda; conceito com a foto que abre como porta de correr; manifesto atrás de uma persiana que abre com a rolagem; tronco que cresce e abre um galho por destino; perspectivas em mosaico que troca de lugar (FLIP); implantação com a legenda na altura da planta; diferenciais em gavetas; corte anotado com linhas de chamada na altura de cada camada; grupo com os lotes em barras; contato com as ripas.
+- Repetições fundidas: o parágrafo sobre Porto Alegre ficou só na Localização (nas duas LPs); "Condições exclusivas de lançamento!" (Jardins) virou o último canteiro dos diferenciais; "Fique por dentro de tudo do Harmoni Arbore" virou o título do contato. A infraestrutura saiu dos diferenciais das duas (está no corte da rua), como no Essenza.
+- `barraCelular` ligada no Jardins e no Arbore.
+- Fotos novas no código (os arquivos já existiam): `fotosNovaHarmonia` em `renders.ts` com a família no lote (`nova-harmonia/institucional/familia.webp`) e a foto vertical do conceito do Vinhedos (`vinhedos/conceito/familia-celular.webp`).
+- Textos novos em `textosInteracao` (`comum.ts`). CSS em `src/estilos/jardins.css` e `arbore.css` com escopo `.jd`/`.ab`; as regras base das seções revisadas em `lp-componentes.css` passaram a valer também para `.jd` e `.ab`.
+- Com isso, as variantes genéricas que só Jardins e Arbore usavam em `src/secoes/lp/` (hero dividido e editorial, leque, pilha, mapa ilustrado e radar, entre outras) ficaram sem uso. Não foram apagadas.
+
 ## 2026-10-06 (vitrine refeita)
 
 - Vitrine (`/`) refeita a partir do protótipo aprovado: hero em faixas (uma por Harmoni, alarga no hover e cada faixa é o link da LP), faixa de números, manifesto com as palavras acendendo na rolagem, panorâmica, coleção em edições, mapa, infraestrutura, quem constrói, perguntas, contato e rodapé.
@@ -71,3 +103,9 @@
 - Removidos: `Faixa`, `FichaModal`, `Hero`, `Lazer`, `ListaEmpreendimentos`, `Localizacao`, `NovaHarmonia`, `useParallax`, `dados/icones.ts`, `estilos/header.css` e `estilos/rodape.css`. `overflow-x: clip` e `scrollbar-gutter` foram para o `globals.css` (as LPs dependiam deles).
 - Novos hooks: `useRolagem` (parallax e palavras numa só volta de rAF), `useContadores` e `useReveal` com seletor.
 - Rodapé da vitrine sem a marca d'água do logo no final: termina na linha legal.
+
+## 2026-10-06 (junção da revisão das LPs com a vitrine)
+
+- Branch `revisao-lps` (Vinhedos, Vale, Essenza, Jardins e Arbore no layout aprovado) junto ao `main`.
+- Lato agora é carregado dentro da página do Vinhedos (`PaginaNoAr.tsx`), junto com Roboto e Poppins: o layout deixou de carregar o Lato quando a vitrine passou a usar só Jost.
+- Cartões "Conheça os outros Harmonis" (`empreendimentos/outros.ts`) leem a frase da vitrine nova; o Vinhedos mantém o subtítulo da LP no ar.

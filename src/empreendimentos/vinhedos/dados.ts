@@ -1,8 +1,19 @@
-// Harmoni Vinhedos, Viamão/RS. Textos verbatim da LP no ar (condominioharmoni.com.br).
-// Itens marcados "proposta" foram escritos para esta versão e aguardam aprovação.
-import { corteInfraestrutura } from "../comum";
+// Harmoni Vinhedos, Viamão/RS. A página é a LP no ar (condominioharmoni.com.br)
+// copiada seção por seção: mesmos textos, fotos, ícones e ordem. Só o header e o
+// rodapé são os do projeto. Textos verbatim, inclusive o que está sinalizado em
+// docs/PENDENCIAS.md.
+import { corteInfraestrutura, grupo, marcasGrupo, missao } from "../comum";
 import { render } from "../renders";
-import type { LP } from "../tipos";
+import type { Arquivo, LP } from "../tipos";
+import type { IconeNoAr } from "./tipos";
+
+const V = "/img/vinhedos";
+
+// Ícones ilustrados da página no ar (dimensões do viewBox de cada SVG).
+const ic = (titulo: string, arquivo: string, largura: number, altura: number): IconeNoAr => ({
+  titulo,
+  icone: { src: `${V}/icones/${arquivo}.svg`, largura, altura } satisfies Arquivo,
+});
 
 const lote = { rotulo: "Quero escolher meu lote", alvo: "contato" };
 
@@ -16,7 +27,7 @@ export const vinhedos: LP = {
     // proposta
     descricao:
       "Harmoni Vinhedos: condomínio horizontal em Viamão/RS com lotes a partir de 160m², segurança, lazer completo e o padrão Nova Harmonia.",
-    imagem: "/img/vinhedos/perspectivas/portico-original.webp",
+    imagem: `${V}/hero/fundo.webp`,
   },
   logo: {
     claro: { src: "/harmoni-logos-gerais/harmoni-logo-petroleo.svg", largura: 1799, altura: 340 },
@@ -32,160 +43,150 @@ export const vinhedos: LP = {
   },
   secoes: [
     {
-      tipo: "hero",
-      variante: "cinema",
-      // A LP no ar digita "VIVA COM E... EM HARMONIA": aqui as quatro palavras do conceito se alternam.
-      titulo: { antes: "Viva com ", destaque: "", depois: " em harmonia" },
-      palavras: ["segurança", "exclusividade", "comodidade", "lazer"],
-      texto: "Condomínio horizontal com lotes a partir de 160m².",
-      imagem: render("portico"),
-      formulario: { titulo: "Seja um dos primeiros compradores e tenha condições exclusivas!", botao: "Quero condição de lançamento" },
-    },
-    {
-      tipo: "destaques",
-      itens: [
-        // proposta (subtítulos)
-        { titulo: "Lotes a partir de 160m²", icone: "metragem", texto: "Condomínio horizontal fechado" },
-        { titulo: "Vizinho de Cantegril e Buena Vista", icone: "pino", texto: "Região em plena expansão" },
-        { titulo: "Ao lado do Parque Harmonia", icone: "lote", texto: "Bairro planejado Nova Harmonia" },
-        { titulo: "Infraestrutura completa", icone: "pavimentacao", texto: "Padrão construtivo Nova Harmonia" },
-      ],
-    },
-    {
-      tipo: "conceito",
-      variante: "centro",
-      sobretitulo: "Harmoni Vinhedos",
-      titulo: {
-        antes: "Pensado para quem quer mais espaço, mais liberdade e ",
-        destaque: "a harmonia entre privacidade e convivência.",
-      },
-      paragrafos: [
-        "O Harmoni Vinhedos é um condomínio horizontal pensado para você viver em um endereço que valoriza o que importa e que se tornará referência.",
-      ],
-    },
-    {
-      tipo: "perspectivas",
-      carrossel: "cinema",
-      sobretitulo: "Perspectivas",
-      titulo: { antes: "Diversão e qualidade de vida ", destaque: "para todas as idades" },
-      itens: [
-        // proposta (legendas curtas)
-        { nome: "Pórtico", texto: "Entrada do condomínio", imagem: render("portico") },
-        { nome: "Gourmet", texto: "Espaço gourmet", imagem: render("gourmet2") },
-        { nome: "Piscina infantil", texto: "Lazer para as crianças", imagem: render("piscina") },
-        { nome: "Salão de festas", texto: "Área externa", imagem: render("salaoExterno") },
-        { nome: "Salão de festas", texto: "Área interna", imagem: render("salao") },
-        { nome: "Brinquedoteca", texto: "Espaço infantil", imagem: render("brinquedoteca") },
-        { nome: "Academia", texto: "Saúde no condomínio", imagem: render("academia") },
-        { nome: "Mini-mercado", texto: "Praticidade", imagem: render("minimercado") },
-        { nome: "Lava-jato", texto: "Espaço car-care", imagem: render("lavaJato") },
-      ],
-    },
-    {
-      tipo: "diferenciais",
-      variante: "abas",
-      sobretitulo: "Diferenciais",
-      titulo: { antes: "O Harmoni Vinhedos vai ", destaque: "muito além do básico" },
-      grupos: [
-        {
-          // proposta (título do grupo)
-          titulo: "Para viver o dia a dia",
-          imagem: render("salaoExterno"),
+      tipo: "no-ar",
+      pagina: {
+        hero: {
+          // Assim mesmo na LP no ar ("VIVA COM E" / "EM HARMONIA"); ver docs/PENDENCIAS.md.
+          linhas: ["VIVA COM E", "EM HARMONIA"],
+          faixa: "CONDOMÍNIO HORIZONTAL COM LOTES A PARTIR DE 160M²",
+          fundo: { src: `${V}/hero/fundo.webp`, largura: 1920, altura: 1079, alt: "Pórtico de entrada do Harmoni Vinhedos" },
+        },
+        cadastro: {
+          titulo: "Seja um dos primeiros compradores e tenha condições exclusivas!",
+          formulario: {
+            botao: "Quero condição de lançamento",
+            placeholders: { nome: "Nome Completo", telefone: "Número de celular", email: "Email" },
+          },
+        },
+        conceito: {
+          titulo: "Pensado para quem quer mais espaço, mais liberdade e a harmonia entre privacidade e convivência.",
+          texto:
+            "O Harmoni Vinhedos é um condomínio horizontal pensado para você viver em um endereço que valoriza o que importa e que se tornará referência.",
+          pilares: "Segurança | Exclusividade | Comodidade | Lazer",
+          cta: lote,
+          fundo: { src: `${V}/conceito/familia-desktop.webp`, largura: 1920, altura: 611, alt: "Mãe rindo abraçada aos dois filhos no gramado" },
+          fundoCelular: { src: `${V}/conceito/familia-celular.webp`, largura: 632, altura: 1080, alt: "Mãe rindo abraçada aos dois filhos no gramado" },
+        },
+        faixaLocalizacao: "Uma localização que te conecta ao que mais importa!",
+        localizacao: {
+          mapa: render("mapa"),
+          texto:
+            "O Harmoni Vinhedos está estrategicamente localizado em uma região em plena expansão e que mais se valoriza em Viamão. Vizinho dos condomínios Cantegril e Buena Vista e, ao lado do bairro planejado Parque Harmonia, esse é o condomínio fechado para você viver no melhor lugar do mundo: a sua casa!",
+        },
+        chamada: {
+          titulo: "A experiência **Harmoni** começa aqui!",
+          texto: "Lotes residenciais a partir de 160m² em um condomínio para quem sonha em viver bem.",
+          fundo: { src: `${V}/chamada/experiencia.webp`, largura: 1920, altura: 446, alt: "" },
+        },
+        alemDoBasico: {
+          titulo: ["O **Harmoni Vinhedos** vai muito", "além do básico:"],
           itens: [
-            { titulo: "Paisagismo", icone: "folha" },
-            { titulo: "Chimarródromo", icone: "chimarrao" },
-            { titulo: "Redário", icone: "rede" },
-            { titulo: "Espaço car-care", icone: "carro" },
-            { titulo: "Minimercado", icone: "mercado" },
-            { titulo: "Fire place", icone: "fogo" },
-            { titulo: "Acesso de entrada exclusivo para moradores", icone: "chave" },
+            ic("Paisagismo", "paisagismo", 87, 87),
+            ic("Chimarródromo", "chimarrodromo", 142, 212),
+            ic("Redário", "redario", 259, 201),
+            ic("Espaço car-care", "espaco-car-care", 274, 274),
+            ic("Minimercado", "minimercado", 242, 242),
+            ic("Fire place", "fire-place", 172, 242),
+            ic("Acesso de entrada exclusivo para moradores", "acesso-de-entrada-exclusivo-para-moradores", 236, 235),
           ],
         },
-        {
-          titulo: "Saúde para viver mais longe!",
-          imagem: render("academia"),
-          itens: [
-            { titulo: "Academia", icone: "academia" },
-            { titulo: "Pista de cooper", icone: "pista-cooper" },
-            { titulo: "Quadra de areia", icone: "beach-tennis" },
-            { titulo: "Quadra poliesportiva", icone: "quadra" },
+        perspectivas: {
+          titulo: ["Diversão e **qualidade** **de vida**", "para todas as idades"],
+          slides: [
+            { nome: "GOURMET", imagem: render("gourmet") },
+            { nome: "PÓRTICO", imagem: render("portico") },
+            { nome: "MINI-MERCADO", imagem: render("minimercado") },
+            { nome: "BRINQUEDOTECA", imagem: render("brinquedoteca") },
+            { nome: "PISCINA INFANTIL", imagem: render("piscina") },
+            { nome: "GOURMET", imagem: render("gourmet2") },
+            { nome: "ACADEMIA", imagem: render("academia") },
+            { nome: "SALÃO DE FESTAS EXTERNA", imagem: render("salaoExterno") },
+            { nome: "SALÃO DE FESTAS", imagem: render("salao") },
+            { nome: "LAVA JATO EXTERNA", imagem: render("lavaJato") },
+            { nome: "LAVA JATO", imagem: render("lavaJatoInterno") },
           ],
         },
-      ],
-      cta: { rotulo: "Quero conhecer todos os diferenciais", alvo: "contato" },
-    },
-    {
-      tipo: "localizacao",
-      cabecalho: "esquerda",
-      sobretitulo: "Localização",
-      titulo: { antes: "Uma localização que te conecta ", destaque: "ao que mais importa!" },
-      texto:
-        "O Harmoni Vinhedos está estrategicamente localizado em uma região em plena expansão e que mais se valoriza em Viamão. Vizinho dos condomínios Cantegril e Buena Vista e, ao lado do bairro planejado Parque Harmonia, esse é o condomínio fechado para você viver no melhor lugar do mundo: a sua casa!",
-      mapa: {
-        variante: "foto",
-        endereco: "Stand de vendas: Av. Senador Salgado Filho, 7700, Viamão/RS",
-        foto: render("mapa"),
-        pontos: [
-          { titulo: "Condomínio Cantegril", texto: "Vizinho do Harmoni Vinhedos", icone: "pino" },
-          { titulo: "Condomínio Buena Vista", texto: "Vizinho do Harmoni Vinhedos", icone: "pino" },
-          { titulo: "Parque Harmonia", texto: "Bairro planejado ao lado", icone: "lote" },
-        ],
+        saude: {
+          cta: { rotulo: "Quero conhecer todos os diferenciais", alvo: "contato" },
+          titulo: "Saúde para **viver** mais longe!",
+          itens: [
+            ic("ACADEMIA", "academia", 70, 70),
+            ic("PISTA DE COOPER", "pista-de-cooper", 43, 73),
+            ic("QUADRA DE AREIA", "quadra-de-areia", 70, 70),
+            ic("QUADRA POLIESPORTIVA", "quadra-poliesportiva", 70, 70),
+          ],
+        },
+        infraestrutura: {
+          titulo: ["Padrão e **qualidade construtiva** que só", "a Nova Harmonia tem."],
+          itens: [
+            ic("PAVIMENTAÇÃO EM PAVS", "pavimentacao-em-pavs", 63, 65),
+            ic("MEIO-FIO COM SARJETAS DE 45CM", "meio-fio-com-sarjetas-de-45cm", 92, 53),
+            ic("REDE E RESERVATÓRIO DE ÁGUA", "rede-e-reservatorio-de-agua", 47, 65),
+            ic("REDE DE ESGOTO", "rede-de-esgoto", 65, 65),
+            ic("REDE DE DRENAGEM PLUVIAL", "rede-de-drenagem-pluvial", 65, 65),
+            ic("REDE ELÉTRICA", "rede-eletrica", 65, 65),
+            ic("ILUMINAÇÃO PÚBLICA EM LED", "iluminacao-publica-em-led", 42, 65),
+            ic("PORTARIA DE ENTRADA SOCIAL", "portaria-de-entrada-social", 65, 65),
+            ic("PORTARIA DE ENTRADA DE SERVIÇO", "portaria-de-entrada-de-servico", 65, 65),
+          ],
+        },
+        implantacao: {
+          titulo: "Implantação",
+          planta: render("masterplan"),
+          cta: lote,
+          legenda: [
+            "PORTARIA",
+            "SALÃO DE FESTAS",
+            "FOGO DE CHÃO",
+            "MERCADINHO",
+            "CAR CARE",
+            "QUADRA POLIESPORTIVA",
+            "CHIMARRÓDROMO E REDÁRIO",
+            "PISTA DE COOPER",
+            "ACADEMIA",
+            "BRINQUEDOTECA",
+            "ESPAÇO GOURMET",
+            "QUADRA DE AREIA",
+            "PISCINA ADULTO",
+            "PISCINA INFANTIL",
+            "PLAYGROUND",
+          ],
+        },
+        comoConstruimos: {
+          titulo: "COMO **CONSTRUÍMOS**",
+          // Copy do cliente; falta a crase em "à altura" (docs/PENDENCIAS.md).
+          subtitulo: "Infraestrutura a altura do padrão Nova Harmonia de qualidade",
+          missao: ["UMA GRANDE HISTÓRIA COM A NOBRE MISSÃO DE **URBANIZAR COM HARMONIA**"],
+          texto: missao.texto,
+          imagem: corteInfraestrutura,
+        },
+        futuro: {
+          foto: missao.foto,
+          frase: "UM PROJETO DE FUTURO PARA AS CIDADES. UM PROJETO DE VIDA PARA AS PESSOAS.",
+          mapa: missao.mapa,
+          presenca: "PRESENTE NAS 5 REGIÕES DO PAÍS, CRIANDO SOLUÇÕES INOVADORAS PARA QUE AS PESSOAS VIVAM MELHOR.",
+        },
+        grupo: {
+          chamada: "Confie em quem é referência nacional em **empreendimentos de qualidade.**",
+          frase: "UMA GRANDE HISTÓRIA\nNÃO SE ESCREVE DA NOITE PARA O DIA",
+          // Logo azul da LP no ar (o logo-vertical.svg do projeto é verde).
+          logos: [{ src: `${V}/logo-nova-harmonia.png`, largura: 1244, altura: 736, alt: "Nova Harmonia Bairros Planejados" }, marcasGrupo.sfa],
+          paragrafos: grupo.paragrafos,
+          setores: [
+            "BAIRROS PLANEJADOS | SHOPPING CENTERS | CONSTRUÇÃO CIVIL | AGRONEGÓCIO",
+            "REDE NOVO ATACAREJO | HOTÉIS | FACULDADES",
+          ],
+          fotos: grupo.fotos,
+        },
+        stand: {
+          titulo: "Visite nosso stand de vendas",
+          // Mesmo endereço do mapa da LP no ar.
+          mapaUrl:
+            "https://maps.google.com/maps?q=Av.%20Sen.%20Salgado%20Filho%2C%207700%20-%20Jardim%20Krahe%2C%20Viam%C3%A3o%20-%20RS%2C%2094440-000&t=m&z=17&output=embed&iwloc=near",
+          mapaTitulo: "Mapa do stand de vendas: Av. Sen. Salgado Filho, 7700, Viamão/RS",
+          foto: { src: "/img/nova-harmonia/institucional/background-home.webp", largura: 1620, altura: 1080, alt: "Stand de vendas da Nova Harmonia" },
+        },
       },
-    },
-    {
-      tipo: "implantacao",
-      variante: "largura",
-      sobretitulo: "Implantação",
-      // proposta
-      titulo: { antes: "Encontre o seu lugar ", destaque: "no Harmoni" },
-      planta: render("masterplan"),
-      legenda: [
-        { titulo: "Portaria", icone: "portaria" },
-        { titulo: "Salão de festas", icone: "salao" },
-        { titulo: "Fogo de chão", icone: "fogo" },
-        { titulo: "Mercadinho", icone: "mercado" },
-        { titulo: "Car care", icone: "carro" },
-        { titulo: "Quadra poliesportiva", icone: "quadra" },
-        { titulo: "Chimarródromo e redário", icone: "chimarrao" },
-        { titulo: "Pista de cooper", icone: "pista-cooper" },
-        { titulo: "Academia", icone: "academia" },
-        { titulo: "Brinquedoteca", icone: "brinquedoteca" },
-        { titulo: "Espaço gourmet", icone: "gourmet" },
-        { titulo: "Quadra de areia", icone: "areia" },
-        { titulo: "Piscina adulto", icone: "piscina" },
-        { titulo: "Piscina infantil", icone: "piscina" },
-        { titulo: "Playground", icone: "playground" },
-      ],
-      cta: lote,
-    },
-    {
-      tipo: "obra",
-      variante: "escura",
-      sobretitulo: "Como construímos",
-      // Copy do cliente; falta a crase em "à altura" (sinalizado em docs/PENDENCIAS.md).
-      titulo: { antes: "Infraestrutura a altura do padrão ", destaque: "Nova Harmonia", depois: " de qualidade" },
-      texto: "Padrão e qualidade construtiva que só a Nova Harmonia tem.",
-      imagem: corteInfraestrutura,
-      itens: [
-        { titulo: "Pavimentação em pavs", icone: "pavimentacao" },
-        { titulo: "Meio-fio com sarjetas de 45cm", icone: "meio-fio-com-sarjeta" },
-        { titulo: "Rede e reservatório de água", icone: "rede-de-agua" },
-        { titulo: "Rede de esgoto", icone: "rede-de-esgoto" },
-        { titulo: "Rede de drenagem pluvial", icone: "rede-de-drenagem" },
-        { titulo: "Rede elétrica", icone: "rede-eletrica" },
-        { titulo: "Iluminação pública em LED", icone: "iluminacao-led" },
-        { titulo: "Portaria de entrada social", icone: "portaria" },
-        { titulo: "Portaria de entrada de serviço", icone: "chave" },
-      ],
-    },
-    { tipo: "grupo", variante: "centro" },
-    {
-      tipo: "contato",
-      variante: "foto",
-      sobretitulo: "Telefones para contato",
-      titulo: { antes: "Visite nosso ", destaque: "stand de vendas" },
-      imagem: render("salao"),
-      formulario: { titulo: "Quero falar com um consultor", botao: "Quero condição de lançamento" },
     },
   ],
   legal: {

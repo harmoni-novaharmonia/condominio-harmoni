@@ -1,0 +1,269 @@
+/* =========================================================
+   Harmoni Jardins: seções exclusivas (src/empreendimentos/jardins/secoes).
+   Revisão aprovada em 2026-10-06. Sálvia, linho e verde-mata; motivos tirados
+   do nome: a folha (dois cantos opostos arredondados) e a semente (o círculo).
+   Duas larguras (casca de 1320px ou ponta a ponta) e um gesto por seção.
+   ========================================================= */
+.lp[data-tema="jardins"] {
+  --casca: 1320px;
+  --salvia: #e9ece3;
+  --salvia-2: #dfe4d6;
+  --mata: #1d3128;
+  --mata-2: #263d32;
+  --folha-txt: #44634d;
+  --folha-r: clamp(72px, 11vw, 190px);
+}
+.lp :is(.jd-hero, .jd-linho, .jd-local, .jd-impl, .jd-canteiros, .jd-grupo, .jd-contato) .d em { color: var(--folha-txt); }
+.lp .jd-folha { margin: 0; overflow: hidden; border-radius: var(--folha-r) 0; background: var(--salvia-2); }
+.lp .jd-cartao { padding: clamp(22px, 3vw, 34px); border-radius: 8px; background: #ffffff; box-shadow: 0 30px 60px -40px rgba(29, 49, 40, 0.5); }
+@keyframes jd-giro { to { rotate: 360deg; } }
+
+/* ---------- hero: a semente que vira folha ---------- */
+.lp .jd-hero { padding: 128px 0 clamp(64px, 7vw, 104px); background: var(--salvia); }
+.lp .jd-hero-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 96px); align-items: center; }
+.lp .jd-hero h1 { font-size: clamp(40px, 4.8vw, 72px); line-height: 1.02; }
+.lp .jd-hero .txt { margin-top: 20px; }
+.lp .jd-hero .jd-cartao { margin-top: 32px; }
+.lp .jd-hero-foto { position: relative; height: clamp(520px, calc(100svh - 190px), 740px); }
+.lp .jd-hero-foto .jd-folha { position: absolute; inset: 0; animation: jd-brota 1.7s 0.1s var(--ease) both; }
+.lp .jd-hero-foto img { object-position: 74% center; animation: lp-zoom-curto 2.6s var(--ease) both; }
+@keyframes jd-brota { from { border-radius: 50%; transform: scale(0.4); opacity: 0; } 30% { opacity: 1; } }
+.lp .jd-selo { position: absolute; z-index: 3; left: -66px; bottom: 64px; display: grid; place-items: center; width: 150px; height: 150px; border-radius: 50%; background: var(--acento); color: var(--noite); box-shadow: 0 20px 40px -22px rgba(29, 49, 40, 0.6); animation: lp-sobe 1s 1.2s var(--ease) both; }
+.lp .jd-selo svg { position: absolute; inset: 0; overflow: visible; animation: jd-giro 24s linear infinite; }
+.lp .jd-selo text { font-size: 10.6px; font-weight: 500; letter-spacing: 0.16em; fill: currentColor; }
+.lp .jd-selo .ict { width: 34px; height: 34px; }
+@media (max-width: 980px) {
+  .lp .jd-hero { padding-top: 100px; }
+  .lp .jd-hero-grade { grid-template-columns: 1fr; }
+  .lp .jd-hero-foto { order: -1; height: min(96vw, 480px); }
+  .lp .jd-selo { left: auto; right: 12px; bottom: -44px; width: 120px; height: 120px; }
+  .lp .jd-selo svg { scale: 0.8; }
+  .lp .jd-selo .ict { width: 28px; height: 28px; }
+}
+
+/* ---------- conceito: a família sobre o linho ---------- */
+/* A foto vertical encosta no pé da seção; o linho dela se funde com o fundo. */
+.lp .jd-linho { position: relative; overflow: hidden; padding-top: clamp(64px, 7vw, 104px); background: #efe3cd; }
+.lp .jd-linho-grade { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 0 clamp(40px, 6vw, 96px); align-items: center; }
+.lp .jd-linho-txt { padding-bottom: clamp(72px, 8vw, 120px); }
+.lp .jd-linho-txt .pilha-txt { max-width: 560px; margin-top: 24px; }
+.lp .jd-linho-txt .txt { color: #4f5a5c; }
+.lp .jd-linho-foto {
+  align-self: end;
+  justify-self: center;
+  width: min(100%, 600px);
+  margin: 0;
+  aspect-ratio: 632 / 730;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 26%), linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-composite: source-in;
+  mask: linear-gradient(180deg, transparent, #000 26%) intersect, linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+  transition: opacity 1.2s, translate 1.6s var(--ease);
+}
+.lp .jd-linho-foto > img { object-position: center bottom; }
+.lp .jd-linho.espera .jd-linho-foto { opacity: 0; translate: 0 8%; }
+.lp .jd-fatos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 36px 0 40px; border-block: 1px solid rgba(33, 61, 73, 0.16); }
+.lp .jd-fatos li { display: grid; align-content: start; gap: 12px; padding: 20px 18px; border-left: 1px solid rgba(33, 61, 73, 0.16); font-size: 17px; font-weight: 400; line-height: 1.3; }
+.lp .jd-fatos li:first-child { padding-left: 0; border-left: 0; }
+.lp .jd-fatos .ict { width: 32px; height: 32px; background: var(--acento); }
+@media (max-width: 900px) {
+  .lp .jd-linho-grade { grid-template-columns: 1fr; }
+  .lp .jd-linho-txt { padding-bottom: 8px; }
+  .lp .jd-linho-foto { width: min(100%, 420px); }
+}
+@media (max-width: 520px) {
+  .lp .jd-fatos { grid-template-columns: 1fr; }
+  .lp .jd-fatos li { grid-template-columns: auto 1fr; align-items: center; padding: 14px 0; border-left: 0; border-top: 1px solid rgba(33, 61, 73, 0.16); }
+  .lp .jd-fatos li:first-child { border-top: 0; }
+}
+
+/* ---------- localização: o mapa que se afasta ---------- */
+.lp .jd-local-cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px clamp(40px, 6vw, 96px); align-items: end; margin-bottom: clamp(36px, 4vw, 56px); }
+.lp .jd-local-grade { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 3vw, 40px); align-items: stretch; }
+.lp .jd-local-lista { display: flex; flex-direction: column; }
+.lp .jd-paradas { flex: 1; display: grid; grid-auto-rows: 1fr; border-top: 1px solid var(--linha); }
+.lp .jd-paradas li { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--linha); color: var(--cinza-2); transition: color 0.5s; }
+.lp .jd-paradas .ict { width: 30px; height: 30px; background: #c3cbc0; transition: background 0.5s; }
+.lp .jd-paradas li.on { color: var(--petroleo); }
+.lp .jd-paradas li.on .ict { background: var(--folha-txt); }
+.lp .jd-paradas li:first-child.on .ict { background: var(--acento); }
+.lp .jd-paradas strong { display: block; font-size: 19px; font-weight: 400; line-height: 1.3; }
+.lp .jd-paradas span { font-size: 14px; }
+.lp .jd-local .endereco { margin-top: 18px; background: var(--salvia); }
+.lp .jd-mapa { position: relative; max-width: 100%; margin: 0; aspect-ratio: 1000 / 560; overflow: hidden; border-radius: var(--folha-r) 0; background: #e2e7d8; }
+.lp .jd-mapa-mov { position: absolute; inset: 0; will-change: transform; }
+.lp .jd-mapa svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lp .jd-m-quadras { fill: rgba(29, 49, 40, 0.075); }
+.lp .jd-m-parques { fill: #cfdac2; }
+.lp .jd-m-rio { fill: none; stroke: #b7ccd0; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+.lp .jd-m-ruas { fill: none; stroke: rgba(255, 255, 255, 0.9); stroke-width: 3.5; stroke-linecap: round; }
+.lp .jd-m-av-borda { fill: none; stroke: rgba(29, 49, 40, 0.14); stroke-width: 13; stroke-linecap: round; }
+.lp .jd-m-av { fill: none; stroke: #ffffff; stroke-width: 9; stroke-linecap: round; }
+.lp .jd-m-acesso { fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: round; }
+.lp .jd-m-aero rect { fill: #c9cfc4; }
+.lp .jd-m-aero path { stroke: #ffffff; stroke-width: 1.6; stroke-dasharray: 8 7; }
+.lp .jd-m-rotulo { font-size: 15px; font-style: italic; letter-spacing: 0.04em; fill: #6f8f95; }
+.lp .jd-m-cidade { font-size: 15px; font-weight: 500; letter-spacing: 0.34em; fill: rgba(29, 49, 40, 0.3); text-anchor: middle; }
+/* Rótulos: âncora sem tamanho no ponto, conteúdo contra-escalado para não crescer com o zoom. */
+.lp .jd-mp { position: absolute; z-index: 2; width: 0; height: 0; scale: calc(1 / var(--z, 1)); transform-origin: 0 0; opacity: 0; transition: opacity 0.5s; }
+.lp .jd-mp.on { opacity: 1; }
+.lp .jd-mp > span { position: absolute; left: -9px; top: 0; translate: 0 -50%; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.lp .jd-mp i { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--folha-txt); box-shadow: 0 0 0 5px rgba(68, 99, 77, 0.2); }
+.lp .jd-mp b { padding: 6px 12px; border-radius: 14px 3px; background: #ffffff; font-size: 14px; font-weight: 500; box-shadow: 0 8px 20px -12px rgba(29, 49, 40, 0.6); }
+.lp .jd-mp-casa > span { left: -22px; }
+.lp .jd-mp-casa i { display: grid; place-items: center; width: 44px; height: 44px; background: var(--acento); color: var(--noite); box-shadow: 0 0 0 8px rgba(236, 159, 105, 0.25); }
+.lp .jd-mp-casa i .ict { width: 24px; height: 24px; }
+.lp .jd-mp-casa b { background: var(--mata); color: var(--creme); }
+.lp .jd-mapa figcaption { position: absolute; z-index: 3; top: 14px; right: 18px; font-size: 12px; color: rgba(29, 49, 40, 0.6); }
+@media (max-width: 900px) {
+  .lp .jd-local-cab, .lp .jd-local-grade { grid-template-columns: 1fr; }
+  .lp .jd-local-lista { order: 2; }
+  .lp .jd-mapa { aspect-ratio: 1000 / 760; }
+  .lp .jd-mp b { padding: 4px 9px; font-size: 12px; }
+}
+
+/* ---------- perspectivas: palco em folha e sementes ---------- */
+.lp .jd-sementes { padding-block: clamp(80px, 8vw, 120px); background: var(--mata); }
+.lp .jd-sm-ctrl { display: flex; align-items: center; gap: 20px; }
+.lp .jd-palco { position: relative; height: clamp(360px, min(42vw, 100svh - 400px), 600px); overflow: hidden; isolation: isolate; border-radius: var(--folha-r) 0; background: var(--mata-2); cursor: zoom-in; }
+.lp .jd-palco-foto { position: absolute; inset: 0; z-index: 0; margin: 0; clip-path: circle(0% at var(--cx, 50%) 100%); }
+.lp .jd-palco-foto img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); transition: transform 1.8s var(--ease); }
+.lp .jd-palco-foto.on { z-index: 2; clip-path: circle(150% at var(--cx, 50%) 100%); transition: clip-path 1.25s cubic-bezier(0.6, 0, 0.2, 1); }
+.lp .jd-palco-foto.on img { transform: none; }
+.lp .jd-palco-foto.antes { z-index: 1; clip-path: circle(150% at 50% 50%); }
+.lp .jd-palco-foto .selo { top: 16px; right: 16px; }
+.lp .jd-palco::after { content: ""; position: absolute; inset: 45% 0 0; z-index: 3; background: linear-gradient(0deg, rgba(13, 26, 22, 0.78), transparent); pointer-events: none; }
+.lp .jd-palco-leg { position: absolute; z-index: 4; left: clamp(28px, 4vw, 56px); bottom: clamp(24px, 3vw, 40px); display: grid; gap: 2px; pointer-events: none; }
+.lp .jd-palco-leg b { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--acento); }
+.lp .jd-palco-leg strong { font-size: clamp(30px, 3vw, 46px); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; }
+.lp .jd-palco-leg span { font-size: 17px; opacity: 0.82; }
+.lp .jd-fila { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; }
+.lp .jd-semente { position: relative; flex: 1 1 0; min-width: 0; display: grid; justify-items: center; gap: 12px; padding-top: 6px; }
+.lp .jd-sem-img { width: 84px; height: 84px; overflow: hidden; border-radius: 50%; opacity: 0.5; filter: saturate(0.6); transition: opacity 0.4s, filter 0.4s, transform 0.5s var(--ease); }
+.lp .jd-sem-img img { width: 100%; height: 100%; object-fit: cover; }
+.lp .jd-semente:hover .jd-sem-img { opacity: 0.85; }
+.lp .jd-semente[aria-pressed="true"] .jd-sem-img { opacity: 1; filter: none; transform: scale(1.04); }
+.lp .jd-anel { position: absolute; top: 0; left: 50%; width: 96px; height: 96px; translate: -50% 0; rotate: -90deg; overflow: visible; pointer-events: none; }
+.lp .jd-anel circle { fill: none; stroke: var(--acento); stroke-width: 2.6; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.lp .jd-semente[aria-pressed="true"] .jd-anel circle { stroke-dashoffset: 0; }
+.lp .jd-sementes.auto .jd-semente[aria-pressed="true"]:not(.corre) .jd-anel circle { stroke-dashoffset: 1; }
+.lp .jd-semente.corre .jd-anel circle { animation: jd-anel 6s linear forwards; }
+@keyframes jd-anel { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.lp .jd-semente small { max-width: 100%; overflow: hidden; font-size: 14px; color: rgba(244, 235, 216, 0.6); text-overflow: ellipsis; white-space: nowrap; transition: color 0.3s; }
+.lp .jd-semente[aria-pressed="true"] small { font-weight: 400; color: var(--creme); }
+@media (max-width: 760px) {
+  .lp .jd-sm-ctrl .setas-r { display: none; }
+  .lp .jd-palco { height: min(110vw, 460px); }
+  .lp .jd-fila { justify-content: flex-start; margin-inline: calc(var(--margem) * -1); padding-inline: var(--margem); overflow-x: auto; scrollbar-width: none; }
+  .lp .jd-fila::-webkit-scrollbar { display: none; }
+  .lp .jd-semente { flex: 0 0 88px; }
+  .lp .jd-sem-img { width: 66px; height: 66px; }
+  .lp .jd-anel { width: 78px; height: 78px; }
+}
+
+/* ---------- implantação: lupa ---------- */
+.lp .jd-impl { background: var(--salvia); }
+.lp .jd-planta { position: relative; max-width: 100%; aspect-ratio: 1536 / 837; overflow: hidden; border-radius: calc(var(--folha-r) * 0.6) 0; background: #ffffff; box-shadow: 0 50px 90px -70px rgba(29, 49, 40, 0.6); }
+.lp .jd-planta > img { width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.lp .jd-lente { position: absolute; top: 0; left: 0; z-index: 3; width: 240px; height: 240px; margin: -120px 0 0 -120px; border: 4px solid #ffffff; border-radius: 50%; background: #ffffff var(--img) no-repeat; box-shadow: 0 24px 50px -18px rgba(13, 26, 22, 0.6); opacity: 0; scale: 0.5; pointer-events: none; transition: opacity 0.25s, scale 0.4s var(--ease); }
+.lp .jd-planta.mira { cursor: none; }
+.lp .jd-planta.mira .jd-lente { opacity: 1; scale: 1; }
+.lp .jd-planta-dica { position: absolute; z-index: 2; left: 18px; bottom: 16px; padding: 7px 12px; border-radius: 14px 3px; background: rgba(29, 49, 40, 0.86); color: var(--creme); font-size: 13px; transition: opacity 0.3s; }
+.lp .jd-planta.mira .jd-planta-dica { opacity: 0; }
+.lp .jd-planta-tela { position: absolute; z-index: 4; right: 16px; bottom: 16px; padding: 9px 16px; border-radius: 999px; background: #ffffff; color: var(--mata); font-size: 14px; font-weight: 500; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.5); transition: background 0.25s, color 0.25s; }
+.lp .jd-planta-tela:hover { background: var(--mata); color: var(--creme); }
+.lp .jd-impl-leg { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.lp .jd-impl-leg li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 400; line-height: 1.3; }
+.lp .jd-bolha { flex: none; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: #ffffff; color: var(--folha-txt); }
+.lp .jd-bolha .ict { width: 26px; height: 26px; }
+@media (hover: none), (pointer: coarse) { .lp .jd-planta { cursor: zoom-in; } .lp .jd-planta-dica { display: none; } }
+@media (max-width: 1060px) { .lp .jd-impl-leg { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .lp .jd-impl-leg { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- diferenciais: canteiros ---------- */
+/* A foto é a semente redonda do canto; no hover ela abre em círculo até ocupar o canteiro. */
+.lp .jd-cant-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.lp .jd-cant { --sx: calc(100% - 58px); --sy: 58px; position: relative; isolation: isolate; display: grid; align-content: end; gap: 4px; min-height: 200px; padding: 26px; overflow: hidden; border-radius: 44px 6px; background: var(--salvia); }
+.lp .jd-cant > .ict { position: absolute; top: 28px; left: 26px; width: 38px; height: 38px; background: var(--folha-txt); }
+.lp .jd-cant strong { font-size: 21px; font-weight: 400; line-height: 1.25; transition: color 0.4s; }
+.lp .jd-cant small { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cinza-2); transition: color 0.4s; }
+.lp .jd-cant-foto { position: absolute; inset: 0; z-index: -1; clip-path: circle(0 at var(--sx) var(--sy)); transition: clip-path 0.8s var(--ease); }
+.lp .jd-cant-foto img, .lp .jd-cant-sem img { width: 100%; height: 100%; object-fit: cover; }
+.lp .jd-cant-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(13, 26, 22, 0.86), rgba(13, 26, 22, 0.2) 65%, rgba(13, 26, 22, 0.32)); }
+.lp .jd-cant-sem { position: absolute; z-index: 1; top: calc(var(--sy) - 32px); right: calc(100% - var(--sx) - 32px); width: 64px; height: 64px; overflow: hidden; border-radius: 50%; box-shadow: 0 0 0 4px #ffffff; transition: opacity 0.4s, scale 0.6s var(--ease); }
+.lp .jd-cant.com-foto:hover .jd-cant-foto { clip-path: circle(170% at var(--sx) var(--sy)); }
+.lp .jd-cant.com-foto:hover .jd-cant-sem { opacity: 0; scale: 1.6; }
+.lp .jd-cant.com-foto:hover :is(strong, small) { color: var(--creme); }
+.lp .jd-cant.com-foto:hover > .ict { background: var(--acento); transform: none; }
+.lp .jd-cant:not(.com-foto):hover > .ict { background: var(--folha-txt); }
+.lp .jd-cant-cta { align-content: space-between; gap: 24px; background: var(--mata); color: var(--creme); }
+.lp .jd-cant-cta .d { font-size: clamp(24px, 2.2vw, 31px); line-height: 1.12; }
+.lp .jd-cant-cta .d em { color: var(--acento); }
+.lp .jd-cant-cta .bt { justify-self: start; }
+@media (max-width: 1060px) { .lp .jd-cant-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lp .jd-cant-cta { grid-column: span 2; } }
+@media (max-width: 700px) {
+  .lp .jd-cant-grade { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lp .jd-cant { --sx: calc(100% - 44px); --sy: 44px; min-height: 168px; padding: 20px; border-radius: 32px 5px; }
+  .lp .jd-cant-sem { top: calc(var(--sy) - 24px); right: calc(100% - var(--sx) - 24px); width: 48px; height: 48px; }
+  .lp .jd-cant > .ict { top: 22px; left: 20px; width: 32px; height: 32px; }
+  .lp .jd-cant strong { font-size: 17px; }
+}
+@media (max-width: 420px) { .lp .jd-cant-cta { grid-column: 1 / -1; } }
+
+/* ---------- corte da rua em dois níveis ---------- */
+/* Cada lista fica ao lado da sua metade da imagem; a linha do chão atravessa as duas colunas. */
+.lp .jd-niveis { background: var(--mata); }
+.lp .jd-niveis .dica { color: rgba(244, 235, 216, 0.6); }
+.lp .jd-niveis-grade { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); align-items: stretch; }
+.lp .jd-corte { position: relative; max-width: 100%; aspect-ratio: 1620 / 1080; overflow: hidden; border-radius: calc(var(--folha-r) * 0.6) 0 0 0; }
+.lp .jd-corte > img { width: 100%; height: 100%; object-fit: cover; }
+.lp .jd-veu { position: absolute; left: 0; right: 0; z-index: 1; background: rgba(13, 26, 22, 0.66); opacity: 0; pointer-events: none; transition: opacity 0.5s; }
+.lp .jd-veu-cima { top: 0; height: var(--chao); }
+.lp .jd-veu-baixo { top: var(--chao); bottom: 0; }
+.lp .jd-corte[data-zona="baixo"] .jd-veu-cima, .lp .jd-corte[data-zona="cima"] .jd-veu-baixo { opacity: 1; }
+.lp .jd-chao { position: absolute; z-index: 2; left: 0; right: 0; top: var(--chao); border-top: 2px dashed rgba(255, 255, 255, 0.8); pointer-events: none; }
+.lp .jd-niveis-listas { display: grid; grid-template-rows: var(--chao) minmax(0, 1fr); border-radius: 0 0 calc(var(--folha-r) * 0.6) 0; background: var(--mata-2); }
+.lp .jd-nivel { display: flex; flex-direction: column; justify-content: center; padding: 18px clamp(20px, 2.4vw, 32px); }
+.lp .jd-nivel + .jd-nivel { border-top: 2px dashed rgba(244, 235, 216, 0.55); }
+.lp .jd-nivel h3 { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acento); cursor: default; }
+.lp .jd-nivel h3 small { font-size: 12px; letter-spacing: 0.06em; text-transform: none; color: rgba(244, 235, 216, 0.5); }
+.lp .jd-nivel li + li { border-top: 1px solid rgba(244, 235, 216, 0.1); }
+.lp .jd-nivel button { display: flex; align-items: center; gap: 14px; width: 100%; padding: 9px 8px; border-radius: 6px; color: rgba(244, 235, 216, 0.78); font-size: 16.5px; font-weight: 300; text-align: left; transition: background 0.3s, color 0.3s; }
+.lp .jd-nivel button:hover, .lp .jd-nivel button[aria-current="true"] { background: rgba(244, 235, 216, 0.07); color: #ffffff; }
+.lp .jd-nivel button b { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(244, 235, 216, 0.12); font-size: 12px; font-weight: 600; transition: background 0.3s, color 0.3s; }
+.lp .jd-nivel button[aria-current="true"] b { background: var(--acento); color: var(--noite); }
+.lp .jd-nivel .ict { width: 24px; height: 24px; background: var(--acento); }
+@media (max-width: 900px) {
+  .lp .jd-niveis-grade { grid-template-columns: 1fr; }
+  .lp .jd-niveis-listas { grid-template-rows: none; }
+}
+
+/* ---------- grupo: colunas de fotos que deslizam ---------- */
+.lp .jd-grupo { overflow: clip; background: var(--creme-2); }
+.lp .jd-grupo-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 96px); align-items: stretch; }
+.lp .jd-logos { display: flex; align-items: center; gap: clamp(24px, 4vw, 48px); margin-bottom: 36px; }
+.lp .jd-logos img { width: auto; height: 60px; }
+.lp .jd-logos i { width: 1px; height: 52px; background: currentColor; opacity: 0.25; }
+.lp .jd-grupo-txt .pilha-txt { margin-top: 28px; }
+.lp .jd-grupo-fotos { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-height: 620px; overflow: hidden; -webkit-mask: linear-gradient(180deg, transparent, #000 9%, #000 91%, transparent); mask: linear-gradient(180deg, transparent, #000 9%, #000 91%, transparent); }
+.lp .jd-gr-col { display: flex; flex-direction: column; gap: 16px; height: calc(100% + 150px); margin-top: -75px; will-change: transform; }
+.lp .jd-gr-col + .jd-gr-col { margin-top: -20px; }
+.lp .jd-gr-foto { flex: 1; min-height: 0; margin: 0; border-radius: 48px 5px; }
+.lp .jd-gr-foto figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 12px; border-radius: 12px 3px; background: rgba(250, 246, 236, 0.95); font-size: 14px; font-weight: 500; }
+.lp .jd-grupo .numeros { margin-top: clamp(48px, 6vw, 72px); border-top: 1px solid var(--linha); }
+.lp .jd-grupo .numeros li:first-child { padding-left: 0; }
+@media (max-width: 900px) { .lp .jd-grupo-grade { grid-template-columns: 1fr; } .lp .jd-grupo-fotos { height: 520px; min-height: 0; } }
+
+/* ---------- contato: a folha espelhada ---------- */
+.lp .jd-contato { background: var(--salvia); }
+.lp .jd-ct-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 104px); align-items: stretch; }
+.lp .jd-ct-foto { position: relative; min-height: 580px; }
+.lp .jd-ct-foto .jd-folha { position: absolute; inset: 0; border-radius: 0 var(--folha-r); transition: border-radius 1.5s var(--ease), transform 1.5s var(--ease), opacity 0.9s; }
+.lp .jd-ct-foto img { object-position: center 30%; }
+.lp .jd-contato.espera .jd-folha { border-radius: 50%; transform: scale(0.45); opacity: 0; }
+.lp .jd-ct-logo { width: auto; height: 84px; margin-bottom: 24px; }
+.lp .jd-ct-corpo .jd-cartao { margin-top: 32px; }
+.lp .jd-ct-corpo .bt-whatsapp { margin-top: 24px; }
+@media (max-width: 900px) {
+  .lp .jd-ct-grade { grid-template-columns: 1fr; }
+  .lp .jd-ct-foto { height: min(100vw, 460px); min-height: 0; }
+}

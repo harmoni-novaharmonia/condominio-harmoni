@@ -1,6 +1,11 @@
 // Contrato de dados de uma LP. Cada empreendimento preenche o seu dados.ts;
 // os componentes de src/secoes/lp/ só leem daqui e não guardam texto.
 import type { NomeIcone } from "./icones";
+import type { SecaoArbore } from "./arbore/tipos";
+import type { SecaoEssenza } from "./essenza/tipos";
+import type { SecaoJardins } from "./jardins/tipos";
+import type { SecaoVale } from "./vale/tipos";
+import type { PaginaNoAr } from "./vinhedos/tipos";
 
 export type Arquivo = { src: string; largura: number; altura: number };
 
@@ -19,7 +24,12 @@ export type Item = { titulo: string; icone: NomeIcone; texto?: string };
 
 export type Fundo = "branco" | "creme" | "areia" | "escuro" | "noite";
 
-export type Formulario = { titulo?: string; botao: string };
+export type Formulario = {
+  titulo?: string;
+  botao: string;
+  /** Troca os placeholders padrão (a página do Vinhedos usa os da LP no ar). */
+  placeholders?: { nome?: string; telefone?: string; email?: string };
+};
 
 // ---------- seções ----------
 
@@ -153,6 +163,12 @@ export type SecaoGrupo = {
 
 export type SecaoMissao = { tipo: "missao" };
 
+/** Cartões dos outros Harmonis no fim da página (para a LP não terminar sem saída). */
+export type SecaoOutros = { tipo: "outros" };
+
+/** Página inteira própria entre o header e o rodapé do projeto (Vinhedos: cópia da LP no ar). */
+export type SecaoNoAr = { tipo: "no-ar"; pagina: PaginaNoAr };
+
 export type SecaoContato = {
   tipo: "contato";
   /** foto: foto escurecida + cartão · centro: logo e cartão centralizados ·
@@ -177,7 +193,14 @@ export type Secao =
   | SecaoObra
   | SecaoGrupo
   | SecaoMissao
-  | SecaoContato;
+  | SecaoContato
+  | SecaoNoAr
+  | SecaoOutros
+  // Seções exclusivas (pasta secoes/ de cada empreendimento).
+  | SecaoEssenza
+  | SecaoVale
+  | SecaoJardins
+  | SecaoArbore;
 
 // ---------- página ----------
 
@@ -205,6 +228,8 @@ export type LP = {
     /** POST do lead. Vazio enquanto o endpoint não existir. */
     endpoint?: string;
   };
+  /** Barra fixa no celular com WhatsApp e o CTA do header (Essenza e Vale). */
+  barraCelular?: boolean;
   secoes: Secao[];
   legal: {
     /** Registro do empreendimento (matrícula, cartório, prefeitura). */

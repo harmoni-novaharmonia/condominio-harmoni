@@ -1,8 +1,14 @@
+import { BarraCelular } from "@/components/lp/BarraCelular";
 import { HeaderLP } from "@/components/lp/HeaderLP";
 import { Ic } from "@/components/lp/Ic";
 import { RodapeLP } from "@/components/lp/RodapeLP";
 import { textosHeader } from "@/empreendimentos/comum";
 import type { LP, Secao } from "@/empreendimentos/tipos";
+import { BlocoArbore } from "@/empreendimentos/arbore/secoes";
+import { BlocoEssenza } from "@/empreendimentos/essenza/secoes";
+import { BlocoJardins } from "@/empreendimentos/jardins/secoes";
+import { BlocoVale } from "@/empreendimentos/vale/secoes";
+import { PaginaNoAr } from "@/empreendimentos/vinhedos/secoes/PaginaNoAr";
 import { Chamada } from "./Chamada";
 import { Conceito } from "./Conceito";
 import { Contato } from "./Contato";
@@ -14,6 +20,7 @@ import { Implantacao } from "./Implantacao";
 import { Localizacao } from "./Localizacao";
 import { Missao } from "./Missao";
 import { Obra } from "./Obra";
+import { Outros } from "./Outros";
 import { Perspectivas } from "./Perspectivas";
 
 function Bloco({ s, lp }: { s: Secao; lp: LP }) {
@@ -42,13 +49,25 @@ function Bloco({ s, lp }: { s: Secao; lp: LP }) {
       return <Missao />;
     case "contato":
       return <Contato s={s} lp={lp} />;
+    case "no-ar":
+      return <PaginaNoAr p={s.pagina} lp={lp} />;
+    case "outros":
+      return <Outros lp={lp} />;
+    case "essenza":
+      return <BlocoEssenza s={s} lp={lp} />;
+    case "vale":
+      return <BlocoVale s={s} lp={lp} />;
+    case "jardins":
+      return <BlocoJardins s={s} lp={lp} />;
+    case "arbore":
+      return <BlocoArbore s={s} lp={lp} />;
   }
 }
 
 /** A ordem e a variante de cada seção vêm do dados.ts do empreendimento. */
 export function PaginaLP({ lp }: { lp: LP }) {
   return (
-    <div className="lp" data-tema={lp.tema}>
+    <div className="lp" data-tema={lp.tema} data-barra={lp.barraCelular || undefined}>
       <HeaderLP lp={lp} />
       <main>
         {lp.secoes.map((s, i) => (
@@ -56,6 +75,7 @@ export function PaginaLP({ lp }: { lp: LP }) {
         ))}
       </main>
       <RodapeLP lp={lp} />
+      {lp.barraCelular && <BarraCelular lp={lp} />}
       <a className="whats-flutuante" href={`https://wa.me/${lp.contato.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label={textosHeader.whatsapp}>
         <Ic nome="whatsapp" tamanho={28} className="ic-claro" />
       </a>

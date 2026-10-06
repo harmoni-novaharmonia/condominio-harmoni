@@ -23,7 +23,8 @@ const base = {
   brinquedoteca: r("brinquedoteca.webp", 1536, 863, "Brinquedoteca"),
   minimercado: r("minimercado.webp", 1536, 864, "Minimercado do condomínio"),
   academia: r("academia.webp", 1536, 863, "Academia"),
-  lavaJato: r("lava-jato.webp", 1536, 864, "Espaço car care"),
+  lavaJato: r("lava-jato.webp", 1536, 864, "Espaço car care, área externa"),
+  lavaJatoInterno: r("lava-jato-interno.webp", 1536, 864, "Espaço car care"),
   masterplan: {
     src: "/img/vinhedos/implantacao/masterplan.webp",
     largura: 1536,
@@ -57,4 +58,12 @@ export const estiloDeVida = {
   meninaCachorro: { src: `${V}/menina-e-cachorro.webp`, largura: 1620, altura: 1080, alt: "Menina abraçando o cachorro no parque" },
   familiaJardim: { src: `${V}/familia-no-jardim.webp`, largura: 843, altura: 1080, alt: "Pai carregando a filha nas costas no jardim" },
   familiaArLivre: { src: `${V}/familia-ao-ar-livre.webp`, largura: 748, altura: 1080, alt: "Família jovem ao ar livre" },
+} satisfies Record<string, Imagem>;
+
+// Fotos da Nova Harmonia usadas nas LPs revisadas de Jardins e Arbore (2026-10-06).
+export const fotosNovaHarmonia = {
+  /** Família real num lote de bairro Nova Harmonia, com a casa em obra ao fundo. Não é do Arbore. */
+  familiaLote: { src: "/img/nova-harmonia/institucional/familia.webp", largura: 1440, altura: 600, alt: "Família em frente à casa em construção no seu lote" },
+  /** Versão vertical da foto do conceito da LP no ar do Vinhedos: linho, a casa desenhada e a família. */
+  familiaLinho: { src: "/img/vinhedos/conceito/familia-celular.webp", largura: 632, altura: 1080, alt: "Mãe rindo abraçada aos dois filhos no gramado" },
 } satisfies Record<string, Imagem>;

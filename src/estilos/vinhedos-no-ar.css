@@ -1,0 +1,312 @@
+/* =========================================================
+   Vinhedos: a LP no ar (WordPress/Elementor) copiada seção por seção.
+   Medidas lidas da página publicada em 1440px e 390px, com os mesmos pontos
+   de quebra do Elementor (767px e 1024px). Header e rodapé são os do projeto.
+   ========================================================= */
+.lp .vna {
+  --vna-azul: #1b3a59;
+  --vna-petroleo: #233d48;
+  --vna-creme: #f4ead9;
+  --vna-ouro: #ca9e53;
+  --vna-ouro-hover: #b88b40;
+  --vna-bronze: #956617;
+  --vna-cinza: #f6f6f6;
+  --vna-laranja: #eaa067;
+  --vna-casca: min(1140px, 100% - 20px);
+  --vna-miolo: min(1120px, 100% - 40px);
+  font-family: var(--fonte-lato), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+}
+.lp .vna :where(h1, h2, h3) { font-weight: 400; }
+.lp .vna strong { font-weight: 700; }
+.lp .vna-centro { text-align: center; }
+
+/* botão dourado da página no ar (Roboto 500, 15px, raio 3px) */
+.lp .vna-bt {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 3px;
+  background: var(--vna-ouro);
+  color: #ffffff;
+  font-family: var(--fonte-roboto), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+.lp .vna-bt:hover { background: var(--vna-ouro-hover); }
+
+/* ---------- hero ---------- */
+.lp .vna-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 972px;
+  padding: 441px 0 39px;
+  background: #2f3b40 var(--fundo) 0 0 / max(1920px, 100%) auto no-repeat;
+  color: #ffffff;
+}
+.lp .vna-hero h1 { width: var(--vna-miolo); margin-inline: auto; font-size: 72px; line-height: 1; text-align: right; }
+.lp .vna-hero h1 span { display: block; }
+.lp .vna-hero-faixa { width: var(--vna-casca); margin: auto auto 0; font-size: 26px; line-height: 1.2; letter-spacing: 3.6px; text-align: center; }
+
+/* ---------- cadastro ---------- */
+.lp .vna-cadastro { padding: 63px 0; background: #ffffff; }
+.lp .vna-cadastro h2 { width: var(--vna-casca); margin: 0 auto 20px; font-size: 26px; line-height: 1; font-weight: 300; text-align: center; }
+.lp .vna-form { width: var(--vna-casca); margin-inline: auto; gap: 10px; color: #7a7a7a; font-family: var(--fonte-lato), sans-serif; }
+.lp .vna-form .campo { gap: 0; }
+.lp .vna-form .campo span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.lp .vna-form .campo input {
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #69727d;
+  border-radius: 34px;
+  background: #ffffff;
+  color: #333333;
+  font-family: var(--fonte-lato), sans-serif;
+  font-size: 13px;
+}
+.lp .vna-form .campo input:hover { background: #ffffff; }
+.lp .vna-form .campo input:focus { border-color: var(--vna-azul); box-shadow: none; }
+.lp .vna-form .campo input::placeholder { color: #7a7a7a; }
+.lp .vna-form .form-par { grid-template-columns: 1fr 1fr; gap: 10px; }
+.lp .vna-form .aceite { display: block; font-size: 13px; line-height: 24px; color: #7a7a7a; }
+.lp .vna-form .aceite input { display: inline-block; width: 13px; height: 13px; margin: 0 4px 0 0; vertical-align: -1px; accent-color: auto; }
+.lp .vna-form > .bt {
+  align-self: center;
+  width: 300px;
+  max-width: 100%;
+  min-height: 0;
+  height: 40px;
+  margin-top: 0;
+  padding: 0 12px;
+  white-space: nowrap;
+  border-radius: 3px;
+  background: var(--vna-ouro);
+  color: #ffffff;
+  font-family: var(--fonte-roboto), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.lp .vna-form > .bt::after { content: none; }
+.lp .vna-form > .bt:hover { translate: none; box-shadow: none; background: var(--vna-ouro-hover); }
+.lp .vna-form .form-retorno { font-family: var(--fonte-lato), sans-serif; color: #333333; }
+
+/* ---------- conceito (família sobre linho) ---------- */
+.lp .vna-conceito { min-height: 600px; padding: 66px 10px; background: var(--fundo) center / cover no-repeat; }
+.lp .vna-conceito-txt { width: var(--vna-miolo); margin-inline: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.lp .vna-conceito h2 { max-width: 438px; font-size: 24px; line-height: 1; }
+.lp .vna-conceito p { max-width: 342px; font-size: 19px; line-height: 1; font-weight: 300; text-align: justify; }
+.lp .vna-conceito .vna-pilares { max-width: 438px; font-size: 14px; font-weight: 700; text-align: left; }
+
+/* ---------- faixa "Uma localização..." ---------- */
+.lp .vna-faixa { padding: 30px 10px; background: var(--vna-petroleo); }
+.lp .vna-faixa h2 { font-size: 26px; line-height: 1; font-weight: 300; color: #fff7f7; text-align: center; }
+
+/* ---------- localização ---------- */
+.lp .vna-local { padding: 57px 10px 10px; }
+.lp .vna-local-caixa { width: var(--vna-casca); margin-inline: auto; padding: 20px 20px 72px; background: var(--vna-cinza); }
+.lp .vna-local-caixa img { width: 100%; }
+.lp .vna-local-caixa p { max-width: 930px; margin: 30px auto 0; font-size: 19px; line-height: 1; font-weight: 300; text-align: center; }
+
+/* ---------- chamada "A experiência Harmoni começa aqui!" ---------- */
+.lp .vna-chamada { --vna-corte: 150px; padding: 0 10px; background: linear-gradient(#ffffff 0 var(--vna-corte), var(--vna-creme) var(--vna-corte)); }
+.lp .vna-chamada-banner {
+  width: var(--vna-casca);
+  margin-inline: auto;
+  padding: 122px 20px;
+  border-radius: 22px;
+  background: var(--fundo) center / cover no-repeat;
+  color: #ffffff;
+  text-align: center;
+}
+.lp .vna-chamada-tit { margin-bottom: 34px; font-size: 55px; line-height: 33px; font-weight: 300; }
+.lp .vna-chamada-tit strong { font-weight: 400; }
+.lp .vna-chamada-txt { font-size: 19px; line-height: 15px; }
+
+/* ---------- bloco creme: diferenciais, perspectivas, saúde, infraestrutura, implantação ---------- */
+.lp .vna-creme { padding: 69px 10px 71px; background: var(--vna-creme); color: var(--vna-azul); }
+.lp .vna-bloco { width: var(--vna-miolo); margin-inline: auto; }
+.lp .vna-tit { padding-bottom: 14.4px; font-size: 37px; line-height: 33px; text-align: center; }
+.lp .vna-tit span { display: block; }
+.lp .vna-tit-p span + span { margin-top: 14.4px; }
+.lp .vna-tit-menor { font-size: 32px; }
+
+.lp .vna-icones { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px 40px; margin-top: 50px; }
+.lp .vna-icones li { display: flex; flex: 0 0 245px; flex-direction: column; align-items: center; gap: 15px; padding-bottom: 24px; font-size: 15px; line-height: 18px; text-align: center; }
+.lp .vna-icones img { width: 68px; height: 68px; object-fit: contain; }
+.lp .vna-icones-basico { margin-top: 40px; }
+.lp .vna-icones-basico li { font-size: 18px; line-height: 21.6px; }
+.lp .vna-icones-basico li:nth-child(n + 5) { flex-basis: 346px; }
+.lp .vna-icones-infra { row-gap: 60px; }
+.lp .vna-icones-infra li:nth-child(n + 5) { flex-basis: 188px; }
+
+.lp .vna-persp { margin-top: 19px; }
+.lp .vna-carrossel { position: relative; margin-top: 34px; touch-action: pan-y; }
+.lp .vna-carrossel-janela { position: relative; overflow: hidden; }
+.lp .vna-carrossel-trilho { display: flex; transition: transform 0.5s ease; }
+.lp .vna-carrossel-trilho li { flex: 0 0 100%; min-width: 0; padding: 10px 10px 19px; }
+.lp .vna-carrossel-trilho img { width: 100%; aspect-ratio: 1100 / 618; object-fit: cover; }
+.lp .vna-carrossel-trilho h3 { margin-top: 20px; font-size: 18px; line-height: 18px; font-weight: 300; text-align: center; text-transform: uppercase; }
+.lp .vna-carrossel-pontos { position: absolute; right: 108px; bottom: 98px; display: flex; gap: 12px; }
+.lp .vna-carrossel-pontos button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.55); cursor: pointer; }
+.lp .vna-carrossel-pontos button[aria-current="true"] { background: #ffffff; }
+.lp .vna-seta { position: absolute; bottom: 16px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; color: var(--vna-ouro); cursor: pointer; }
+.lp .vna-seta svg path { fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.lp .vna-seta-ant { left: calc(50% - 187px); }
+.lp .vna-seta-prox { left: calc(50% + 163px); }
+
+.lp .vna-filete { height: 2px; margin: 65px 0 55px; border: 0; background: var(--vna-ouro); }
+.lp .vna-bloco > .vna-filete:first-child { margin: 45px 0 35px; }
+.lp .vna-tit-saude { margin-top: 40px; }
+
+.lp .vna-implantacao h2 { font-size: 26px; line-height: 1; text-align: center; }
+.lp .vna-implantacao > img { width: 100%; margin: 20px 0 66px; }
+.lp .vna-legenda { display: flex; justify-content: space-between; margin-top: 75px; }
+.lp .vna-legenda ol { display: grid; gap: 21px; }
+.lp .vna-legenda li li { display: flex; align-items: center; gap: 16px; font-size: 18px; line-height: 27px; letter-spacing: -0.1px; color: #54595f; }
+.lp .vna-legenda b { display: grid; place-items: center; flex: none; width: 30px; height: 30px; margin-left: 4px; border-radius: 50%; background: var(--vna-ouro); color: var(--vna-azul); font-size: 17px; font-weight: 400; line-height: 1; }
+
+/* ---------- como construímos ---------- */
+.lp .vna-construimos { width: min(1130px, 100% - 40px); margin-inline: auto; padding: 63px 0 53px; color: var(--vna-azul); }
+.lp .vna-construimos-tit { padding-bottom: 14.4px; font-size: 27px; line-height: 40.5px; text-align: center; }
+.lp .vna-construimos-sub { margin-top: 5px; padding-bottom: 14.4px; font-size: 15px; line-height: 22.5px; font-weight: 300; color: var(--vna-petroleo); text-align: center; }
+.lp .vna-construimos-grade { display: grid; grid-template-columns: 363px minmax(0, 1fr); gap: 30px; align-items: start; margin-top: 30px; }
+.lp .vna-construimos-grade h2 { margin-top: 10px; font-size: 30px; line-height: 45px; }
+.lp .vna-construimos-grade p { max-width: 290px; margin-top: 34px; font-size: 16px; line-height: 24px; font-weight: 300; color: var(--vna-petroleo); }
+.lp .vna-construimos-grade img { width: 100%; }
+
+/* ---------- futuro + mapa do Brasil ---------- */
+.lp .vna-futuro { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; width: min(1100px, 100% - 40px); margin-inline: auto; padding: 30px 0; color: var(--vna-azul); }
+.lp .vna-futuro > img { width: 100%; aspect-ratio: 530 / 540; object-fit: cover; }
+.lp .vna-futuro p { margin-bottom: 34px; font-size: 18px; line-height: 27px; }
+.lp .vna-futuro div img { width: auto; height: 428px; margin-inline: auto; }
+.lp .vna-presenca { max-width: min(661px, 100% - 40px); margin: 0 auto; padding-bottom: 43px; font-size: 21px; line-height: 31.5px; color: var(--vna-azul); text-align: center; }
+
+/* ---------- grupo ---------- */
+.lp .vna-grupo { padding: 80px max(20px, (100% - 1080px) / 2) 74px; background: var(--vna-creme); color: var(--vna-azul); }
+.lp .vna-grupo h2 { padding-bottom: 14.4px; font-size: 23px; line-height: 34.5px; text-transform: uppercase; text-align: center; }
+.lp .vna-grupo-marcas { display: grid; grid-template-columns: 373fr 374fr 333fr; align-items: center; margin-top: 40px; }
+.lp .vna-grupo-marcas p { align-self: start; max-width: 267px; margin-top: 11px; font-size: 20px; line-height: 30px; text-transform: uppercase; }
+.lp .vna-grupo-marcas p span { display: block; }
+.lp .vna-grupo-marcas img { width: min(333px, 100%); height: 126px; object-fit: contain; }
+.lp .vna-grupo-txt { margin-top: 61px; }
+.lp .vna-grupo-txt p { margin-bottom: 14.4px; font-size: 15px; line-height: 22.5px; font-weight: 300; color: var(--vna-petroleo); text-align: justify; }
+.lp .vna-setores { margin-top: 26px; padding-bottom: 14.4px; font-size: 16px; line-height: 24px; color: var(--vna-bronze); text-align: center; }
+.lp .vna-setores span { display: block; }
+.lp .vna-grupo-linha { height: 2px; margin: 7px 0 44px; border: 0; background: var(--vna-azul); }
+.lp .vna-grupo-fotos { display: flex; gap: 20px; }
+.lp .vna-grupo-fotos li { flex: 0 0 162px; }
+.lp .vna-grupo-fotos img { width: 162px; height: 129px; object-fit: cover; }
+
+/* ---------- stand de vendas ---------- */
+.lp .vna-stand { padding: 74px 10px 85px; background: var(--vna-petroleo); }
+.lp .vna-stand h2 { padding-bottom: 14.4px; font-family: var(--fonte-poppins), sans-serif; font-size: 23px; line-height: 34.5px; text-transform: uppercase; color: var(--vna-laranja); text-align: center; }
+.lp .vna-stand-cartao { display: grid; grid-template-columns: 481fr 2px 499fr; column-gap: 29px; align-items: center; width: var(--vna-miolo); margin: 30px auto 0; padding: 100px 40px; background: #ffffff; }
+.lp .vna-stand-cartao iframe { width: 399px; max-width: 100%; height: 322px; border: 0; }
+.lp .vna-stand-linha { height: 340px; background: var(--vna-azul); }
+.lp .vna-stand-cartao img { width: 100%; aspect-ratio: 499 / 321; object-fit: cover; }
+
+/* tablet: dois slides por vez e as setas juntas, centralizadas embaixo (como no ar) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .lp .vna-carrossel { padding-bottom: 36px; }
+  .lp .vna-seta { bottom: 0; }
+  .lp .vna-seta-ant { left: calc(50% - 26px); }
+  .lp .vna-seta-prox { left: calc(50% + 2px); }
+}
+
+/* telas muito estreitas: o botão quebra a linha em vez de vazar */
+@media (max-width: 359px) { .lp .vna-bt { max-width: 100%; white-space: normal; } }
+
+/* =========================================================
+   Tablet (até 1024px): o bloco do conceito vira a versão de texto, como no ar.
+   ========================================================= */
+@media (max-width: 1024px) {
+  .lp .vna-hero { min-height: 964px; }
+  .lp .vna-conceito { min-height: 0; padding: 42px 10px; background: none; }
+  .lp .vna-conceito h2 { max-width: none; font-size: 18px; line-height: 27px; font-weight: 700; color: #193b56; }
+  .lp .vna-conceito p { max-width: none; font-size: 15px; line-height: 22.5px; text-align: left; color: #193b56; }
+  .lp .vna-conceito .vna-pilares { font-size: 13px; line-height: 19.5px; color: #193b56; }
+  .lp .vna-conceito .vna-bt { display: none; }
+  .lp .vna-construimos-grade { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+  .lp .vna-futuro div img { height: auto; width: 100%; }
+}
+
+/* =========================================================
+   Celular (até 767px)
+   ========================================================= */
+@media (max-width: 767px) {
+  .lp .vna-hero { min-height: 740px; padding: 401px 20px 56px; background-size: cover; background-position: 100% 50%; }
+  .lp .vna-hero h1 { width: 100%; font-size: 38px; }
+  .lp .vna-hero-faixa { width: 100%; font-size: 11px; line-height: 1.3; }
+
+  .lp .vna-cadastro { padding: 20px 20px 30px; }
+  .lp .vna-cadastro h2 { width: 100%; font-size: 19px; }
+  .lp .vna-form { width: 100%; }
+  .lp .vna-form .form-par { grid-template-columns: 1fr; }
+
+  .lp .vna-conceito { min-height: 676px; padding: 42px 20px; background: var(--fundo-celular) center / cover no-repeat; }
+  .lp .vna-conceito-txt { width: 100%; }
+
+  .lp .vna-faixa { padding: 20px; }
+  .lp .vna-faixa h2 { font-size: 18px; line-height: 18px; }
+
+  .lp .vna-local-caixa { width: 100%; padding: 10px 10px 72px; }
+  .lp .vna-local-caixa p { margin-top: 21px; text-align: justify; }
+
+  .lp .vna-chamada { --vna-corte: 65px; padding: 0 20px; }
+  .lp .vna-chamada-banner { width: 100%; padding: 20px; }
+  .lp .vna-chamada-tit { margin-bottom: 33px; font-size: 26px; line-height: 28.6px; }
+  .lp .vna-chamada-txt { font-size: 15px; line-height: 22.5px; }
+
+  .lp .vna-creme { padding: 31px 10px 40px; }
+  .lp .vna-bloco { width: 100%; padding-inline: 10px; }
+  .lp .vna-tit { font-size: 22px; }
+  .lp .vna-tit-menor { font-size: 23px; }
+  .lp .vna-icones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
+  .lp .vna-icones li { font-size: 14px; line-height: 16.8px; padding-bottom: 20px; }
+  .lp .vna-icones-basico li { font-size: 14px; line-height: 16.8px; }
+  .lp .vna-icones li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .lp .vna-icones img { width: 58px; height: 58px; }
+  .lp .vna-carrossel { margin-inline: -20px; }
+  .lp .vna-carrossel-pontos { right: 50%; translate: 50% 0; bottom: 70px; }
+  .lp .vna-seta-ant { left: 16px; }
+  .lp .vna-seta-prox { left: auto; right: 16px; }
+  .lp .vna-filete { margin: 40px 0; }
+  .lp .vna-bloco > .vna-filete:first-child { margin: 20px 0 20px; }
+  .lp .vna-implantacao > img { margin: 20px 0; }
+  .lp .vna-legenda { flex-wrap: wrap; gap: 20px 29px; justify-content: flex-start; margin-top: 75px; }
+  .lp .vna-legenda ol { gap: 17px; }
+  .lp .vna-legenda li li { gap: 9px; font-size: 11px; line-height: 16.5px; }
+  .lp .vna-legenda b { width: 21px; height: 21px; margin-left: 0; font-size: 12px; }
+
+  .lp .vna-construimos { padding: 30px 0; text-align: center; }
+  .lp .vna-construimos-grade { grid-template-columns: 1fr; gap: 20px; }
+  .lp .vna-construimos-grade h2 { font-size: 18px; line-height: 27px; }
+  .lp .vna-construimos-grade p { max-width: none; margin-top: 20px; text-align: justify; }
+
+  .lp .vna-futuro { grid-template-columns: 1fr; gap: 53px; padding: 20px 0; }
+  .lp .vna-futuro p { margin-bottom: 20px; font-size: 13px; line-height: 19.5px; text-align: center; }
+  .lp .vna-presenca { max-width: 265px; padding-bottom: 20px; font-size: 13px; line-height: 19.5px; }
+
+  .lp .vna-grupo { padding: 20px 20px 40px; }
+  .lp .vna-grupo h2 { font-size: 15px; line-height: 22.5px; }
+  .lp .vna-grupo-marcas { grid-template-columns: 1fr; justify-items: center; gap: 30px; margin-top: 20px; }
+  .lp .vna-grupo-marcas p { max-width: 280px; font-size: 16px; line-height: 24px; text-align: center; }
+  .lp .vna-grupo-txt { margin-top: 40px; }
+  .lp .vna-grupo-txt p { font-size: 13px; line-height: 19.5px; }
+  .lp .vna-setores { font-size: 12px; line-height: 18px; }
+  .lp .vna-grupo-linha, .lp .vna-grupo-fotos { display: none; }
+
+  .lp .vna-stand { padding: 20px 30px 30px; }
+  .lp .vna-stand h2 { font-size: 14px; line-height: 21px; }
+  .lp .vna-stand-cartao { grid-template-columns: 1fr; row-gap: 40px; width: 100%; padding: 20px; }
+  .lp .vna-stand-cartao iframe { width: 100%; }
+  .lp .vna-stand-linha { display: none; }
+}
