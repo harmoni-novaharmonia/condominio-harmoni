@@ -1,19 +1,20 @@
 /* =========================================================
-   Peças comuns às LPs revisadas (Essenza e Vale, 2026-10-05):
-   formulário em duas etapas, ícone pintado, setas redondas, tela cheia,
-   corte da rua, planta com zoom, números do grupo, telefones, outros
-   Harmonis e barra do celular. As seções exclusivas ficam em essenza.css
-   e vale.css; cada uma tem a classe .ez ou .vl na raiz.
+   Peças comuns às LPs revisadas (Essenza e Vale em 2026-10-05, Jardins e
+   Arbore em 2026-10-06): formulário em duas etapas, ícone pintado, setas
+   redondas, tela cheia, corte da rua, planta com zoom, números do grupo,
+   telefones, outros Harmonis e barra do celular. As seções exclusivas ficam
+   em essenza.css, vale.css, jardins.css e arbore.css; cada uma tem a classe
+   .ez, .vl, .jd ou .ab na raiz.
    ========================================================= */
 
 /* ---------- base das seções revisadas ---------- */
-.lp :is(.ez, .vl) .d { text-wrap: balance; }
-.lp :is(.ez, .vl) .sobretitulo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; font-weight: 500; }
-.lp :is(.ez, .vl) .sobretitulo::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.5; }
-.lp :is(.ez, .vl) .cabecalho { margin-bottom: clamp(36px, 5vw, 64px); }
-.lp :is(.ez, .vl) .cabecalho > div { max-width: 700px; min-width: 0; }
-.lp :is(.ez, .vl) .cabecalho .txt { margin-top: 20px; }
-.lp :is(.ez, .vl) .selo { top: 12px; left: auto; right: 12px; }
+.lp :is(.ez, .vl, .jd, .ab) .d { text-wrap: balance; }
+.lp :is(.ez, .vl, .jd, .ab) .sobretitulo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; font-weight: 500; }
+.lp :is(.ez, .vl, .jd, .ab) .sobretitulo::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.5; }
+.lp :is(.ez, .vl, .jd, .ab) .cabecalho { margin-bottom: clamp(36px, 5vw, 64px); }
+.lp :is(.ez, .vl, .jd, .ab) .cabecalho > div { max-width: 700px; min-width: 0; }
+.lp :is(.ez, .vl, .jd, .ab) .cabecalho .txt { margin-top: 20px; }
+.lp :is(.ez, .vl, .jd, .ab) .selo { top: 12px; left: auto; right: 12px; }
 .lp .foto { position: relative; overflow: hidden; }
 .lp .foto > img { width: 100%; height: 100%; object-fit: cover; }
 .lp .pilha-txt { display: grid; gap: 18px; }

@@ -87,5 +87,17 @@
 - Essenza: confirmar se a infraestrutura pode sair da lista de diferenciais (está no corte da rua). Desenho e ordem do trajeto são ilustrativos.
 - Vale: categorias dos 14 itens e a foto de cada um são proposta (quadra e playground usam a da piscina). Posições do mapa ilustrativas; texto e endereço da localização `[PREENCHER]`.
 - Vale: Grupo e Missão viraram uma seção só; a chamada "Escolha agora onde será seu lar" virou o título da implantação. Confirmar com o cliente.
-- Jardins e Arbore ainda estão na versão anterior; próximos a refazer no mesmo padrão.
+- Jardins e Arbore refeitos em 2026-10-06 (ver abaixo).
 - `package-lock.json` aparece alterado (campos `libc` removidos por outra versão do npm). Não foi commitado.
+
+## Jardins e Arbore no layout aprovado (2026-10-06)
+
+- Formulário: segue sem endpoint (CRM + RD Station), como nas outras LPs.
+- Renders, planta e mapa ainda são do Vinhedos ("Imagem provisória"). As fotos de família são do banco da Nova Harmonia e se repetem entre LPs; a do conceito do Jardins é a da LP no ar do Vinhedos.
+- Jardins: mapa ilustrativo, fora de escala, com a posição do condomínio provisória até o endereço. Título dos diferenciais ("Segurança, lazer e serviços, item por item") e da seção de perspectivas são proposta.
+- Jardins: portaria de serviço, quadra e playground não têm foto própria, então não mostram a semente nos diferenciais. Pet place usa a foto da menina com o cachorro.
+- Arbore: a ordem dos destinos na localização (centro, vias, Porto Alegre) é ilustrativa. A foto da família no lote é de outro bairro Nova Harmonia; trocar por foto do Arbore quando houver.
+- Arbore: títulos "Um lar completo, item por item" e "Lazer completo, do pórtico à academia" são proposta.
+- Arbore: o cartão do Arbore na vitrine "Conheça os outros Harmonis" (`outros.ts`) continua com o pórtico, o mesmo do Vinhedos. Dá para trocar pela piscina do hero novo; mantido para não mexer nas LPs aprovadas.
+- Confirmar se a infraestrutura pode sair da lista de diferenciais nas duas (está no corte da rua).
+

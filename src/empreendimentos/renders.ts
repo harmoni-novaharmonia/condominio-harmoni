@@ -59,3 +59,11 @@ export const estiloDeVida = {
   familiaJardim: { src: `${V}/familia-no-jardim.webp`, largura: 843, altura: 1080, alt: "Pai carregando a filha nas costas no jardim" },
   familiaArLivre: { src: `${V}/familia-ao-ar-livre.webp`, largura: 748, altura: 1080, alt: "Família jovem ao ar livre" },
 } satisfies Record<string, Imagem>;
+
+// Fotos da Nova Harmonia usadas nas LPs revisadas de Jardins e Arbore (2026-10-06).
+export const fotosNovaHarmonia = {
+  /** Família real num lote de bairro Nova Harmonia, com a casa em obra ao fundo. Não é do Arbore. */
+  familiaLote: { src: "/img/nova-harmonia/institucional/familia.webp", largura: 1440, altura: 600, alt: "Família em frente à casa em construção no seu lote" },
+  /** Versão vertical da foto do conceito da LP no ar do Vinhedos: linho, a casa desenhada e a família. */
+  familiaLinho: { src: "/img/vinhedos/conceito/familia-celular.webp", largura: 632, altura: 1080, alt: "Mãe rindo abraçada aos dois filhos no gramado" },
+} satisfies Record<string, Imagem>;

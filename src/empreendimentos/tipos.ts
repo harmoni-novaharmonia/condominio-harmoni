@@ -1,7 +1,9 @@
 // Contrato de dados de uma LP. Cada empreendimento preenche o seu dados.ts;
 // os componentes de src/secoes/lp/ só leem daqui e não guardam texto.
 import type { NomeIcone } from "./icones";
+import type { SecaoArbore } from "./arbore/tipos";
 import type { SecaoEssenza } from "./essenza/tipos";
+import type { SecaoJardins } from "./jardins/tipos";
 import type { SecaoVale } from "./vale/tipos";
 import type { PaginaNoAr } from "./vinhedos/tipos";
 
@@ -196,7 +198,9 @@ export type Secao =
   | SecaoOutros
   // Seções exclusivas (pasta secoes/ de cada empreendimento).
   | SecaoEssenza
-  | SecaoVale;
+  | SecaoVale
+  | SecaoJardins
+  | SecaoArbore;
 
 // ---------- página ----------
 

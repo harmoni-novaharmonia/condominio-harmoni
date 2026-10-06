@@ -244,6 +244,21 @@ export const textosInteracao = {
   plantaInteira: "Ver planta inteira",
   itens: (n: number) => `${n} ${n > 1 ? "itens" : "item"}`,
   norte: "N",
+  // Jardins e Arbore (2026-10-06)
+  escolherAmbiente: "Escolher ambiente",
+  perspectivasAmpliar: "Perspectivas. Clique na foto para ampliar.",
+  dicaLupa: "Passe o mouse para ver os lotes de perto",
+  plantaTelaCheia: "Ver em tela cheia ⤢",
+  dicaCanteiros: "Passe o mouse num item para abrir a foto do espaço.",
+  superficie: "↑ Na superfície",
+  subsolo: "↓ Embaixo da rua",
+  ver: (nome: string) => `Ver ${nome}`,
+  ampliarNome: (nome: string) => `Ampliar ${nome}`,
+  dicaMosaico: "Clique numa foto pequena para trazê-la para cá.",
+  ordemDestinos: "Do mais perto ao mais longe. Ordem ilustrativa.",
+  dicaAnotado: "Do poste ao subsolo. Toque num número ou numa legenda.",
+  lotesPorEmpreendimento: "Lotes por empreendimento",
+  fotoInstitucional: "Foto institucional Nova Harmonia",
 };
 
 // Números publicados em novaharmonia.com.br (docs/CONTEUDO-FONTE.md).

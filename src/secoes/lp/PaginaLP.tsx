@@ -4,7 +4,9 @@ import { Ic } from "@/components/lp/Ic";
 import { RodapeLP } from "@/components/lp/RodapeLP";
 import { textosHeader } from "@/empreendimentos/comum";
 import type { LP, Secao } from "@/empreendimentos/tipos";
+import { BlocoArbore } from "@/empreendimentos/arbore/secoes";
 import { BlocoEssenza } from "@/empreendimentos/essenza/secoes";
+import { BlocoJardins } from "@/empreendimentos/jardins/secoes";
 import { BlocoVale } from "@/empreendimentos/vale/secoes";
 import { PaginaNoAr } from "@/empreendimentos/vinhedos/secoes/PaginaNoAr";
 import { Chamada } from "./Chamada";
@@ -55,6 +57,10 @@ function Bloco({ s, lp }: { s: Secao; lp: LP }) {
       return <BlocoEssenza s={s} lp={lp} />;
     case "vale":
       return <BlocoVale s={s} lp={lp} />;
+    case "jardins":
+      return <BlocoJardins s={s} lp={lp} />;
+    case "arbore":
+      return <BlocoArbore s={s} lp={lp} />;
   }
 }
 

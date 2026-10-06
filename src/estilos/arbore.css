@@ -1,0 +1,245 @@
+/* =========================================================
+   Harmoni Arbore: seções exclusivas (src/empreendimentos/arbore/secoes).
+   Revisão aprovada em 2026-10-06. Papel, nogueira e laranja; motivo tirado do
+   nome: a madeira em ripas verticais (o ripado dos renders) e o que cresce de
+   baixo para cima. Duas larguras (casca de 1320px ou ponta a ponta).
+   ========================================================= */
+.lp[data-tema="arbore"] {
+  --casca: 1320px;
+  --papel: #f3eee5;
+  --papel-2: #e9e0d1;
+  --nogueira: #2b2421;
+  --nogueira-2: #3a312c;
+  --madeira: #a87650;
+  --madeira-txt: #8a5a35;
+  --ripa-g: 7px;
+}
+.lp :is(.ab-hero, .ab-fresta, .ab-local, .ab-impl, .ab-gavetas, .ab-grupo, .ab-contato, .ab-pers-cartao) .d em { color: var(--madeira-txt); }
+.lp .ab-cartao { padding: clamp(22px, 3vw, 34px); border-radius: 8px; background: #ffffff; box-shadow: 0 30px 60px -40px rgba(43, 36, 33, 0.55); }
+@keyframes ab-cresce { from { clip-path: inset(100% 0 0 0); } }
+
+/* Ripas: cada uma mostra a sua fatia da mesma foto (a imagem tem a largura do conjunto). */
+.lp .ab-ripas { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--ripa-g); height: 100%; }
+.lp .ab-ripas i { position: relative; overflow: hidden; border-radius: 3px; background: var(--papel-2); }
+.lp .ab-ripas img { position: absolute; top: 0; left: calc(var(--k) * -1 * (100% + var(--ripa-g))); width: calc(var(--n) * 100% + (var(--n) - 1) * var(--ripa-g)); max-width: none; height: 100%; object-fit: cover; }
+.lp .ab-ripas .selo { top: 14px; right: 14px; }
+
+/* ---------- hero: a foto em ripas que crescem ---------- */
+.lp .ab-hero { display: grid; align-items: center; min-height: max(780px, 100svh); padding: 140px 0 clamp(64px, 7vw, 96px); background: var(--papel); }
+.lp .ab-hero-foto { position: absolute; top: 104px; right: 0; bottom: 0; width: 54vw; }
+.lp .ab-hero-foto .ab-ripas i { border-radius: 3px 3px 0 0; animation: ab-cresce 1.3s calc(0.1s + var(--k) * 75ms) var(--ease) both; }
+.lp .ab-hero-foto img { animation: lp-zoom-curto 2.6s var(--ease) both; }
+/* O texto ocupa só a área livre à esquerda da foto (que tem 54vw). */
+.lp .ab-hero-txt { position: relative; width: min(520px, 46vw - var(--margem) - 28px); }
+.lp .ab-hero h1 { font-size: clamp(44px, 5.4vw, 82px); line-height: 1; }
+.lp .ab-hero .txt { margin-top: 22px; }
+.lp .ab-hero .ab-cartao { margin-top: 34px; }
+@media (max-width: 980px) {
+  .lp .ab-hero { display: block; min-height: 0; padding-top: 96px; }
+  .lp .ab-hero-foto { position: relative; top: 0; width: auto; height: min(78vw, 440px); margin: 0 var(--margem) 40px; }
+  .lp .ab-hero-txt { width: auto; }
+  .lp[data-tema="arbore"] { --ripa-g: 5px; }
+}
+
+/* ---------- conceito: porta de correr ---------- */
+.lp .ab-fresta-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 96px); align-items: stretch; }
+.lp .ab-fresta-foto { min-height: 620px; margin: 0; border-radius: 4px; clip-path: inset(0 0 0 0); transition: clip-path 1.6s cubic-bezier(0.7, 0, 0.2, 1); }
+.lp .ab-fresta-foto > img { position: absolute; inset: 0; object-position: center 40%; transition: transform 2.2s var(--ease); }
+.lp .ab-fresta.espera .ab-fresta-foto { clip-path: inset(0 50% 0 50%); }
+.lp .ab-fresta.espera .ab-fresta-foto > img { transform: scale(1.18); }
+.lp .ab-fresta-txt { align-self: center; }
+.lp .ab-fresta-txt .pilha-txt { margin-top: 26px; }
+.lp .ab-fatos { margin: 34px 0 40px; border-top: 1px solid var(--linha); }
+.lp .ab-fatos li { display: flex; align-items: center; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--linha); font-size: 19px; font-weight: 400; }
+.lp .ab-fatos b { width: 26px; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; color: var(--madeira-txt); }
+.lp .ab-fatos .ict { width: 30px; height: 30px; background: var(--madeira); }
+@media (max-width: 900px) { .lp .ab-fresta-grade { grid-template-columns: 1fr; } .lp .ab-fresta-foto { height: min(110vw, 520px); min-height: 0; } }
+
+/* ---------- manifesto: persiana de madeira ---------- */
+.lp .ab-persiana { position: relative; padding-bottom: clamp(72px, 8vw, 112px); background: var(--nogueira); color: var(--creme); }
+.lp .ab-pers-foto { position: relative; height: clamp(440px, 41.7vw, 680px); overflow: hidden; }
+.lp .ab-pers-foto .foto { height: 100%; margin: 0; }
+.lp .ab-pers-foto .foto > img { object-position: center 30%; }
+.lp .ab-laminas { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(14, 1fr); pointer-events: none; }
+.lp .ab-laminas i { background: linear-gradient(90deg, #241e1b, var(--nogueira-2) 45%, #241e1b); transform: scaleX(calc(0.92 * (1 - var(--ab, 1)))); }
+.lp .ab-cred { position: absolute; z-index: 2; top: 16px; left: 16px; padding: 5px 9px; border-radius: 4px; background: rgba(43, 36, 33, 0.72); font-size: 11px; letter-spacing: 0.06em; }
+.lp .ab-pers-cartao { position: relative; z-index: 2; width: min(100%, 640px); margin-top: -180px; padding: clamp(32px, 4vw, 56px); border-radius: 4px; background: var(--papel); color: var(--petroleo); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6); }
+.lp .ab-pers-cartao .pilha-txt { margin: 22px 0 30px; }
+@media (max-width: 760px) {
+  .lp .ab-pers-cartao { margin-top: -64px; }
+  .lp .ab-laminas { grid-template-columns: repeat(8, 1fr); }
+  .lp .ab-laminas i:nth-child(n + 9) { display: none; }
+}
+
+/* ---------- localização: tronco e galhos ---------- */
+.lp .ab-local-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 96px); align-items: stretch; }
+.lp .ab-local-txt { align-self: center; }
+.lp .ab-local-txt .txt { margin-top: 22px; }
+.lp .ab-local-txt .endereco { margin-top: 28px; background: var(--papel); }
+.lp .ab-arvore { position: relative; min-height: 600px; margin: 0; overflow: hidden; border-radius: 4px; background: repeating-linear-gradient(90deg, transparent 0 54px, rgba(138, 90, 53, 0.07) 54px 56px), var(--papel); }
+.lp .ab-arvore-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lp .ab-arvore-svg path { fill: none; stroke-linecap: round; }
+.lp .ab-tronco-fundo { stroke: rgba(138, 90, 53, 0.16); stroke-width: 12; }
+.lp .ab-tronco { stroke: var(--madeira); stroke-width: 12; stroke-dasharray: 1; stroke-dashoffset: var(--tronco, 0); }
+.lp .ab-raizes path { stroke: rgba(138, 90, 53, 0.35); stroke-width: 3; }
+.lp .ab-galho-linha { stroke: var(--madeira); stroke-width: 4; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.8s var(--ease); }
+.lp .ab-galho-linha.on { stroke-dashoffset: 0; }
+.lp .ab-galho { position: absolute; z-index: 2; display: flex; align-items: center; gap: 14px; width: var(--larg, 240px); padding: 16px 18px; border-radius: 4px; background: #ffffff; box-shadow: 0 18px 40px -26px rgba(43, 36, 33, 0.6); opacity: 0; translate: 0 -50%; scale: 0.9; transition: opacity 0.5s 0.25s, scale 0.6s 0.25s var(--ease); }
+.lp .ab-galho.esq { right: calc(50% + 64px); transform-origin: 100% 50%; }
+.lp .ab-galho.dir { left: calc(50% + 64px); transform-origin: 0 50%; }
+.lp .ab-galho.on { opacity: 1; scale: 1; }
+.lp .ab-galho .ict { width: 30px; height: 30px; background: var(--madeira); }
+.lp .ab-galho strong { display: block; font-size: 17px; font-weight: 500; line-height: 1.25; }
+.lp .ab-galho span { font-size: 14px; color: var(--cinza); }
+.lp .ab-raiz { position: absolute; z-index: 2; left: 50%; display: flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; border-radius: 999px; background: var(--nogueira); color: rgba(244, 235, 216, 0.7); font-size: 12px; white-space: nowrap; box-shadow: 0 0 0 8px var(--papel); translate: -50% -50%; }
+.lp .ab-raiz strong { display: block; font-size: 15px; font-weight: 500; color: var(--creme); }
+.lp .ab-raiz-ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--acento); color: var(--nogueira); }
+.lp .ab-raiz-ic .ict { width: 22px; height: 22px; }
+.lp .ab-arvore figcaption { position: absolute; left: 18px; bottom: 14px; font-size: 12px; color: var(--cinza-2); }
+.lp .ab-arvore.estreita .ab-galho { left: 84px; right: 14px; width: auto; transform-origin: 0 50%; }
+.lp .ab-arvore.estreita .ab-raiz { left: 44px; translate: -26px -50%; }
+@media (max-width: 900px) { .lp .ab-local-grade { grid-template-columns: 1fr; } .lp .ab-arvore { min-height: 560px; } }
+@media (max-width: 560px) {
+  .lp .ab-galho { gap: 10px; padding: 12px; }
+  .lp .ab-galho strong { font-size: 15px; }
+  .lp .ab-galho span { font-size: 12px; }
+  .lp .ab-galho .ict { width: 24px; height: 24px; }
+}
+
+/* ---------- perspectivas: mosaico que troca de lugar ---------- */
+.lp .ab-mosaico-sec { padding-block: clamp(80px, 8vw, 120px); background: var(--nogueira); }
+.lp .ab-mos-ctrl { display: flex; align-items: center; gap: 20px; }
+.lp .ab-mosaico { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(3, clamp(150px, 15vw, 210px)); grid-template-areas: "t0 t0 t1 t2" "t0 t0 t3 t4" "t5 t6 leg leg"; gap: 12px; }
+.lp .ab-tile { position: relative; overflow: hidden; border-radius: 4px; background: var(--nogueira-2); text-align: left; transform-origin: 0 0; }
+.lp .ab-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), filter 0.4s; }
+.lp .ab-tile:not(.grande) img { filter: saturate(0.75) brightness(0.82); }
+.lp .ab-tile:not(.grande):hover img { filter: none; transform: scale(1.05); }
+.lp .ab-tile.grande { cursor: zoom-in; }
+.lp .ab-tile::after { content: ""; position: absolute; inset: 50% 0 0; background: linear-gradient(0deg, rgba(20, 16, 14, 0.75), transparent); pointer-events: none; }
+.lp .ab-tile-nome { position: absolute; z-index: 2; left: 14px; bottom: 12px; font-size: 14px; font-weight: 400; transition: opacity 0.3s; }
+.lp .ab-tile.grande .ab-tile-nome { display: none; }
+.lp .ab-tile .selo { top: 10px; right: 10px; }
+.lp .ab-tile:not(.grande) .selo { display: none; }
+.lp .ab-tile.voa :is(.ab-tile-nome, .selo) { opacity: 0; }
+.lp .ab-mos-leg { grid-area: leg; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0 clamp(8px, 2vw, 28px); border-left: 2px solid var(--acento); }
+.lp .ab-mos-leg b { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; color: var(--acento); }
+.lp .ab-mos-leg strong { font-size: clamp(28px, 2.8vw, 42px); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; }
+.lp .ab-mos-leg span { font-size: 16px; color: rgba(244, 235, 216, 0.75); }
+.lp .ab-mos-leg small { margin-top: 12px; font-size: 13px; color: rgba(244, 235, 216, 0.5); }
+@media (max-width: 760px) {
+  .lp .ab-mos-ctrl .setas-r { display: none; }
+  .lp .ab-mosaico { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 54vw repeat(2, 24vw) auto; grid-template-areas: "t0 t0 t0" "t1 t2 t3" "t4 t5 t6" "leg leg leg"; gap: 8px; }
+  .lp .ab-tile-nome { left: 8px; bottom: 6px; font-size: 11px; }
+  .lp .ab-mos-leg { padding: 14px 0 0 16px; }
+  .lp .ab-mos-leg small { display: none; }
+}
+
+/* ---------- implantação: legenda ao lado, na altura da planta ---------- */
+.lp .ab-impl { background: var(--papel); }
+.lp .ab-impl-grade { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(20px, 3vw, 36px); align-items: stretch; }
+.lp .ab-impl .planta-zoom { border-radius: 4px; box-shadow: 0 0 0 1px var(--papel-2), 0 40px 80px -60px rgba(43, 36, 33, 0.6); }
+.lp .ab-impl-leg { display: grid; grid-auto-rows: minmax(0, 1fr); border-top: 1px solid var(--papel-2); }
+.lp .ab-impl-leg li { display: flex; align-items: center; gap: 14px; padding: 8px 4px; border-bottom: 1px solid var(--papel-2); font-size: 17px; font-weight: 400; }
+.lp .ab-impl-leg b { width: 26px; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--madeira-txt); }
+.lp .ab-impl-leg .ict { width: 30px; height: 30px; background: var(--madeira); }
+@media (max-width: 900px) { .lp .ab-impl-grade { grid-template-columns: 1fr; } .lp .ab-impl-leg li { padding: 12px 4px; } }
+
+/* ---------- diferenciais: gavetas ---------- */
+.lp .ab-gav-lista { border-top: 1px solid var(--linha); }
+.lp .ab-gav { border-bottom: 1px solid var(--linha); }
+.lp .ab-gav-bt { display: flex; align-items: baseline; gap: clamp(16px, 3vw, 40px); width: 100%; padding: 26px 4px; text-align: left; }
+.lp .ab-gav-bt b { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; color: var(--cinza-2); transition: color 0.3s; }
+.lp .ab-gav-bt strong { font-size: clamp(32px, 3.6vw, 54px); font-weight: 300; line-height: 1; letter-spacing: -0.025em; transition: color 0.3s, translate 0.5s var(--ease); }
+.lp .ab-gav-bt small { margin-left: auto; font-size: 14px; color: var(--cinza-2); }
+.lp .ab-gav-sinal { position: relative; flex: none; align-self: center; width: 44px; height: 44px; border: 1px solid var(--linha); border-radius: 50%; transition: background 0.3s, border-color 0.3s; }
+.lp .ab-gav-sinal::before, .lp .ab-gav-sinal::after { content: ""; position: absolute; top: 50%; left: 50%; width: 14px; height: 1.5px; margin: -0.75px 0 0 -7px; background: currentColor; transition: rotate 0.4s var(--ease); }
+.lp .ab-gav-sinal::after { rotate: 90deg; }
+.lp .ab-gav.on .ab-gav-sinal { border-color: var(--nogueira); background: var(--nogueira); color: var(--creme); }
+.lp .ab-gav.on .ab-gav-sinal::after { rotate: 0deg; }
+.lp .ab-gav.on .ab-gav-bt b, .lp .ab-gav-bt:hover b { color: var(--madeira-txt); }
+.lp .ab-gav-bt:hover strong { translate: 10px 0; }
+.lp .ab-gav-corpo { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.7s var(--ease); }
+.lp .ab-gav.on .ab-gav-corpo { grid-template-rows: 1fr; }
+.lp .ab-gav-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); min-height: 0; overflow: hidden; }
+.lp .ab-gav-foto { min-height: 260px; margin: 0 0 30px; border-radius: 4px; clip-path: inset(100% 0 0 0); transition: clip-path 0.9s 0.15s var(--ease); }
+.lp .ab-gav-foto > img { position: absolute; inset: 0; }
+.lp .ab-gav.on .ab-gav-foto { clip-path: inset(0 0 0 0); }
+.lp .ab-gav-in ul { display: grid; gap: 0 32px; align-self: center; margin-bottom: 30px; }
+.lp .ab-gav-in ul.duas { grid-template-columns: 1fr 1fr; }
+.lp .ab-gav-in li { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--linha); font-size: 19px; font-weight: 400; }
+.lp .ab-gav-in .ict { width: 32px; height: 32px; background: var(--madeira); }
+@media (max-width: 760px) {
+  .lp .ab-gav-bt small { display: none; }
+  .lp .ab-gav-in { grid-template-columns: 1fr; gap: 8px; }
+  .lp .ab-gav-foto { height: 56vw; min-height: 0; margin-bottom: 8px; }
+  .lp .ab-gav-in ul.duas { grid-template-columns: 1fr; }
+}
+
+/* ---------- corte anotado ---------- */
+.lp .ab-anotado { background: var(--nogueira); }
+.lp .ab-anotado .dica { color: rgba(244, 235, 216, 0.6); }
+.lp .ab-an-grade { position: relative; display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 0 clamp(64px, 7vw, 104px); }
+.lp .ab-corte { position: relative; max-width: 100%; aspect-ratio: 1620 / 1080; overflow: hidden; border-radius: 4px; }
+.lp .ab-corte > img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.5s; }
+.lp .ab-corte.foco > img { filter: brightness(0.75) saturate(0.85); }
+.lp .ab-an-lista { position: relative; }
+/* Medido o desenho, cada legenda vai para a altura da sua camada. */
+.lp .ab-an-grade.medido .ab-an-lista li { position: absolute; left: 0; right: 0; translate: 0 -50%; }
+.lp .ab-an-lista button { display: flex; align-items: center; gap: 14px; width: 100%; padding: 8px 10px; border-radius: 4px; color: rgba(244, 235, 216, 0.78); font-size: 16.5px; font-weight: 300; text-align: left; transition: background 0.3s, color 0.3s; }
+.lp .ab-an-lista button:hover, .lp .ab-an-lista button[aria-current="true"] { background: rgba(244, 235, 216, 0.07); color: #ffffff; }
+.lp .ab-an-lista b { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(244, 235, 216, 0.12); font-size: 12px; font-weight: 600; transition: background 0.3s, color 0.3s; }
+.lp .ab-an-lista button[aria-current="true"] b { background: var(--acento); color: var(--noite); }
+.lp .ab-an-linhas { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.lp .ab-an-linhas path { fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s, opacity 0.3s; }
+.lp .ab-lider { stroke: rgba(244, 235, 216, 0.35); stroke-width: 1.2; }
+.lp .ab-an-linhas .on .ab-lider { stroke: var(--acento); stroke-width: 1.6; }
+.lp .ab-guia { stroke: var(--acento); stroke-width: 1.4; stroke-dasharray: 4 5; opacity: 0; }
+.lp .ab-an-linhas .on .ab-guia { opacity: 0.9; }
+@media (max-width: 900px) {
+  .lp .ab-an-grade { grid-template-columns: 1fr; }
+  .lp .ab-an-lista { margin-top: 16px; }
+  .lp .ab-an-lista li { border-bottom: 1px solid rgba(244, 235, 216, 0.1); }
+}
+
+/* ---------- grupo: barras de lotes ---------- */
+.lp .ab-grupo { background: var(--papel); }
+.lp .ab-grupo-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px clamp(40px, 6vw, 96px); align-items: stretch; }
+.lp .ab-logos { display: flex; align-items: center; gap: clamp(24px, 4vw, 48px); margin-bottom: 36px; }
+.lp .ab-logos img { width: auto; height: 60px; }
+.lp .ab-logos i { width: 1px; height: 52px; background: currentColor; opacity: 0.25; }
+.lp .ab-grupo-txt .pilha-txt { margin-top: 28px; }
+.lp .ab-barras { display: flex; flex-direction: column; margin: 0; padding: clamp(28px, 3vw, 40px); border-radius: 4px; background: #ffffff; overflow: visible; }
+.lp .ab-barras-tit { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cinza-2); }
+/* Uma série só: uma cor, base comum, ponta de 4px; valor e nome em tinta de texto. */
+.lp .ab-barras ul { flex: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 420px; margin: 28px 0 24px; }
+.lp .ab-barras li { display: flex; flex-direction: column; padding: 0 clamp(8px, 1.4vw, 18px); outline-offset: 4px; }
+.lp .ab-barra-area { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; margin: 0 calc(clamp(8px, 1.4vw, 18px) * -1); padding: 0 clamp(8px, 1.4vw, 18px); border-bottom: 1px solid var(--linha); }
+.lp .ab-barra { width: min(72px, 70%); height: calc(var(--h) * 78%); border-radius: 4px 4px 0 0; background: var(--madeira); transform-origin: 50% 100%; transition: transform 1.2s calc(var(--k) * 0.12s) var(--ease), background 0.3s; }
+.lp .ab-barra-area strong { margin-bottom: 10px; font-size: clamp(26px, 2.6vw, 38px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; transition: opacity 0.6s calc(0.5s + var(--k) * 0.12s); }
+.lp .ab-barras li > em { margin-top: 14px; font-size: 15px; font-weight: 500; line-height: 1.25; }
+.lp .ab-barras li > small { margin-top: 4px; font-size: 13px; color: var(--cinza); }
+.lp .ab-barras ul:hover li:not(:hover) .ab-barra { background: var(--papel-2); }
+.lp .ab-barras li:focus-visible .ab-barra { background: var(--madeira-txt); }
+.lp .ab-barras.espera .ab-barra { transform: scaleY(0); }
+.lp .ab-barras.espera .ab-barra-area strong { opacity: 0; }
+.lp .ab-barras figcaption { margin-top: auto; font-size: 12px; color: var(--cinza-2); }
+@media (max-width: 900px) { .lp .ab-grupo-grade { grid-template-columns: 1fr; } .lp .ab-barras ul { min-height: 320px; } }
+@media (max-width: 520px) { .lp .ab-barras li > em { font-size: 12px; } .lp .ab-barras li > small { font-size: 11px; } .lp .ab-barra-area strong { font-size: 20px; } }
+
+/* ---------- contato: as ripas do hero, do lado esquerdo ---------- */
+.lp .ab-contato { padding-block: clamp(80px, 9vw, 130px); }
+/* Seletor com a seção na frente: ".secao > *" põe position: relative nos filhos diretos. */
+.lp .ab-contato > .ab-ct-foto { position: absolute; top: 0; bottom: 0; left: 0; width: 46vw; }
+.lp .ab-ct-foto .ab-ripas i { border-radius: 0 0 3px 3px; clip-path: inset(0 0 0 0); transition: clip-path 1.2s calc(var(--k) * 75ms) var(--ease); }
+.lp .ab-contato.espera .ab-ripas i { clip-path: inset(100% 0 0 0); }
+.lp .ab-ct-grade { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.lp .ab-ct-corpo { grid-column: 2; padding-left: clamp(24px, 4vw, 64px); }
+.lp .ab-ct-logo { width: auto; height: 84px; margin-bottom: 24px; }
+.lp .ab-ct-corpo .ab-cartao { margin-top: 32px; }
+.lp .ab-ct-corpo .bt-whatsapp { margin-top: 24px; }
+@media (max-width: 900px) {
+  .lp .ab-contato { padding-top: 0; }
+  .lp .ab-contato > .ab-ct-foto { position: relative; width: auto; height: min(70vw, 400px); margin-bottom: 48px; }
+  .lp .ab-ct-grade { grid-template-columns: 1fr; }
+  .lp .ab-ct-corpo { grid-column: 1; padding-left: 0; }
+}
