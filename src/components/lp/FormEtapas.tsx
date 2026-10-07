@@ -11,6 +11,8 @@ type Props = {
   /** Cor do botão "Continuar": petróleo ou acento do tema (fundo escuro). */
   tom?: "escuro" | "acento";
   className?: string;
+  /** Campos que vão junto com o cadastro (o lote escolhido no Hortênsias). */
+  extra?: Record<string, string>;
 };
 
 /** (51) 99719-6426 enquanto digita; aceita 10 ou 11 dígitos. */
@@ -25,7 +27,7 @@ function mascara(valor: string) {
 // Cadastro em duas etapas: nome e telefone primeiro (o mínimo para o consultor
 // ligar), email e aceite depois. Como o FormLead, só mostra sucesso quando o
 // endpoint responde 2xx; sem endpoint, oferece o WhatsApp com a mensagem pronta.
-export function FormEtapas({ lp, formulario, tom = "escuro", className }: Props) {
+export function FormEtapas({ lp, formulario, tom = "escuro", className, extra }: Props) {
   const id = useId();
   const [etapa, setEtapa] = useState<1 | 2>(1);
   const [estado, setEstado] = useState<"livre" | "enviando" | "ok" | "falha">("livre");
@@ -37,7 +39,7 @@ export function FormEtapas({ lp, formulario, tom = "escuro", className }: Props)
   const refNome = useRef<HTMLInputElement>(null);
 
   const primeiroNome = nome.trim().split(" ")[0] ?? "";
-  const linkWhatsapp = `https://wa.me/${lp.contato.whatsapp}?text=${encodeURIComponent(t.mensagemWhatsapp(lp.nome, primeiroNome))}`;
+  const linkWhatsapp = `https://wa.me/${lp.contato.whatsapp}?text=${encodeURIComponent(t.mensagemWhatsapp(lp.nome, primeiroNome) + (extra?.lote ? t.interesseLote(extra.lote) : ""))}`;
 
   function avancar() {
     const okNome = nome.trim().length >= 3;
@@ -71,7 +73,7 @@ export function FormEtapas({ lp, formulario, tom = "escuro", className }: Props)
       const r = await fetch(lp.contato.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...dados, nome, telefone, empreendimento: lp.slug, origem: location.href }),
+        body: JSON.stringify({ ...extra, ...dados, nome, telefone, empreendimento: lp.slug, origem: location.href }),
       });
       if (!r.ok) throw new Error(String(r.status));
       setEstado("ok");

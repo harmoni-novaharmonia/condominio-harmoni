@@ -34,6 +34,7 @@ export const textosFormulario = {
   falhaCta: "Chamar no WhatsApp",
   mensagemWhatsapp: (empreendimento: string, nome: string) =>
     `Olá! Sou ${nome || "interessado(a)"} e quero saber mais sobre o ${empreendimento}.`,
+  interesseLote: (lote: string) => ` Tenho interesse no lote ${lote}.`,
 };
 
 export const textosGerais = {
@@ -259,6 +260,32 @@ export const textosInteracao = {
   dicaAnotado: "Do poste ao subsolo. Toque num número ou numa legenda.",
   lotesPorEmpreendimento: "Lotes por empreendimento",
   fotoInstitucional: "Foto institucional Nova Harmonia",
+  // Hortênsias (2026-10-07)
+  dicaCachos: "Arraste, use as setas ou toque numa foto do lado.",
+  rotuloCachos: "Perspectivas. Toque na foto do meio para ampliar.",
+  categorias: "Categorias",
+  // Hortênsias, revisão (2026-10-07)
+  rotuloPlanta: "Planta ilustrativa com os lotes",
+  rotuloDestinos: "Destinos",
+  rotuloMapa: (destino: string) => `Mapa ilustrativo com a rota até ${destino}`,
+  deCarro: "De carro · rota mais rápida",
+  abrirMaps: "Abrir no Google Maps",
+  aproximar: "Aproximar",
+  afastar: "Afastar",
+  sua: "Sua escolha",
+  vendo: "Você está vendo",
+  quadra: "Quadra",
+  area: "Área",
+  situacao: "Situação",
+  disponivel: "Disponível",
+  disponivelSua: "Disponível · sua escolha",
+  reservado: "Reservado",
+  legendaLotes: ["Disponível", "Reservado", "Sua escolha"],
+  queroLote: (n: string) => `Quero o lote ${n}`,
+  lote: (n: string) => `Lote ${n}`,
+  seuInteresse: "Seu interesse:",
+  trocar: "trocar",
+  irPara: (nome: string) => `Ir para ${nome}`,
 };
 
 // Números publicados em novaharmonia.com.br (docs/CONTEUDO-FONTE.md).

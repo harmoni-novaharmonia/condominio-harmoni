@@ -58,6 +58,9 @@ export const estiloDeVida = {
   meninaCachorro: { src: `${V}/menina-e-cachorro.webp`, largura: 1620, altura: 1080, alt: "Menina abraçando o cachorro no parque" },
   familiaJardim: { src: `${V}/familia-no-jardim.webp`, largura: 843, altura: 1080, alt: "Pai carregando a filha nas costas no jardim" },
   familiaArLivre: { src: `${V}/familia-ao-ar-livre.webp`, largura: 748, altura: 1080, alt: "Família jovem ao ar livre" },
+  // Hortênsias (2026-10-07); as duas também aparecem na vitrine.
+  familiaBrincando: { src: `${V}/familia-jardim.webp`, largura: 1100, altura: 1408, alt: "Pais carregando os filhos nas costas no gramado" },
+  familiaPanorama: { src: `${V}/familia-panorama.webp`, largura: 1423, altura: 536, alt: "Família caminhando de mãos dadas ao pôr do sol" },
 } satisfies Record<string, Imagem>;
 
 // Fotos da Nova Harmonia usadas nas LPs revisadas de Jardins e Arbore (2026-10-06).
@@ -66,4 +69,10 @@ export const fotosNovaHarmonia = {
   familiaLote: { src: "/img/nova-harmonia/institucional/familia.webp", largura: 1440, altura: 600, alt: "Família em frente à casa em construção no seu lote" },
   /** Versão vertical da foto do conceito da LP no ar do Vinhedos: linho, a casa desenhada e a família. */
   familiaLinho: { src: "/img/vinhedos/conceito/familia-celular.webp", largura: 632, altura: 1080, alt: "Mãe rindo abraçada aos dois filhos no gramado" },
+  // Hortênsias (2026-10-07, revisão): fotos reais de obra e institucionais tiradas de novaharmonia.com.br.
+  obra: { src: "/img/nova-harmonia/obras/parque-harmonia-viamao.webp", largura: 806, altura: 1080, alt: "Máquina abrindo rua em obra da Nova Harmonia" },
+  /** Empreendimento a confirmar (docs/IMAGENS.md). */
+  ciclovia: { src: "/img/nova-harmonia/obras/ciclovia.webp", largura: 810, altura: 1080, alt: "Avenida pavimentada com ciclovia" },
+  stand: { src: "/img/nova-harmonia/obras/stand.webp", largura: 1200, altura: 800, alt: "Stand de vendas Nova Harmonia" },
+  porDoSol: { src: "/img/nova-harmonia/obra/familia-por-do-sol.webp", largura: 1060, altura: 1080, alt: "Família de mãos dadas ao pôr do sol" },
 } satisfies Record<string, Imagem>;

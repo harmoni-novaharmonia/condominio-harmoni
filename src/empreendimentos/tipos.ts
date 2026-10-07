@@ -3,6 +3,7 @@
 import type { NomeIcone } from "./icones";
 import type { SecaoArbore } from "./arbore/tipos";
 import type { SecaoEssenza } from "./essenza/tipos";
+import type { SecaoHortensias } from "./hortensias/tipos";
 import type { SecaoJardins } from "./jardins/tipos";
 import type { SecaoVale } from "./vale/tipos";
 import type { PaginaNoAr } from "./vinhedos/tipos";
@@ -200,7 +201,8 @@ export type Secao =
   | SecaoEssenza
   | SecaoVale
   | SecaoJardins
-  | SecaoArbore;
+  | SecaoArbore
+  | SecaoHortensias;
 
 // ---------- página ----------
 
@@ -209,7 +211,7 @@ export type LP = {
   nome: string;
   cidade: string;
   /** Liga a paleta e as animações em src/estilos/lp.css. */
-  tema: "vinhedos" | "jardins" | "arbore" | "vale" | "essenza";
+  tema: "vinhedos" | "jardins" | "arbore" | "vale" | "essenza" | "hortensias";
   seo: { titulo: string; descricao: string; imagem: string };
   logo: {
     /** Fundo claro. */

@@ -54,7 +54,7 @@
 - Lista "item por item" (14 itens) das quatro: é a do modelo Jardins. Confirmar por empreendimento.
 - Faixa "lotes a partir de 160m²" no Arbore e chamada "160m²" no Essenza: texto do modelo, confirmar a metragem de cada um.
 - Localização do Vale: texto `[PREENCHER]`. Endereço e pontos de interesse de Jardins, Arbore e Vale: `[PREENCHER]`.
-- Hortênsias: sem LP (não há logo, cidade nem copy).
+- Hortênsias: LP criada em 2026-10-07 (ver abaixo).
 
 ### Copy do cliente sinalizada
 - Vale: "Escolha agora onde será seu larr". Corrigido para "lar" na tela; confirmar com o cliente.
@@ -118,3 +118,23 @@
 - Endpoint do lead da vitrine: `contato.endpoint` em `src/dados/vitrine.ts`, vazio.
 - Redirecionamento 301 da raiz atual (LP do Vinhedos no WordPress) para `/vinhedos/` e atualização dos anúncios antes de publicar.
 - `nova-harmonia/institucional/quem-somos.webp` (2,4 MB) e `background-home.webp` (1,6 MB) não são usados por nenhuma página. Ficaram por serem do cliente; apagar se não forem voltar.
+
+## Hortênsias (2026-10-07)
+
+### Bloqueia publicação
+- Logo oficial. O do site é provisório, montado com as letras dos logos irmãos.
+- Registro jurídico, telefone e WhatsApp oficiais (hoje os do Vinhedos) e endpoint do lead, como nas outras LPs.
+
+### Confirmar com o cliente
+- Cidade: a copy diz Gravataí; a vitrine ainda mostra `[PREENCHER]` no bloco "Em breve". Decidir se o Hortênsias entra na coleção da vitrine (status, lote "a partir de", foto e forma da edição).
+- "Quero aproveitar" virou "O futuro lar da sua família está aqui" (sobretítulo do contato). Os botões ("Quero garantir meu espaço", "Quero escolher meu lote", "Quero saber mais!") são proposta; nenhum fala em "lançamento", porque a copy tirou essa palavra.
+- Propostas da revisão: a etiqueta "Lotes em condomínio fechado · Gravataí/RS" e o texto do hero, os textos curtos das tiras, a seção "Quem chega primeiro escolhe melhor" inteira, "Não é promessa", "Item por item", "Do portão a tudo o que importa", "Um projeto para ter orgulho", as perguntas das dúvidas e a descrição de SEO. Confirmar que o produto é lote e que a lista do modelo (portaria 24h, piscina, academia, salão, gourmet, brinquedoteca, minimercado) vale para o Hortênsias.
+- Cartão "Um lote no seu nome": depende do registro do loteamento e da escritura (`[CONFIRMAR]`).
+- `ciclovia.webp` aparece em "Não é promessa" como obra real Nova Harmonia, mas o empreendimento dela não está identificado (docs/IMAGENS.md).
+- O conceito da copy ("No Harmoni Hortênsias, trabalhamos um conceito de bem estar…") não está na página revisada; só o primeiro parágrafo entrou (texto das tiras). Decidir se volta.
+
+### Conteúdo
+- Planta de lotes ilustrativa: 48 lotes desenhados e reservados inventados (`reservados` no dados.ts). Trocar pela planta e pela tabela de vendas reais; a área do lote está `[000] m²`.
+- Mapa de rotas ilustrativo: posições aproximadas, não seguem a geografia real. Faltam endereço, tempos, distâncias e nomes das vias (`[00] min`, `[PREENCHER: via de acesso]`); o botão do Google Maps busca só "Gravataí RS" até haver endereço. Destinos: centro de Gravataí, RS-118, Freeway, Aeroporto Salgado Filho e Porto Alegre.
+- Cartões de "garantir agora": entrada e parcelas `[PREENCHER]`. Dúvidas: respostas `[PREENCHER]`.
+- Renders, coverflow e "item por item" são os do modelo (Vinhedos), com o selo de imagem provisória.

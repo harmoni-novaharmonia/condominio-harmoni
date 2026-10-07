@@ -6,6 +6,7 @@ import { textosHeader } from "@/empreendimentos/comum";
 import type { LP, Secao } from "@/empreendimentos/tipos";
 import { BlocoArbore } from "@/empreendimentos/arbore/secoes";
 import { BlocoEssenza } from "@/empreendimentos/essenza/secoes";
+import { BlocoHortensias } from "@/empreendimentos/hortensias/secoes";
 import { BlocoJardins } from "@/empreendimentos/jardins/secoes";
 import { BlocoVale } from "@/empreendimentos/vale/secoes";
 import { PaginaNoAr } from "@/empreendimentos/vinhedos/secoes/PaginaNoAr";
@@ -61,6 +62,8 @@ function Bloco({ s, lp }: { s: Secao; lp: LP }) {
       return <BlocoJardins s={s} lp={lp} />;
     case "arbore":
       return <BlocoArbore s={s} lp={lp} />;
+    case "hortensias":
+      return <BlocoHortensias s={s} lp={lp} />;
   }
 }
 

@@ -131,3 +131,9 @@ Convertidas para WebP (qualidade 0,8) e reduzidas para a maior largura em que ap
 - `compartilhado/estilo-de-vida/familia-panorama.webp` (Rectangle 36) e `familia-jardim.webp` (material do Jardins): fotos de banco.
 - `compartilhado/textura-noite.webp`: textura do material do Essenza (Links/bg.webp), fundo da seção "Quem constrói".
 - Os vídeos de `A- Hoje/site2026` não foram usados: mostram um empreendimento do Nordeste com céu nublado.
+
+## Adições de 07/10/2026 (Hortênsias)
+
+- `hortensias/logo/logo-02-recorte.svg` e `logo-03-recorte.svg`: logo **provisório**, montado a partir dos logos irmãos (não veio do cliente). Base do Jardins (símbolo, "Condomínio horizontal", "Harmoni" e os filetes encurtados), "GRAVATAÍ - RS" do logo do Vale e o nome com as letras de Jardins e Arbore; H, T e o circunflexo foram desenhados com a mesma espessura (haste 2,16, barra 2,05). Trocar pelo oficial quando chegar. Não há `logo-01` nem versões sem recorte.
+- Primeira versão sem foto nova: `compartilhado/estilo-de-vida/familia-jardim.webp` e `familia-panorama.webp` (as duas também estão na vitrine).
+- Revisão (mesmo dia): `hortensias/familia-flores.webp` (2000px), foto enviada pelo cliente para o Hortênsias (família entre flores), usada no hero e no SEO; `hortensias/rua.webp`, recorte da parte de cima de `nova-harmonia/obra/corte-infraestrutura.webp` (só a rua, sem o subsolo). Fotos de `nova-harmonia/obras/` e `obra/familia-por-do-sol.webp` passam a ser usadas no Hortênsias (`fotosNovaHarmonia` em `renders.ts`). A foto aérea com lotes destacados que o cliente enviou não foi usada (não parece Gravataí; o cliente pediu para tirar). Renders do Vinhedos seguem provisórios, com o selo.

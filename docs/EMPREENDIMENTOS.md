@@ -9,10 +9,10 @@ Foco atual: as linhas Harmoni. Os demais empreendimentos do grupo (The One, Vila
 | `arbore` | Harmoni Árbore | Cachoeirinha/RS | logo | |
 | `vale` | Harmoni Vale | Gravataí/RS | logo | |
 | `essenza` | Harmoni Essenza | a confirmar | logo | Copy cita Cachoeirinha e Canoas |
-| `hortensias` | Harmoni Hortênsias | a confirmar | nenhum | Sem material |
+| `hortensias` | Harmoni Hortênsias | Gravataí/RS | logo provisório | LP `/hortensias` (2026-10-07); cidade vem da copy, logo montado por nós |
 
 ## Para fechar
 
 - Quais são as 14 LPs.
-- Cidade de Essenza e Hortênsias.
+- Cidade de Essenza.
 - Fonte única de status e cidade (site e dashboard divergem).
